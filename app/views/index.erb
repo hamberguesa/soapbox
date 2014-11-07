@@ -1,21 +1,20 @@
-<html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<div class="container">
+  <button id="create_splash">Splash!</button>
+  
+  <ul id="splash_list" style="display:block" list-type="none">
+    <% @splashes.each do |splash| %>
+      <li><%= splash.author_id %></li>
+      <li><%= splash.content %></li>
+    <% end %>
+  </ul>
+</div>
 
-    <title>OpenAuth2</title>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
-    <script src="./index.js"></script>
-  </head>
-  <body>
-    <div>
-      <p>Soap it up</p>
       <% if current_user == nil %>
       <a href="/auth/facebook">Login with facebook!!!!</a>
       <% else %>
         <a href="/splashes">Splashes </a>
         <a href="/logout">Logout </a>
       <% end %>
-    </div>
-
-  </body>
-</html>
+      
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <script src="./index.js"></script>

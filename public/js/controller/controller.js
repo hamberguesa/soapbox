@@ -13,19 +13,21 @@
 // http://alexsblog.org/2014/08/21/custom-html-dropdown-with-jquery/
 
 var controller = (function(){
-  
+ 
   function createSplash(){
-    $('#create_splash').on('submit', function(evt){
+    $('#create_splash').on('click', function(evt){
       evt.preventDefault();
+      var data = $('#submit_splash').serialize(); 
       $.ajax({
         url: '/splash',
         type: 'POST',
         data: data
       }).done(function(data){
-        view.addNewSplash(data)
+        console.log(data);
+        view.addNewSplash(data);
       });
     });
-  };
+  }
 
   function createComment(){
     $('#create_comment').on('submit', function(evt){
@@ -35,10 +37,10 @@ var controller = (function(){
         type: 'POST',
         data: data
       }).done(function(data){
-        view.addNewComment(data)
+        view.addNewComment(data);
       });
     });
-  };
+  }
 
   (function poll() {
       setTimeout(function () {
@@ -56,8 +58,8 @@ var controller = (function(){
   
 
   return{
-    createSplash: createSplash;
-    createComment: createComment;
+    createSplash: createSplash,
+    createComment: createComment,
     poll: poll
   };
 })();
