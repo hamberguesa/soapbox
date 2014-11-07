@@ -17,7 +17,7 @@ var controller = (function(){
   function createSplash(){
     $('#create_splash').on('click', function(evt){
       evt.preventDefault();
-      var data = $('#submit_splash').serialize(); 
+      var data = $('#create_splash').serialize(); 
       $.ajax({
         url: '/splash',
         type: 'POST',
