@@ -13,28 +13,17 @@
 // http://alexsblog.org/2014/08/21/custom-html-dropdown-with-jquery/
 
 var controller = (function(){
-  
-  function getSplashes(){
-    $('#create_splash').on('submit', function(evt){
-      evt.preventDefault();
-      $.ajax({
-        url: '/splashes',
-        type: 'GET',
-        data: data
-      }).done(function(data){
-        view.addNewSplash(data);
-      });
-    });
-  }
-  
+ 
   function createSplash(){
-    $('#create_splash').on('submit', function(evt){
+    $('#create_splash').on('click', function(evt){
       evt.preventDefault();
+      var data = $('#submit_splash').serialize(); 
       $.ajax({
         url: '/splash',
         type: 'POST',
         data: data
       }).done(function(data){
+        console.log(data);
         view.addNewSplash(data);
       });
     });
