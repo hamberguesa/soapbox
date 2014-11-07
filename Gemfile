@@ -10,6 +10,7 @@ gem 'sinatra-contrib'
 
 # Use Thin for our web server
 gem 'thin'
+gem 'httparty'
 
 # activerecord ORM
 gem 'activesupport'
@@ -17,10 +18,10 @@ gem 'activerecord'
 
 #face recognition
 
-
+gem 'dotenv', '~> 1.0.2'
 gem 'rake'
 
-gem 'shotgun'		
+gem 'shotgun'
 
 group :test do
   gem 'shoulda-matchers'
