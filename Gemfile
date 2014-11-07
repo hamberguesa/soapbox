@@ -19,8 +19,8 @@ gem 'activerecord'
 
 
 gem 'rake'
-
-gem 'shotgun'		
+gem 'faker', '~> 1.4.3'
+gem 'shotgun'
 
 group :test do
   gem 'shoulda-matchers'
@@ -32,6 +32,5 @@ end
 group :test, :development do
   gem 'rspec'
   gem 'factory_girl'
-  gem 'faker'
 end
 
