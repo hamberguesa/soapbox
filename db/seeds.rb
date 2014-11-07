@@ -13,3 +13,13 @@
 	end
 
 end
+User.all.each do |user|
+
+  splashesarr = Splash.all.sample(5)
+  splashesarr.each do |splash|
+    user.splashes << splash
+  end
+
+end
+
+
