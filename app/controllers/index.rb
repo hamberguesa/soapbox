@@ -5,6 +5,8 @@ REDIRECT_URI = 'http://localhost:9393/'
 #Show all of your splash, or show login page
 #if you are not logged in
 get '/' do
+  p params
+  p session
   erb :index
 end
 
@@ -13,10 +15,12 @@ get '/log_in' do
   p params
 end
 
-
+'https://www.facebook.com/dialog/oauth?client_id=707092289381408&redirect_uri=http://localhost:9393/'
 
 #Get all of your splashes
 get '/splashes' do
+  session[:user]
+  @splashes = Splash.all
   content_type :json
   Splash.all.to_json
 end
@@ -35,7 +39,7 @@ end
 #Login
 post '/users' do
 	 if params[:code]
-    self.get_sweet_access_token(params[:code])
+    Helper.get_sweet_access_token(params[:code])
   else
     p "nothing in here"
     p params
