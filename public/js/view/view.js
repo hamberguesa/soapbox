@@ -1,4 +1,3 @@
-// 
 var view = (function(){
   var showSplashes = function(){
     
