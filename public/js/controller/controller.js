@@ -21,9 +21,22 @@ var controller = (function(){
         success: function(returned_splash) {
           view.addNewSplash(data);
         }
-      });
-    });
-  };
+      })
+    })
+  }
+  
+  function showComments(){
+    $('#comment_div').on('click', function(evt){
+      evt.preventDefault();
+      $.ajax({
+        url: '/splashes/:id/comments',
+        type: 'GET',
+        success: function(){
+          view.showComments();
+        }
+      })
+    })
+  }
 
   function createComment(){
     $('#create_comment').on('submit', function(evt){
@@ -36,9 +49,9 @@ var controller = (function(){
         success: function(returned_comment) {
           view.addNewComment(data);
         }
-      });
-    });
-  };
+      })
+    })
+  }
 
   (function poll() {
       setTimeout(function () {
@@ -50,9 +63,9 @@ var controller = (function(){
                   MyNamespace.myFunction(data); //DO ANY PROCESS HERE
               },
               complete: poll
-          });
-      }, 5000);                                //this is 5 seconds
-  })();
+          })
+      }, 5000)                               //this is 5 seconds
+  })()
   
   return{
     createSplash: createSplash,
