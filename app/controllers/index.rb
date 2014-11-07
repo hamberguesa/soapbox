@@ -13,29 +13,29 @@ get '/log_in' do
   p params
 end
 
-def get_sweet_access_token(code)
-  p HTTParty.get("https://graph.facebook.com/oauth/access_token?client_id=#{APP_ID}&redirect_uri=#{REDIRECT_URI}&client_secret=#{APP_SECRET}&code=#{code}")
-end
+
 
 #Get all of your splashes
-get '/splashes' do 
+get '/splashes' do
+  content_type :json
+  Splash.all.to_json
 end
 
 #Get single splash ID
-get '/splashes/:id' do 
+get '/splashes/:id' do
 end
 
-post '/splashes/:id/comment' do 
+post '/splashes/:id/comment' do
 end
 
-#post new splash 
-post '/splash' do 
+#post new splash
+post '/splash' do
 end
 
 #Login
-post '/users' do 
+post '/users' do
 	 if params[:code]
-    p get_sweet_access_token(params[:code])
+    self.get_sweet_access_token(params[:code])
   else
     p "nothing in here"
     p params
