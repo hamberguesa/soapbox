@@ -19,7 +19,7 @@ gem 'activerecord'
 
 
 gem 'rake'
-gem 'omniauth', '~> 1.2.2'
+gem 'omniauth-facebook'
 gem 'dotenv'
 gem 'httparty'
 

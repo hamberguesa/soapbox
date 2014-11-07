@@ -1,16 +1,10 @@
 APP_ID = ENV['APP_ID']
 APP_SECRET = ENV['APP_SECRET']
 REDIRECT_URI = 'http://localhost:9393/'
-  use OmniAuth::Builder do
-      provider :open_id, OpenID::Store::Filesystem.new('/tmp')
-      provider :facebook, APP_ID, APP_SECRET
-    end
+
 #Show all of your splash, or show login page
 #if you are not logged in
 get '/' do
-  p params
-  p session
-
   erb :index
 end
 
@@ -50,8 +44,14 @@ post '/users' do
   end
 end
 
-post '/auth/:name/callback' do
+get '/auth/facebook/callback' do
   auth = request.env['omniauth.auth']
+  user_id = auth['uid']
+  puts "*"*50
+  p user_id
+  puts "~"*50
+
+  redirect to '/'
 end
 
 get '/auth/failure' do
