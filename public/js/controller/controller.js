@@ -3,10 +3,6 @@
 // inserts comment to bottom of comments and removes comment box on submission of comment form 
 // set timeout function to refresh the feed of splashes
 
-// MODALS
-// http://i-like-robots.github.io/jQuery-Modal/
-// http://leanmodal.finelysliced.com.au/#
-
 // SLIDEDOWN MENU FOR COMMENTS
 // slideDown when user wants to create a comment
 // http://www.alessioatzeni.com/blog/signin-dropdown-box-like-twitter-with-jquery/
@@ -17,46 +13,60 @@ var controller = (function(){
   function createSplash(){
     $('#create_splash').on('click', function(evt){
       evt.preventDefault();
-      var data = $('#submit_splash').serialize(); 
+      var data = $('#create_splash').serialize();
       $.ajax({
         url: '/splash',
         type: 'POST',
-        data: data
-      }).done(function(data){
-        console.log(data);
-        view.addNewSplash(data);
-      });
-    });
+        data: data,
+        success: function(returned_splash) {
+          view.addNewSplash(data);
+        }
+      })
+    })
+  }
+  
+  function showComments(){
+    $('#comment_div').on('click', function(evt){
+      evt.preventDefault();
+      $.ajax({
+        url: '/splashes/:id/comments',
+        type: 'GET',
+        success: function(){
+          view.showComments();
+        }
+      })
+    })
   }
 
   function createComment(){
     $('#create_comment').on('submit', function(evt){
     evt.preventDefault();
+    var data = $('#create_comment').serialize();
       $.ajax({
         url: '/splashes/:id/comment',
         type: 'POST',
-        data: data
-      }).done(function(data){
-        view.addNewComment(data);
-      });
-    });
+        data: data, 
+        success: function(returned_comment) {
+          view.addNewComment(data);
+        }
+      })
+    })
   }
 
   (function poll() {
       setTimeout(function () {
           $.ajax({
-              type: 'POST',
+              type: 'GET',
               dataType: 'json',
-              url: '',                          //add a URL
-              success: function (data) {
+              url: '/splashes',                        
+              success: function(data) {
                   MyNamespace.myFunction(data); //DO ANY PROCESS HERE
               },
               complete: poll
-          });
-      }, 30000);                                //this is 30 seconds
-  })();
+          })
+      }, 5000)                               //this is 5 seconds
+  })()
   
-
   return{
     createSplash: createSplash,
     createComment: createComment,

@@ -1,11 +1,26 @@
 <div class="container">
-  <button id="create_splash">Splash!</button>
+  
+  <a href="#" class="paulund_modal">Splash</a>
   
   <ul id="splash_list" style="display:block" list-type="none">
     <% @splashes.each do |splash| %>
-      <li><%= splash.author_id %></li>
-      <li><%= splash.content %></li>
+      <div id="<%= splash.id %>">
+        <li>"<%= @current_user.first_name %> <%= @current_user.last_name %>"</li>
+        <li><%= splash.content %></li>
+      </div>
     <% end %>
   </ul>
+  
+  <div id="comment_div" style='display:none'>
+    <form action='/splashes/:id/comment' method='post'>
+      <input type='textarea' rows="4" cols="10" placeholder='Reply'>
+    </form>
+    <ul id="comment_list">
+      <% @splashes.comments.each do |comment| %>
+        <li>"<%= @current_user.first_name %> <%= @current_user.last_name %>"</li>
+        <li><%= comment.content %></li>
+      <% end %>
+    </ul>
+  </div>
+      
 </div>
-
