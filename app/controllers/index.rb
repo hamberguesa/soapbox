@@ -1,60 +1,78 @@
 APP_ID = ENV['APP_ID']
 APP_SECRET = ENV['APP_SECRET']
 REDIRECT_URI = 'http://localhost:9393/'
-  use OmniAuth::Builder do
-      provider :open_id, OpenID::Store::Filesystem.new('/tmp')
-      provider :facebook, APP_ID, APP_SECRET
-    end
+
 #Show all of your splash, or show login page
 #if you are not logged in
 get '/' do
-  p params
-  p session
-
   erb :index
 end
 
-# get '/log_in' do
-#   # redirect to("https://www.facebook.com/dialog/oauth?client_id=#{APP_ID}&redirect_uri=#{REDIRECT_URI}")
-#   # p params
-# end
-
-'https://www.facebook.com/dialog/oauth?client_id=707092289381408&redirect_uri=http://localhost:9393/'
-
 #Get all of your splashes
 get '/splashes' do
-  session[:user]
   @splashes = Splash.all
-  content_type :json
-  Splash.all.to_json
-end
-
-#Get single splash ID
-get '/splashes/:id' do
-end
-
-post '/splashes/:id/comment' do
-end
-
-#post new splash
-post '/splash' do
-end
-
-#Login
-post '/users' do
-	 if params[:code]
-    Helper.get_sweet_access_token(params[:code])
+  if request.xhr?
+    content_type :json
+    current_user.splashes.to_json
   else
-    p "nothing in here"
-    p params
+    redirect '/'
   end
 end
 
-post '/auth/:name/callback' do
+get '/splashes/:id/comments' do
+  User.find(current_user)
+  Comment.find(:splash_id => params[:id]).to_json
+end
+
+post '/splashes/:id/comment' do
+  splash = Splash.find(params[:id])
+  comment = Comment.create(:content => params[:content])
+  splash.comments << comment
+  if request.xhr?
+    content_type :to_json
+    splash.to_json
+  else
+    redirect '/'
+  end
+end
+
+
+#post new splash
+post '/splashes' do
+  splash = Splash.create(:content => params[:content])
+  current_user << splash
+  if request.xhr?
+    content_type :to_json
+    splash.to_json
+  else
+    redirect '/'
+  end
+end
+
+get '/auth/facebook/callback' do
   auth = request.env['omniauth.auth']
+  facebook_id = auth['uid']
+  session[:user_id] = facebook_id
+  user = User.find_by(:fb_user_id => facebook_id)
+
+  if user
+    user.token = auth['credentials'].token
+    user.save
+    #Update latitude and longitude
+  else
+    User.create(:fb_user_id => facebook_id, :token =>  auth['credentials'].token, :first_name => auth['extra']['raw_info'].first_name, :last_name => auth['extra']['raw_info'].last_name)
+  end
+  redirect to '/'
 end
 
 get '/auth/failure' do
   flash[:notice] = params[:message] # if using sinatra-flash or rack-flash
   redirect '/'
 end
+
+get '/logout' do
+  session[:user_id] = nil
+  redirect '/'
+
+end
+

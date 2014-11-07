@@ -21,7 +21,7 @@ require "sinatra/reloader" if development?
 
 require 'httparty'
 require 'erb'
-require 'omniauth'
+require 'omniauth-facebook'
 require 'dotenv'
 Dotenv.load
 
@@ -42,6 +42,9 @@ configure do
   set :views, File.join(Sinatra::Application.root, "app", "views")
 end
 
+use OmniAuth::Builder do
+    provider :facebook, APP_ID, APP_SECRET
+end
 
 
 # Set up the controllers and helpers

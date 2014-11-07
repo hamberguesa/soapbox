@@ -9,3 +9,12 @@
   </ul>
 </div>
 
+      <% if current_user == nil %>
+      <a href="/auth/facebook">Login with facebook!!!!</a>
+      <% else %>
+        <a href="/splashes">Splashes </a>
+        <a href="/logout">Logout </a>
+      <% end %>
+      
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <script src="./index.js"></script>
