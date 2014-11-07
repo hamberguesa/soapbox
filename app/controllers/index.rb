@@ -13,7 +13,6 @@ end
 #   # p params
 # end
 
-'https://www.facebook.com/dialog/oauth?client_id=707092289381408&redirect_uri=http://localhost:9393/'
 
 #Get all of your splashes
 get '/splashes' do
@@ -34,27 +33,31 @@ end
 post '/splash' do
 end
 
-#Login
-post '/users' do
-	 if params[:code]
-    Helper.get_sweet_access_token(params[:code])
-  else
-    p "nothing in here"
-    p params
-  end
-end
-
 get '/auth/facebook/callback' do
   auth = request.env['omniauth.auth']
-  user_id = auth['uid']
-  puts "*"*50
-  p user_id
-  puts "~"*50
+  facebook_id = auth['uid']
+  session[:user_id] = facebook_id
+  user = User.find_by_user_name(facebook_id)
 
+  if user
+    user.token = auth['credentials'].token
+    user.save
+    #Update latitude and longitude
+  else
+    User.create(:user_name => facebook_id, :token =>  auth['credentials'].token, :first_name => auth['extra']['raw_info'].first_name, :last_name => auth['extra']['raw_info'].last_name)
+  end
   redirect to '/'
 end
 
 get '/auth/failure' do
   flash[:notice] = params[:message] # if using sinatra-flash or rack-flash
+
   redirect '/'
 end
+
+get '/logout' do
+  session[:user_id] = nil
+  redirect '/'
+
+end
+

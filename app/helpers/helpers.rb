@@ -1,5 +1,4 @@
-module Helper
-  def self.get_sweet_access_token(code)
-    HTTParty.get("https://graph.facebook.com/oauth/access_token?client_id=#{APP_ID}&redirect_uri=#{REDIRECT_URI}&client_secret=#{APP_SECRET}&code=#{code}")
-  end
+
+def current_user
+  @current_user ||= User.find_by_user_name(session[:user_id]) if session[:user_id]
 end
