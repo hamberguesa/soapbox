@@ -14,6 +14,19 @@
 
 var controller = (function(){
   
+  function getSplashes(){
+    $('#create_splash').on('submit', function(evt){
+      evt.preventDefault();
+      $.ajax({
+        url: '/splashes',
+        type: 'GET',
+        data: data
+      }).done(function(data){
+        view.addNewSplash(data);
+      });
+    });
+  }
+  
   function createSplash(){
     $('#create_splash').on('submit', function(evt){
       evt.preventDefault();
@@ -22,10 +35,10 @@ var controller = (function(){
         type: 'POST',
         data: data
       }).done(function(data){
-        view.addNewSplash(data)
+        view.addNewSplash(data);
       });
     });
-  };
+  }
 
   function createComment(){
     $('#create_comment').on('submit', function(evt){
@@ -35,10 +48,10 @@ var controller = (function(){
         type: 'POST',
         data: data
       }).done(function(data){
-        view.addNewComment(data)
+        view.addNewComment(data);
       });
     });
-  };
+  }
 
   (function poll() {
       setTimeout(function () {
@@ -56,8 +69,8 @@ var controller = (function(){
   
 
   return{
-    createSplash: createSplash;
-    createComment: createComment;
+    createSplash: createSplash,
+    createComment: createComment,
     poll: poll
   };
 })();
