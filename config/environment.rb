@@ -21,7 +21,7 @@ require "sinatra/reloader" if development?
 
 require 'httparty'
 require 'erb'
-
+require 'omniauth'
 require 'dotenv'
 Dotenv.load
 
