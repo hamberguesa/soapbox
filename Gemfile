@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.3'
+ruby '2.0.0'
 
 # PostgreSQL driver
 gem 'pg'
@@ -10,6 +10,7 @@ gem 'sinatra-contrib'
 
 # Use Thin for our web server
 gem 'thin'
+gem 'httparty'
 
 # activerecord ORM
 gem 'activesupport'
@@ -20,7 +21,7 @@ gem 'activerecord'
 
 gem 'rake'
 
-gem 'shotgun'		
+gem 'shotgun'
 
 group :test do
   gem 'shoulda-matchers'
