@@ -5,7 +5,8 @@ var view = (function(){
   };
   
   var addNewSplash = function(data){
-    $('#splash_list').append("<li>SPLASH</li>")  // add actual reference in place of 'SPLASH'
+    var splashContent = data["content"]
+    $('#splash_list').append("<li>splashContent</li>")  // add actual reference in place of 'SPLASH'
   };
   
   var showComments = function(){
@@ -13,7 +14,8 @@ var view = (function(){
   };
   
   var addNewComment = function(data){
-    $('#comment_list').append("<li>COMMENT</li>")  // add actual reference in place of 'COMMENT'
+    var commentContent = data["content"]
+    $('#comment_list').append("<li>commentContent</li>")  // add actual reference in place of 'COMMENT'
   };
 
   return{
