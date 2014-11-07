@@ -21,6 +21,8 @@ gem 'activerecord'
 gem 'rake'
 
 gem 'shotgun'		
+gem 'dotenv'
+gem 'httparty'
 
 group :test do
   gem 'shoulda-matchers'
