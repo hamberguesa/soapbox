@@ -20,7 +20,8 @@ require 'sinatra'
 require "sinatra/reloader" if development?
 
 require 'httparty'
-
+require 'dotenv'
+Dotenv.load
 
 
 require 'erb'

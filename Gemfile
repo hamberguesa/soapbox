@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.3'
 
 # PostgreSQL driver
 gem 'pg'
@@ -18,7 +18,7 @@ gem 'activerecord'
 
 #face recognition
 
-
+gem 'dotenv', '~> 1.0.2'
 gem 'rake'
 
 gem 'shotgun'

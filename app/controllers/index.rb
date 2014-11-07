@@ -1,6 +1,6 @@
-APP_ID = '707121299378507'
-APP_SECRET = '72d2ff5d680d8cd979cce2197fa867e7'
-REDIRECT_URI = "http://localhost:9393/"
+APP_ID = ENV['APP_ID']
+APP_SECRET = ENV['APP_SECRET']
+REDIRECT_URI = 'http://localhost:9393/'
 #Show all of your splash, or show login page
 #if you are not logged in
 get '/' do
