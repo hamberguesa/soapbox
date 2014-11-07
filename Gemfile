@@ -19,8 +19,7 @@ gem 'activerecord'
 
 
 gem 'rake'
-
-gem 'shotgun'		
+gem 'omniauth', '~> 1.2.2'
 gem 'dotenv'
 gem 'httparty'
 
