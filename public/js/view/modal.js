@@ -76,9 +76,9 @@
       }
 
        function add_popup_box(){
-         var pop_up = $('<div class="paulund_modal_box"><a href="#" class="paulund_modal_close"></a><div class="paulund_inner_modal_box"><form id="create-splash-form" action="/splashes" method="post"><label for="Create-Splash">Splash!</label><br><input type="textarea" name="content" placeholder="255 Characters or Less"><input type="submit" id="create_splash"><br></form></div></div>');
+         var pop_up = $('<div class="paulund_modal_box"><a href="#" class="paulund_modal_close"></a><div class="paulund_inner_modal_box"><form id="create-splash-form" action="/splashes" method="post"><label for="Create-Splash">Splash!</label><br><textarea id="modal_content" rows="4" cols="30" name="content" placeholder="255 Characters or Less"></textarea><br><input type="submit" class="btn btn-success" id="create_splash"><br></form></div></div>');
          $(pop_up).appendTo('.paulund_block_page');
-
+         $('#modal_content').focus();
          $('.paulund_modal_close').click(function(){
           $(this).parent().fadeOut().remove();
           $('.paulund_block_page').fadeOut().remove();

@@ -21,3 +21,25 @@
   height: 250px;
   border: 1px solid black;
 }
+
+.paulund_modal_close{
+  transition: all 0.5s;
+}
+.paulund_modal_close:hover{
+  transform:scale(1.2,1.2);
+}
+
+#modal_content{
+  border-radius: 3px;
+  font-size:1.3em;
+  border:none;
+}
+#modal_content:focus{
+
+}
+.comment_div{
+  position:absolute;
+}
+#create_splash{
+  margin-top:15px;
+}
