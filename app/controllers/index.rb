@@ -17,7 +17,6 @@ end
 #Get all of your splashes
 get '/splashes' do
   @splashes = Splash.all
-  current_user
   if request.xhr?
     content_type :json
     @current_user.splashes.to_json

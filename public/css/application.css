@@ -6,23 +6,32 @@
   text-align: center;
 }
 .container .fa{
-  display:inline;
+  //display:inline;
+}
+.row{
+  overflow-y:visible;
 }
 #splash_list{
   list-style-type:none;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  height:300px;
-
+  white-space:nowrap;
+  overflow-y:visible;
 }
+.x-hidden{
+  margin:0px;
+  height:500px;
+  overflow-x:hidden;
+}
+/*#splash_list:after{
+  content:""; clear:both; display:block;
+}*/
 
 .arrow_container{
   padding-top:80px;
 }
 .splash{
-  display:table-cell;
+  display:inline-block;
   min-width:250px;
-  height: 250px;
+  height:250px;
   border: 1px solid black;
 }
 
@@ -41,9 +50,18 @@
 #modal_content:focus{
 
 }
-.comment_div{
+
+.comment-list{
   position:absolute;
+  top:100%;
+  display:none;
 }
+
+.comment-list li{
+  float:none;
+  position:relative;
+}
+
 #create_splash{
   margin-top:15px;
 }
