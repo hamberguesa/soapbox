@@ -10,69 +10,71 @@
 
 var controller = (function(){
 
-  function createSplash(){
-    $('#create_splash').on('click', function(evt){
-      evt.preventDefault();
-      var data = $('#create_splash').serialize();
-      $.ajax({
-        url: '/splash',
-        type: 'POST',
-        data: data,
-        success: function(returned_splash) {
-          view.addNewSplash(data);
-        }
-      })
-    })
+  function createSplash(evt){
+    evt.preventDefault();
+    var data = $('#create-splash-form').serialize();
+
+    console.log('create_splash')
+    $.ajax({
+      url: '/splashes',
+      type: 'POST',
+      data: data
+    }).done(view.addNewSplash)
+    $('.paulund_block_page').fadeOut().remove();
   }
 
   function getComments(evt){
     evt.preventDefault();
     console.log(this.id)
-      $.ajax({
-        url: '/splashes/'+this.id+'/comments',
-        type: 'GET',
-        id: this.id
-      }).done(view.showComments)
+    $.ajax({
+      url: '/splashes/'+this.id+'/comments',
+      type: 'GET',
+      id: this.id
+    }).done(view.showComments)
   }
 
   function createComment(evt){
     evt.preventDefault();
     var data = $('.create_comment').serialize();
     console.log(this)
-      $.ajax({
-        url: '/splashes/:id/comment',
-        type: 'POST',
-        data: data,
-        success: function(returned_comment) {
-          view.addNewComment(data);
-        }
-      })
-    }
+    $.ajax({
+      url: '/splashes/:id/comment',
+      type: 'POST',
+      data: data,
+      success: function(returned_comment) {
+        view.addNewComment(data);
+      }
+    })
+  }
 
   function poll() {
-      setTimeout(function () {
-          $.ajax({
-              type: 'GET',
-              dataType: 'json',
-              url: '/splashes',
-              success: function(data) {
+    setTimeout(function () {
+      $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/splashes',
+        success: function(data) {
                   MyNamespace.myFunction(data); //DO ANY PROCESS HERE
-              },
-              complete: poll
-          })
+                },
+                complete: poll
+              })
       }, 5000)                               //this is 5 seconds
   }
 
   function bindEvents(){
     $('.create_comment').on('submit', createComment);
     $('#splash_list').on('click','.splash', getComments);
+    $('.container').on('submit','#create-splash-form', createSplash);
   }
 
+  function updateCoords(){
 
+  }
   return{
     createSplash: createSplash,
     createComment: createComment,
     poll: poll,
-    bindEvents: bindEvents
+    bindEvents: bindEvents,
+    updateCoords: updateCoords
   };
 })();

@@ -35,7 +35,7 @@ post '/splashes/:id/comment' do
   comment = Comment.create(:content => params[:content])
   splash.comments << comment
   if request.xhr?
-    content_type :to_json
+    content_type :json
     splash.to_json
   else
     redirect '/'
@@ -46,10 +46,13 @@ end
 #post new splash
 post '/splashes' do
   splash = Splash.create(:content => params[:content])
-  current_user << splash
+  puts "*"*50
+  p params
+  puts "*"*50
+  current_user.splashes_created << splash
   if request.xhr?
-    content_type :to_json
-    splash.to_json
+    content_type :json
+    {:first_name => current_user.first_name, :last_name => current_user.last_name, :splash=> splash}.to_json
   else
     redirect '/'
   end
