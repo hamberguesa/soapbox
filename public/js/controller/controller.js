@@ -61,9 +61,12 @@ var controller = (function(){
     $('.create_comment').on('submit', createComment);
     $('#splash_list').on('click','.splash', getComments);
     $('.container').on('submit','#create-splash-form', createSplash);
+    console.log($('.fa-chevron-right'))
+    $('.fa-chevron-right').mouseenter(view.moveRight);
+    $('.fa-chevron-left').mouseenter(view.moveLeft);
   }
 
-  
+
   return{
     createSplash: createSplash,
     createComment: createComment,

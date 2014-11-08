@@ -4,31 +4,67 @@
     <div class="arrow_container col-md-1">
       <i class="fa fa-5x fa-chevron-left"></i>
     </div>
+
+    <!-- Begin Splash List -->
+    <div class="x-hidden col-md-10">
     <ul id="splash_list" class="col-md-10">
       <% @splashes.each do |splash| %>
       <li id="<%= splash.id %>" class="splash">
         <% author = User.find(splash.author_id) %>
         <%= author.first_name %> <%= author.last_name %>
         <%= splash.content %>
-        <div class="comment_div" style="display:none">
-          <form action='/splashes/:id/comment' method='post'>
-            <input type='textarea' rows="4" cols="10" placeholder='Reply'>
-          </form>
-          <ul class="comment_list">
-            <% splash.comments.each do |comment| %>
-            <% user = User.find(comment.user_id) %>
-            <li>"<%= comment.user.first_name %> <%= comment.user.last_name %>"</li>
-            <li><%= comment.content %></li>
-            <% end %>
-          </div>
-        </li>
-        <% end %>
-      </ul>
-  </ul>
+        <!-- Begin Comment List -->
+        <ul id="comment-<%=splash.id%>" class="comment-list">
+          <li>
+            <form action='/splashes/:id/comment' method='post'>
+              <input type='textarea' rows="4" cols="10" placeholder='Reply'>
+            </form>
+          </li>
 
+          <li role="presentation" class="divider"></li>
+
+          <% splash.comments.each do |comment| %>
+          <% user = User.find(comment.user_id) %>
+          <li role="presentation"><%= comment.user.first_name %> <%= comment.user.last_name %>"</li>
+          <li role="presentation"><%= comment.content %></li>
+          <% end %>
+        </ul>
+      </li>
+
+      <% end %>
+    </ul>
+  </div>
   <div class="arrow_container col-md-1">
     <i class="fa fa-5x fa-chevron-right"></i>
   </div>
-</div>
-</div>
+      </div>
+
+
+
+
+
+
+
+    <!-- </div>
+      <div class="row">
+        <% @splashes.each do |splash| %>
+          <div id="comment-<%=splash.id%>" class="comment_div" style="display:none">
+
+          <form action='/splashes/:id/comment' method='post'>
+            <input type='textarea' rows="4" cols="10" placeholder='Reply'>
+          </form>
+
+          <ul class="comment_list">
+            <% splash.comments.each do |comment| %>
+              <% user = User.find(comment.user_id) %>
+              <li>"<%= comment.user.first_name %> <%= comment.user.last_name %>"</li>
+              <li><%= comment.content %></li>
+            <% end %>
+          </ul>
+      </div>
+        <% end %>
+      </div> -->
+
+
+    </div>
 
