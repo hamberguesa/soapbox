@@ -25,8 +25,9 @@ get '/splashes' do
 end
 
 get '/splashes/:id/comments' do
-  User.find(current_user)
-  Comment.find(:splash_id => params[:id]).to_json
+  puts params[:id]
+  content_type :json
+  Comment.find_by(:splash_id => params[:id].to_i).to_json
 end
 
 post '/splashes/:id/comment' do

@@ -6,3 +6,18 @@
   text-align: center;
 }
 
+#splash_list{
+  list-style-type:none;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width:700px;
+  height:200px;
+
+}
+
+.splash{
+  display:table-cell;
+  min-width:150px;
+  height: 150px;
+  border: 1px solid black;
+}
