@@ -7,16 +7,16 @@
         top: "20%",
         left: "30%",
       },prop);
-          
+
       return this.click(function(e){
         add_block_page();
         add_popup_box();
         add_styles();
-        
+
         $('.paulund_modal_box').fadeIn();
       });
-      
-       function add_styles(){    
+
+       function add_styles(){
         $('.paulund_modal_box').css({
           'position':'absolute',
           'left':options.left,
@@ -44,7 +44,7 @@
           'width':'50px',
           'background': 'url(images/close.png) no-repeat',
         });
-      
+
         var pageHeight = $(document).height();
         var pageWidth = $(window).width();
 
@@ -68,17 +68,17 @@
           '-webkit-border-radius':'10px'
         });
       }
-      
+
        function add_block_page(){
         var block_page = $('<div class="paulund_block_page"></div>');
-              
-        $(block_page).appendTo('body');
+
+        $(block_page).appendTo('.container');
       }
-          
+
        function add_popup_box(){
-         var pop_up = $('<div class="paulund_modal_box"><a href="#" class="paulund_modal_close"></a><div class="paulund_inner_modal_box"><form id="create-splash-form" action="/splash" method="post"><label for="Create-Splash">Splash!</label><br><input type="textarea" name="content" placeholder="255 Characters or Less"><input type="submit" id="create_splash"><br></form></div></div>');
+         var pop_up = $('<div class="paulund_modal_box"><a href="#" class="paulund_modal_close"></a><div class="paulund_inner_modal_box"><form id="create-splash-form" action="/splashes" method="post"><label for="Create-Splash">Splash!</label><br><input type="textarea" name="content" placeholder="255 Characters or Less"><input type="submit" id="create_splash"><br></form></div></div>');
          $(pop_up).appendTo('.paulund_block_page');
-               
+
          $('.paulund_modal_close').click(function(){
           $(this).parent().fadeOut().remove();
           $('.paulund_block_page').fadeOut().remove();
@@ -87,9 +87,9 @@
 
       return this;
     };
-    
+
 })(jQuery);
-  
+
 $(document).ready(function(){
   $('.paulund_modal').paulund_modal_box();
 });
