@@ -1,4 +1,31 @@
 <div class="container">
-<h1>Sinatra skeleton</h1>
-
+  
+  <a href="#" class="paulund_modal">Splash</a>
+  
+  <ul id="splash_list" style="display:block" list-type="none">
+    <% @splashes.each do |splash| %>
+      <div id="<%= splash.id %>">
+        <% author = User.find(splash.author_id) %>
+        <li>"<%= author.first_name %> <%= author.last_name %>"</li>
+        <li><%= splash.content %></li>
+      </div>
+    <% end %>
+  </ul>
+  
+  <div id="comment_div" style="display:none">
+    <form action='/splashes/:id/comment' method='post'>
+      <input type='textarea' rows="4" cols="10" placeholder='Reply'>
+    </form>
+    <ul id="comment_list">
+      
+      <% @splashes.each do |splash| %>
+        <% splash.comments.each do |comment| %>
+        <% user = User.find(comment.user_id) %>
+          <li>"<%= comment.user.first_name %> <%= comment.user.last_name %>"</li>
+          <li><%= comment.content %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+      
 </div>

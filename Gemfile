@@ -8,30 +8,25 @@ gem 'pg'
 gem 'sinatra'
 gem 'sinatra-contrib'
 
-# Use Thin for our web server
-gem 'thin'
-
-# activerecord ORM
-gem 'activesupport'
-gem 'activerecord'
-
-#face recognition
-
+gem 'activesupport', '~>4.1'
+gem 'activerecord', '~>4.1'
 
 gem 'rake'
 
-gem 'shotgun'		
+gem 'shotgun'
 
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
+  gem 'rspec'
   gem 'capybara'
-  gem 'selenium-webdriver'
 end
 
 group :test, :development do
-  gem 'rspec'
   gem 'factory_girl'
   gem 'faker'
 end
 
+gem 'omniauth-facebook'
+gem 'dotenv'
+gem 'httparty'
