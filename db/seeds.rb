@@ -3,12 +3,14 @@
 
 	user = User.create(:fb_user_id=> Faker::Internet.user_name,
 		:latitude => Faker::Address.latitude,
-		:longitude => Faker::Address.longitude)
+		:longitude => Faker::Address.longitude, :first_name => Faker::Lorem.word, :last_name => Faker::Lorem.word)
 	5.times do |x|
     splash = Splash.create(:content => Faker::Lorem.sentence)
 		user.splashes_created << splash
     5.times do |y|
-      splash.comments << Comment.create(:content => Faker::Lorem.sentence)
+      comment = Comment.create(:content => Faker::Lorem.sentence)
+      splash.comments <<  comment
+      user.comments << comment
     end
 	end
 

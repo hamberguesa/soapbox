@@ -5,7 +5,12 @@ REDIRECT_URI = 'http://localhost:9393/'
 #Show all of your splash, or show login page
 #if you are not logged in
 get '/' do
-  erb :index
+  @splashes = Splash.all
+  if current_user
+    erb :index
+  else
+    erb :login
+  end
 end
 
 #Get all of your splashes
