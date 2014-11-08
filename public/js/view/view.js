@@ -5,9 +5,9 @@ var view = (function(){
     $('#splash_list li:eq(0)').before('<li id="' + splash.id+'" class="splash">' + data["first_name"] + ' ' + data["last_name"] +'<br>' + splash.content + '</li>')  // add actual reference in place of 'SPLASH'
   };
 
-  var showComments = function(){
-    console.log(this.id)
-      $('#'+ this.id+ ' .comment_div' ).slideToggle();
+  var showComments = function(id){
+    console.log('made it')
+    $('#'+ id + ' .comment_div' ).slideToggle();
   };
 
   var addNewComment = function(data){

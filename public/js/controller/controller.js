@@ -23,14 +23,8 @@ var controller = (function(){
     $('.paulund_block_page').fadeOut().remove();
   }
 
-  function getComments(evt){
-    evt.preventDefault();
-    console.log(this.id)
-    $.ajax({
-      url: '/splashes/'+this.id+'/comments',
-      type: 'GET',
-      id: this.id
-    }).done(view.showComments)
+  function getComments(){
+    view.showComments(this.id);
   }
 
   function createComment(evt){

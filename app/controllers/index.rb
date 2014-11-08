@@ -5,8 +5,9 @@ REDIRECT_URI = 'http://localhost:9393/'
 #Show all of your splash, or show login page
 #if you are not logged in
 get '/' do
-  @splashes = Splash.all
   if current_user
+    @splashes = @current_user.splashes
+    @splashes.reverse
     erb :index
   else
     erb :login
@@ -46,10 +47,8 @@ end
 #post new splash
 post '/splashes' do
   splash = Splash.create(:content => params[:content])
-  puts "*"*50
-  p params
-  puts "*"*50
   current_user.splashes_created << splash
+  current_user.splashes << splash
   if request.xhr?
     content_type :json
     {:first_name => current_user.first_name, :last_name => current_user.last_name, :splash=> splash}.to_json
@@ -82,6 +81,5 @@ end
 get '/logout' do
   session[:user_id] = nil
   redirect '/'
-
 end
 
