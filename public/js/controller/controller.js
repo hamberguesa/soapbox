@@ -14,7 +14,6 @@ var controller = (function(){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
 
-    console.log('create_splash')
     $.ajax({
       url: '/splashes',
       type: 'POST',
@@ -30,7 +29,6 @@ var controller = (function(){
   function createComment(evt){
     evt.preventDefault();
     var data = $('.create_comment').serialize();
-    console.log(this)
     $.ajax({
       url: '/splashes/:id/comment',
       type: 'POST',
@@ -55,15 +53,17 @@ var controller = (function(){
       }, 5000)                               //this is 5 seconds
   }
 
+  function updateCoords(){
+
+  }
+
   function bindEvents(){
     $('.create_comment').on('submit', createComment);
     $('#splash_list').on('click','.splash', getComments);
     $('.container').on('submit','#create-splash-form', createSplash);
   }
 
-  function updateCoords(){
-
-  }
+  
   return{
     createSplash: createSplash,
     createComment: createComment,

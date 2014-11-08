@@ -17,9 +17,10 @@ end
 #Get all of your splashes
 get '/splashes' do
   @splashes = Splash.all
+  current_user
   if request.xhr?
     content_type :json
-    current_user.splashes.to_json
+    @current_user.splashes.to_json
   else
     redirect '/'
   end
@@ -51,7 +52,7 @@ post '/splashes' do
   current_user.splashes << splash
   if request.xhr?
     content_type :json
-    {:first_name => current_user.first_name, :last_name => current_user.last_name, :splash=> splash}.to_json
+    splash.to_json
   else
     redirect '/'
   end

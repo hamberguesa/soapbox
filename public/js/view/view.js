@@ -1,12 +1,20 @@
 var view = (function(){
   var addNewSplash = function(data){
-    var splash = data["splash"]
-    console.log(data["first_name"])
-    $('#splash_list li:eq(0)').before('<li id="' + splash.id+'" class="splash">' + data["first_name"] + ' ' + data["last_name"] +'<br>' + splash.content + '</li>')  // add actual reference in place of 'SPLASH'
+    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content })
+    $('#splash_list li:eq(0)').before(compiled_html);
   };
 
+  var addAllSplashes = function(splashes_list){
+    for(var i=0; i < splashes_list.length; i++)
+    {
+      var splash = splashes_list[i]
+      var compiled_html = template.addSplash({id: splash.id, first: data["first_name"], last: data["last_name"], content: splash.content })
+      $('#splash_list li:eq(0)').before(compiled_html);
+
+    }
+  }
+
   var showComments = function(id){
-    console.log('made it')
     $('#'+ id + ' .comment_div' ).slideToggle();
   };
 
