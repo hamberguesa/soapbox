@@ -13,19 +13,19 @@ gem 'activerecord', '~>4.1'
 
 gem 'rake'
 gem 'pry'
+gem 'rspec'
+gem 'faker'
 
 gem 'shotgun'
 
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
-  gem 'rspec'
   gem 'capybara'
 end
 
 group :test, :development do
   gem 'factory_girl'
-  gem 'faker'
 end
 
 gem 'omniauth-facebook'
