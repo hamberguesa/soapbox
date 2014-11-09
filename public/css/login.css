@@ -1,0 +1,15 @@
+body,html{
+  height:100%;
+}
+#jumbotron {
+  width:100%;
+  margin-top:3em;
+  text-align:center;
+  opacity:0.9;
+}
+
+body {
+  background-image:url(../images/golden-gate-2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
