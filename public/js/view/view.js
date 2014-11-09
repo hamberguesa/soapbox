@@ -3,12 +3,29 @@ var view = (function(){
   var counter = 0;
 
   var addNewSplash = function(data){
-    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content })
+    var timeCreatedAt = Date.parse(data.created_at);
+    var timeNow = new Date();
+    var timeDifference = timeNow - timeCreatedAt;
+    
+    var hours = Math.floor(timeDifference/3600);
+    var minutes = Math.floor(timeDifference/60);
+    
+    if (hours > 0){
+      time = hours + " and " + minutes + " ago "
+    } 
+    if (minutes < 2){
+      time = minutes + " minute ago "
+    } else {
+      time = minutes + " minutes ago "
+    }
+    
+    
+    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time });
     if($('#splash_list li.splash').length > 0)
       $('#splash_list li.splash:eq(0)').before($(compiled_html));
     else
-      $('#splash_list').append($(compiled_html))
-    $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color())
+      $('#splash_list').append($(compiled_html));
+    $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());
 
   };
 
@@ -27,8 +44,8 @@ var view = (function(){
   };
 
   var addNewComment = function(data){
-    var commentContent = data["content"]
-    var compiled_html = template.addComment({name: data["author_name"], content: commentContent})
+    var commentContent = data["content"];
+    var compiled_html = template.addComment({name: data["author_name"], content: commentContent});
     $('#comment-'+data["splash_id"]).append(compiled_html);
   };
 
