@@ -28,9 +28,7 @@ var view = (function(){
 
   var addNewComment = function(data){
     var commentContent = data["content"]
-    console.log(data)
     var compiled_html = template.addComment({name: data["author_name"], content: commentContent})
-    console.log(compiled_html)
     $('#comment-'+data["splash_id"]).append(compiled_html);
   };
 
@@ -48,14 +46,21 @@ var view = (function(){
   var moveRight = function(data){
     $('.fa-chevron-right').mouseleave(stop);
     interval = setInterval(function(){
+      if(parseInt($("#splash_list").css("right")) > ($("#splash_list .splash").length-3) * $(".splash").width())
+      return
       $("#splash_list").css("right",counter + "px")
       counter += 10;
+
     },50);
   }
 
   var moveLeft = function(data){
     $('.fa-chevron-left').mouseleave(stop);
+
     interval = setInterval(function(){
+    console.log($("#splash_list").css("right"));
+     if(parseInt($("#splash_list").css("right")) < 0 )
+      return;
       $("#splash_list").css("right", counter + "px")
       counter -= 10;
     },50);

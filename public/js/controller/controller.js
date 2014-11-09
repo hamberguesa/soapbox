@@ -65,10 +65,7 @@ var controller = (function(){
     $('.container').on('submit','#create-splash-form', createSplash);
     $('.fa-chevron-right').mouseenter(view.moveRight);
     $('.fa-chevron-left').mouseenter(view.moveLeft);
-
-
   }
-
 
   return{
     createSplash: createSplash,

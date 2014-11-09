@@ -13,15 +13,10 @@ ul{
 
 }
 
-
-.splash p{
-  width:100%;
-  text-wrap: pre;
-  word-wrap: pre;
-}
 #splash_list{
   white-space:nowrap;
   overflow-y:visible;
+  display:inline-block;
 }
 .x-hidden{
   margin:0px;
@@ -37,14 +32,24 @@ ul{
 
 .arrow_container{
   padding-top:80px;
+
+}
+.arrow_container:hover{
+  color:#EC573C;
 }
 .splash{
   display:inline-block;
   width:250px;
   height:250px;
-  border: 1px solid black;
   font-size:20px;
   color:white;
+  white-space: normal;
+  vertical-align: middle;
+  word-wrap: break-word;
+  border-radius:10px;
+  box-shadow:0px 0px 5px #3F3F3F;
+  padding:5px;
+
 }
 
 .paulund_modal_close{
