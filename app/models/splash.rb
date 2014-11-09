@@ -18,37 +18,26 @@ class Splash < ActiveRecord::Base
 	 	end
 	end
 
+	# Will check to see if coords are within bounding box && then 1 block (100m) radius for every splash, pushing selections to matched users
 	def populate_splashes
-		# Will check to see if coords are within bounding box around 1 block (100m) radius for each splash in db
-		# is_candidate? && within_radius
-		# dist_from_ = acos(sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * cos(lon1 - lon2)) * r
-		# if self.author
-			distance_km = 30 # Change this value to change soapbox radius (in kilometers)
-			if self.latitude && self.longitude
-				bounds = find_bounding_coordinates(self.latitude, self.longitude, distance_km)
-			end
-			p "%"*100
-			p bounds
-			p "%"*100
-			lon1 = self.longitude
-			lat1 = self.latitude
-			# require 'pry'; binding.pry
-			if bounds
-				splash_pool = User.where(
-					("latitude >= #{bounds[0]}" && "latitude <= #{bounds[1]}") && ("longitude >= #{bounds[2]}" && "longitude <= #{bounds[3]}") )
-					# &&	(acos(sin(lat1) * sin("latitude") + cos(lat1) * cos("latitude") * cos("#{lon1} - longitude")) <= 0.1570))
-				if splash_pool
-					splash_pool.each do |match|
-						p "*"*100
-						p match
-						p "*"*100
-						match.splashes << self
-					end
-				end
-			end
-		# end
+		distance_km = 0.1 # Normal setting: 0.1. Change this value to change soapbox radius (in kilometers)
+		if self.latitude && self.longitude
+			bounds = find_bounding_coordinates(self.latitude, self.longitude, distance_km)
+		end
+		lon1 = self.longitude
+		lat1 = self.latitude
+		if bounds
+			splash_pool = User.where(("latitude >= #{bounds[0]}" && "latitude <= #{bounds[1]}") && ("longitude >= #{bounds[2]}" && "longitude <= #{bounds[3]}"))
+			# RADIUS SEARCH - NOTE THe CODE BELOW DOES NOT CURRENTLY WORK -- MATH IS CORRECT, ERRORS ARE NOT
+			# To use radius search, append the following line (minus the one ending parens at end of above db call) to the db call, once it works
+				# && ( (acos(sin(lat1) * sin("latitude") + cos(lat1) * cos("latitude") * cos("#{lon1} - longitude")) * 6371 >= distance_km)))
+		end
+		if splash_pool
+			splash_pool.each {|match| match.splashes << self}
+		end
 	end
 
+	# Helper method to optimize db query by creating passable min-max lat/longitude values
 	def find_bounding_coordinates(lat, lon, distance_km = 0.1)
 		d = distance_km.to_f
 		r = d/6371.to_f # Where 6371km is the Earth's radius, and r is the angular radius
