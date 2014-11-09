@@ -7,7 +7,7 @@
   <% end %>
 </nav>
 <div class="create-new-splash-div">
-  <a href="#" class="paulund_modal">New Splash</a>
+  <a href="#" class="paulund_modal"><h3>+New Splash</h3></a>
 </div>
 <!-- Jumbotron to span width of page -->
 <div class="jumbotron" id="jumbotron-index"></div>
@@ -24,13 +24,13 @@
         <% @splashes.each do |splash| %>
         <li id="<%= splash.id %>" class="splash inline-list">
           <% author = User.find(splash.author_id) %>
-          <%= author.first_name %> <%= author.last_name %><br>
+          <%= time_ago %><br><%= author.first_name %> <%= author.last_name %><br>
           <%= splash.content %>
           <!-- Begin Comment List -->
           <ul id="comment-<%=splash.id%>" class="comment-list">
             <li>
               <form action='/splashes/<%=splash.id%>/comment' method='post' class="submit_comment" id="submit-comment-<%=splash.id%>">
-                <input type='textarea' rows="4" cols="10" placeholder='Reply' name="content">
+                <input type='textarea' rows="4" cols="10" placeholder='Reply to <%= author.first_name %>' name="content">
               </form>
             </li>
 
@@ -38,8 +38,9 @@
 
             <% splash.comments.each do |comment| %>
             <% user = User.find(comment.user_id) %>
-            <li role="presentation"><p><%= comment.user.first_name %> <%= comment.user.last_name %>"</li>
+            <li role="presentation"><p><%= comment.user.first_name %> <%= comment.user.last_name %></li>
             <li role="presentation"><%= comment.content %></li></p>
+            <hr>
             <% end %>
           </ul>
         </li>
