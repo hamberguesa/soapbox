@@ -26,17 +26,19 @@ var controller = (function(){
     if(evt.target !== this)
       return;
     view.showComments(this.id);
-    // $("#comment-"+this.id).on("click",function(){console.log("stop from closing")})
   }
 
   function createComment(evt){
     evt.preventDefault();
-    var data = $('.create_comment').serialize();
+    id = $(this).parent().parent().parent()[0].id
+    var data = $(this).serialize();
     $.ajax({
-      url: '/splashes/'+data.id+'/comment',
+      url: '/splashes/'+id+'/comment',
       type: 'POST',
       data: data
       }).done(view.addNewComment)
+    $(this)[0].elements.content.value = ""
+
     }
 
   function poll() {
@@ -52,17 +54,19 @@ var controller = (function(){
               })
       }, 5000)                               //this is 5 seconds
   }
-
   function updateCoords(){
 
   }
 
   function bindEvents(){
-    $('.create_comment').on('submit', createComment);
+    view.addColors();
+    $('#splash_list').on('submit', '.submit_comment', createComment);
     $('#splash_list').on('click','.splash', getComments);
     $('.container').on('submit','#create-splash-form', createSplash);
     $('.fa-chevron-right').mouseenter(view.moveRight);
     $('.fa-chevron-left').mouseenter(view.moveLeft);
+
+
   }
 
 
