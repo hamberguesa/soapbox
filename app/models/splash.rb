@@ -27,7 +27,8 @@ class Splash < ActiveRecord::Base
 		lon1 = self.longitude
 		lat1 = self.latitude
 		if bounds
-			splash_pool = User.where(("latitude >= #{bounds[0]}" && "latitude <= #{bounds[1]}") && ("longitude >= #{bounds[2]}" && "longitude <= #{bounds[3]}"))
+			# splash_pool = User.where(("latitude >= #{bounds[0]}" && "latitude <= #{bounds[1]}") && ("longitude >= #{bounds[2]}" && "longitude <= #{bounds[3]}"))
+			splash_pool = User.where("latitude >= #{bounds[0]}").where("latitude <= #{bounds[1]}").where("longitude >= #{bounds[2]}").where("longitude <= #{bounds[3]}")
 			# RADIUS SEARCH - NOTE THe CODE BELOW DOES NOT CURRENTLY WORK -- MATH IS CORRECT, ERRORS ARE NOT
 			# To use radius search, append the following line (minus the one ending parens at end of above db call) to the db call, once it works
 				# && ( (acos(sin(lat1) * sin("latitude") + cos(lat1) * cos("latitude") * cos("#{lon1} - longitude")) * 6371 >= distance_km)))

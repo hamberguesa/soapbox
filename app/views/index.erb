@@ -1,10 +1,23 @@
+<!-- black nav header -->
+<nav class="navbar navbar-inverse" role="navigation">
+  <h3>SoapBox</h3>
+  <% if current_user %>
+    <div class="logout"><a href='/logout'>Logout</a></div>
+    <div class="logged-in-as">Logged in as: <%= @current_user.first_name %> <%= @current_user.last_name %></div>
+  <% end %>
+</nav>
+<div class="create-new-splash-div">
+  <a href="#" class="paulund_modal">New Splash</a>
+</div>
+<!-- Jumbotron to span width of page -->
+<div class="jumbotron" id="jumbotron-index"></div>
 <div class="container">
-  <a href="#" class="paulund_modal">Splash</a>
+  <!-- <a href="#" class="paulund_modal">Splash</a> -->
   <div class="row">
     <div class="arrow_container col-md-1">
       <i class="fa fa-5x fa-chevron-left"></i>
     </div>
-
+ 
     <!-- Begin Splash List -->
     <div class="x-hidden col-md-10">
       <ul id="splash_list" class="col-md-10">
