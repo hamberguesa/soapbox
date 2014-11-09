@@ -22,22 +22,22 @@ var controller = (function(){
     $('.paulund_block_page').fadeOut().remove();
   }
 
-  function getComments(){
+  function getComments(evt){
+    if(evt.target !== this)
+      return;
     view.showComments(this.id);
+    // $("#comment-"+this.id).on("click",function(){console.log("stop from closing")})
   }
 
   function createComment(evt){
     evt.preventDefault();
     var data = $('.create_comment').serialize();
     $.ajax({
-      url: '/splashes/:id/comment',
+      url: '/splashes/'+data.id+'/comment',
       type: 'POST',
-      data: data,
-      success: function(returned_comment) {
-        view.addNewComment(data);
-      }
-    })
-  }
+      data: data
+      }).done(view.addNewComment)
+    }
 
   function poll() {
     setTimeout(function () {
@@ -61,7 +61,6 @@ var controller = (function(){
     $('.create_comment').on('submit', createComment);
     $('#splash_list').on('click','.splash', getComments);
     $('.container').on('submit','#create-splash-form', createSplash);
-    console.log($('.fa-chevron-right'))
     $('.fa-chevron-right').mouseenter(view.moveRight);
     $('.fa-chevron-left').mouseenter(view.moveLeft);
   }
