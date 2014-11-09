@@ -9,10 +9,10 @@
     <div class="x-hidden col-md-10">
       <ul id="splash_list" class="col-md-10">
         <% @splashes.each do |splash| %>
-        <li id="<%= splash.id %>" class="splash">
+        <li id="<%= splash.id %>" class="splash inline-list">
           <% author = User.find(splash.author_id) %>
-          <p><%= author.first_name %> <%= author.last_name %><br>
-          <%= splash.content %></p>
+          <%= author.first_name %> <%= author.last_name %><br>
+          <%= splash.content %>
           <!-- Begin Comment List -->
           <ul id="comment-<%=splash.id%>" class="comment-list">
             <li>
