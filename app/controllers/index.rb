@@ -6,8 +6,7 @@ REDIRECT_URI = 'http://localhost:9393/'
 #if you are not logged in
 get '/' do
   if current_user
-    @splashes = @current_user.splashes
-    @splashes.reverse
+    @splashes = @current_user.splashes.order('created_at').reverse
     erb :index
   else
     erb :login
@@ -26,18 +25,23 @@ get '/splashes' do
 end
 
 get '/splashes/:id/comments' do
-  puts params[:id]
   content_type :json
   Comment.find_by(:splash_id => params[:id].to_i).to_json
 end
 
 post '/splashes/:id/comment' do
+  puts "*"*50
+  puts "MAKING IT TO COMMENT PAGE"
+  puts request.xhr?
+  puts params
+  puts "~"*50
   splash = Splash.find(params[:id])
   comment = Comment.create(:content => params[:content])
+  current_user.comments << comment
   splash.comments << comment
   if request.xhr?
     content_type :json
-    splash.to_json
+    comment.to_json
   else
     redirect '/'
   end
