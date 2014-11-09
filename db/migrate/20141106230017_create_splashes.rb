@@ -8,5 +8,7 @@ class CreateSplashes < ActiveRecord::Migration
 
   		t.timestamps
   	end
+    add_index :splashes, :latitude
+    add_index :splashes, :longitude
   end
 end
