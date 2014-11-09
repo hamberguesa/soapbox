@@ -22,7 +22,10 @@ var view = (function(){
 
   var addNewComment = function(data){
     var commentContent = data["content"]
-    $('.comment_list').append('<li>' + commentContent + '</li>')  // add actual reference in place of 'COMMENT'
+    console.log(data)
+    var compiled_html = template.addComment({name: "Francis John", content: " commentContent"})
+    console.log(compiled_html)
+    $('.comment_list').append(compiled_html);
   };
 
   var stop = function(){
@@ -32,7 +35,6 @@ var view = (function(){
   var moveRight = function(data){
     $('.fa-chevron-right').mouseleave(stop);
     interval = setInterval(function(){
-      console.log("hello")
       $("#splash_list").css("right",counter + "px")
       counter += 10;
     },50);
@@ -41,7 +43,6 @@ var view = (function(){
   var moveLeft = function(data){
     $('.fa-chevron-left').mouseleave(stop);
     interval = setInterval(function(){
-      console.log("hello")
       $("#splash_list").css("right", counter + "px")
       counter -= 10;
     },50);
