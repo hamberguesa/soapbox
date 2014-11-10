@@ -1,25 +1,26 @@
 var model = (function(){
 
   var splashesArray = [];
-
+  var indexArray = []
   function addSplashes(splashes_in_database){
     // Compare existing splashesArray to the splashes list given
     // If any new spashes, then add new splashes to splashesArray and return them
-    console.log('made it')
-    console.log(splashes_in_database)
+    var initial = false;
+    if (splashesArray === [])
+      inital = true;
     for (var i = 0; i < splashes_in_database.length; i++){
-            console.log(splashes_in_database[i])
-            console.log($.inArray(splashes_in_database[i]))
 
-            if ($.inArray(splashes_in_database[i],splashesArray))
+           if ($.inArray(splashes_in_database[i].id,indexArray) > -1)
                 console.log()
             else
+            {
+
                 splashesArray.push(splashes_in_database[i]);
+                indexArray.push(splashes_in_database[i].id)
+                if (initial === false)
+                  view.addNewSplash(splashes_in_database[i])
+            }
         
-    }
-    for(i=0; i < splashesArray.length; i++)
-    {
-      view.addNewSplash(splashesArray[i])
     }
   }
 
@@ -29,7 +30,7 @@ var model = (function(){
   }
 
   function getSplashes(){
-    return splashesArray;
+    return indexArray;
   }
 
   return{
