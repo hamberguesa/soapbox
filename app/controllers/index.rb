@@ -42,8 +42,6 @@ get '/splashes/:id/comments' do
 end
 
 post '/splashes/:id/comment' do
-  puts "*"*50
-  puts "MAKING IT TO COMMENT PAGE"
   puts request.xhr?
   puts params
   puts "~"*50
@@ -62,6 +60,8 @@ end
 
 #post new splash
 post '/splashes' do
+  puts "*"*50
+  puts "MAKING IT TO SPLASHES ROUTE"
   splash = Splash.create(:content => params[:content])
   current_user.splashes_created << splash
   current_user.splashes << splash
