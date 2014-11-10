@@ -3,6 +3,7 @@ var view = (function(){
   var counter = 0;
 
   var addNewSplash = function(data){
+    //this shouldn't be inside view....
     var timeCreatedAt = Date.parse(data.created_at);
     var newDate = new Date();
     var timeNow = Date.parse(newDate)
@@ -15,7 +16,8 @@ var view = (function(){
       minutes += 1
     }
     if (hours > 0){
-      time = hours + " and " + minutes + " ago ";
+      var newMinutes = minutes - hours * 60
+      time = hours + " and " + newMinutes + " ago ";
     }
     if (minutes < 2){
       time = minutes + " minute ago ";
@@ -32,6 +34,31 @@ var view = (function(){
     $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());
 
   };
+
+  // var timeElapsed = function(){
+  //   var timeCreatedAt = Date.parse(data.created_at);
+  //   var newDate = new Date();
+  //   var timeNow = Date.parse(newDate)
+
+  //   var timeDifference = (timeNow - timeCreatedAt)/1000;
+
+  //   var hours = Math.floor(timeDifference/3600);
+  //   var minutes = Math.floor(timeDifference/60);
+  //   //need to add logic to subtract hours from minutes when there are hours
+  //   if (minutes === 0){
+  //     minutes += 1
+  //   }
+  //   if (hours > 0){
+  //     var newMinutes = minutes - hours * 60
+  //     time = hours + " and " + newMinutes + " ago ";
+  //   }
+  //   if (minutes < 2){
+  //     time = minutes + " minute ago ";
+  //   } else {
+  //     time = minutes + " minutes ago ";
+  //   }
+  //   return time
+  // };
 
   // var addAllSplashes = function(splashes_list){
   //   for(var i=0; i < splashes_list.length; i++)
