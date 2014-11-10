@@ -19,6 +19,12 @@ end
 
 #Get all of your splashes
 get '/splashes' do
+  puts "*"*50
+  if current_user
+    @current_user.latitude = params[:lat] 
+    @current_user.longitude = params[:lon] 
+    @current_user.save!
+  end
   old_splashes = Splash.where("created_at <= ?", Time.now - 2.hours)
   old_splashes.each {|old| old.destroy}
   @splashes = Splash.all
@@ -68,6 +74,7 @@ post '/splashes' do
 end
 
 get '/auth/facebook/callback' do
+
   auth = request.env['omniauth.auth']
   facebook_id = auth['uid']
   session[:user_id] = facebook_id

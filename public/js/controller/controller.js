@@ -9,7 +9,8 @@
 // http://alexsblog.org/2014/08/21/custom-html-dropdown-with-jquery/
 
 var controller = (function(){
-
+  var latitude;
+  var longitude;
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
@@ -40,29 +41,31 @@ var controller = (function(){
     $(this)[0].elements.content.value = ""
     }
 
-    // var data = $('#create-splash-form').serialize();
   function poll() {
-    setTimeout(function () {
-      var data = $(this);
 
+    setTimeout(function () {
+      geolocation.getLocation();
       $.ajax({
         url: '/splashes',
+        dataType: "json",
+        data: {lat: latitude, lon: longitude},
         success: function(data) {
                 // make this function update the splashes every five seconds
                 // model.getSplashes
-                console.log(data)
                 },
                 complete: poll
               })
       }, 5000)     //this is 5 seconds
   }
 
-  function updateCoords(){
-
+  function updateCoords(lat, lon){
+    latitude = lat;
+    longitude = lon;
   }
 
   function bindEvents(){
     view.addColors();
+    geolocation.getLocation();
     $('#splash_list').on('submit', '.submit_comment', createComment);
     $('#splash_list').on('click','.splash', getComments);
     $('.container').on('submit','#create-splash-form', createSplash);
