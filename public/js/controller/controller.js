@@ -40,16 +40,17 @@ var controller = (function(){
     $(this)[0].elements.content.value = ""
     }
 
+    // var data = $('#create-splash-form').serialize();
   function poll() {
     setTimeout(function () {
+      var data = $(this);
+
       $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: '/',
+        url: '/splashes',
         success: function(data) {
                 // make this function update the splashes every five seconds
-                model.getSplashes
-
+                // model.getSplashes
+                console.log(data)
                 },
                 complete: poll
               })

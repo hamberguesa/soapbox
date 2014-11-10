@@ -24,7 +24,7 @@ get '/splashes' do
   @splashes = Splash.all
   if request.xhr?
     content_type :json
-    @current_user.splashes.to_json
+    current_user.splashes.to_json
   else
     redirect '/'
   end
