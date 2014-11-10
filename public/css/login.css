@@ -1,0 +1,44 @@
+body,html{
+  height:100%;
+}
+#jumbotron {
+  width:100%;
+  margin-top:3em;
+  text-align:center;
+  opacity:0.9;
+}
+
+body {
+  background-image:url(../images/golden-gate-2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#jumbotron-index {
+  padding: 10em;
+  margin-top: 9.1em;
+  width: 100%;
+  /*margin-top: 10em;*/
+  opacity: 0.8;
+  z-index: 0;
+  position: absolute;
+}
+
+.navbar-inverse {
+  color:white;
+  padding: 1em;
+}
+
+.logout {
+ float: right; 
+}
+
+.logged-in-as{
+  float: right;
+  margin-right: 1em
+}
+
+.create-new-splash-div {
+  text-align: center;
+  width:100%;
+}
