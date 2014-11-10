@@ -1,6 +1,8 @@
 APP_ID = ENV['APP_ID']
 APP_SECRET = ENV['APP_SECRET']
-REDIRECT_URI = 'http://localhost:9393/'
+REDIRECT_URI = 'http://localhost:9393'
+#REDIRECT_URI = 'http://soap-box.herokuapp.com'
+#Leave above URL for heroku
 
 #Show all of your splash, or show login page
 #if you are not logged in
