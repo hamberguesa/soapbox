@@ -49,7 +49,10 @@ var controller = (function(){
         url: '/splashes',
         dataType: "json",
         data: {lat: latitude, lon: longitude}
-      }, 5000).done(model.addSplashes) 
+      }, 5000).done(function(data){
+        model.addNewSplash(data);
+        poll();
+      })
     });
   }
 
