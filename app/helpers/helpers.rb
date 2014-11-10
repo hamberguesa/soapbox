@@ -13,11 +13,12 @@ def time_ago
   end
 
   if hours > 0
-    @time_created = "#{hours} hour #{minutes} minutes ago"
-  end
+    @time_created = "#{hours} hour #{minutes-60} minutes ago"
+  else
     if minutes < 2 
       @time_created = "#{minutes} minute ago"
     else
       @time_created = "#{minutes} minutes ago"
     end
+  end 
 end
