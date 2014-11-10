@@ -4,9 +4,11 @@ var view = (function(){
 
   var addNewSplash = function(data){
     var timeCreatedAt = Date.parse(data.created_at);
-    var timeNow = new Date();
-    var timeDifference = timeNow - timeCreatedAt;
-    
+    var newDate = new Date();
+    var timeNow = Date.parse(newDate)
+
+    var timeDifference = (timeNow - timeCreatedAt)/1000;
+
     var hours = Math.floor(timeDifference/3600);
     var minutes = Math.floor(timeDifference/60);
     if (minutes === 0){
@@ -20,8 +22,8 @@ var view = (function(){
     } else {
       time = minutes + " minutes ago ";
     }
-    
-    
+
+
     var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time });
     if($('#splash_list li.splash').length > 0)
       $('#splash_list li.splash:eq(0)').before($(compiled_html));
