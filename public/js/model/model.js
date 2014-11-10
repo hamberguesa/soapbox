@@ -3,7 +3,6 @@ var model = (function(){
   var splashesArray = [];
 
   function addSplashes(splashes_in_database){
-    console.log('made it')
     // Compare existing splashesArray to the splashes list given
     // If any new spashes, then add new splashes to splashesArray and return them
     for (var i = 0; i < splashes_in_database.length; i++){
@@ -13,8 +12,10 @@ var model = (function(){
             }
         }
     }
-    console.log(splashesArray);
-    return splashesArray;
+    for(i=0; i < splashesArray.length; i++)
+    {
+      view.addNewSplash(splashesArray[i])
+    }
   }
 
   function removeSplashes(){

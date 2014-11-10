@@ -41,8 +41,6 @@ get '/splashes/:id/comments' do
 end
 
 post '/splashes/:id/comment' do
-  puts request.xhr?
-  puts params
   splash = Splash.find(params[:id])
   comment = Comment.create(:content => params[:content])
   current_user.comments << comment

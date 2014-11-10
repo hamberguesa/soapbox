@@ -37,9 +37,9 @@ var controller = (function(){
       url: '/splashes/'+id+'/comment',
       type: 'POST',
       data: data
-      }).done(view.addNewComment)
+    }).done(view.addNewComment)
     $(this)[0].elements.content.value = ""
-    }
+  }
 
   function poll() {
 
@@ -48,14 +48,9 @@ var controller = (function(){
       $.ajax({
         url: '/splashes',
         dataType: "json",
-        data: {lat: latitude, lon: longitude},
-        success: function(data) {
-                // make this function update the splashes every five seconds
-                // model.getSplashes
-                },
-                complete: poll
-              })
-      }, 5000)     //this is 5 seconds
+        data: {lat: latitude, lon: longitude}
+      }, 5000).done(model.addSplashes) 
+    });
   }
 
   function updateCoords(lat, lon){
