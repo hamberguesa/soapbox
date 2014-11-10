@@ -11,15 +11,33 @@
 var controller = (function(){
   var latitude;
   var longitude;
+  var base_url = "http://soap-box-api.herokuapp.com";
+  
+  function getSplashes(){
+    $.ajax({
+      url: base_url+'/splashes',
+      type: 'GET'
+    }).done(model.addSplashes);
+  }
+  
+  // not working yet
+  function getComments(){
+    id = 
+    $.ajax({
+      url: base_url+'splashes/'+id+'/comments',
+      type: 'GET'
+    }).done();
+  }
+  
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
 
     $.ajax({
-      url: '/splashes',
+      url: base_url+'/splashes',
       type: 'POST',
       data: data
-    }).done(view.addNewSplash)
+    }).done(view.addSplash);
     $('.paulund_block_page').fadeOut().remove();
   }
 
@@ -31,14 +49,14 @@ var controller = (function(){
 
   function createComment(evt){
     evt.preventDefault();
-    id = $(this).parent().parent().parent()[0].id
+    id = $(this).parent().parent().parent()[0].id;
     var data = $(this).serialize();
     $.ajax({
-      url: '/splashes/'+id+'/comment',
+      url: base_url+'/splashes/'+id+'/comment',
       type: 'POST',
       data: data
-    }).done(view.addNewComment)
-    $(this)[0].elements.content.value = ""
+    }).done(view.addNewComment);
+    $(this)[0].elements.content.value = "";
   }
 
   function poll() {
@@ -46,7 +64,7 @@ var controller = (function(){
     setTimeout(function () {
       geolocation.getLocation();
       $.ajax({
-        url: '/splashes',
+        url: base_url+'/splashes',
         dataType: "json",
         data: {lat: latitude, lon: longitude}
       }).done(function(data){
@@ -61,7 +79,27 @@ var controller = (function(){
     longitude = lon;
   }
 
+  function buildLoginPage() {
+    view.addLogin();
+  }
+  
+  function buildIndexPage() {
+    view.addHeader();
+    view.addSplashContainer();
+    view.addCreateSplashButton();
+    // loop through the splashes that should be displayed and 'createSplash' for each 
+    getSplashes();
+    // same for comments ('createComment')
+    getComments();
+  }
+  
   function bindEvents(){
+    if(loggedin){
+      buildIndexPage();
+    } else {
+      buildLoginPage();
+    };
+    
     view.addColors();
     geolocation.getLocation();
     $('#splash_list').on('submit', '.submit_comment', createComment);
@@ -80,4 +118,4 @@ var controller = (function(){
   };
 })();
 
-controller.poll()
+controller.poll();

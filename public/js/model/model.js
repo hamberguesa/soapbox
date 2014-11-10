@@ -19,7 +19,7 @@ var model = (function(){
                 splashesArray.push(splashes_in_database[i]);
                 indexArray.push(splashes_in_database[i].id)
                 if (initial === false && splashes_in_database[i].author_name !== $('#login_name').text())
-                  view.addNewSplash(splashes_in_database[i])
+                  view.addSplash(splashes_in_database[i])
             }
         
     }
