@@ -80,6 +80,7 @@ user13 = User.create(:fb_user_id => 'user13',
 splash = Splash.create(:content => "*********************This is the User4 splash content**********************")
 user4.splashes_created << splash
 
-# splash = Splash.create(:content => "*********************This is the User12 splash content**********************")
 
-
+# ================== TEST FOR DESTROYING OLD SPLASHES ON "get '/splashes'" CONTROLLER ROUTE ============
+splash_old = Splash.create(:created_at => '2014-11-09 00:40:55', :content => "@@@@@@@@@@@@@@@@@@@@ USER 13 @@@@@@@@@@@@@@@@@@@@", :latitude => 32.701179950806, :longitude => 41.513759165783)
+user13.splashes_created << splash_old
