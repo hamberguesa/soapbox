@@ -19,7 +19,6 @@ end
 
 #Get all of your splashes
 get '/splashes' do
-  puts "*"*50
   if current_user
     @current_user.latitude = params[:lat] 
     @current_user.longitude = params[:lon] 
@@ -44,7 +43,6 @@ end
 post '/splashes/:id/comment' do
   puts request.xhr?
   puts params
-  puts "~"*50
   splash = Splash.find(params[:id])
   comment = Comment.create(:content => params[:content])
   current_user.comments << comment

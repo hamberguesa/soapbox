@@ -23,7 +23,7 @@ private
 
 	# Will check to see if coords are within bounding box && then 1 block (100m) radius for every splash, pushing selections to matched users
 	def populate_splashes
-		distance_km = 0.1 # Normal setting: 0.1. Change this value to change soapbox radius (in kilometers)
+		distance_km = 1 # Normal setting: 0.1. Change this value to change soapbox radius (in kilometers)
 		if self.latitude && self.longitude
 			bounds = find_bounding_coordinates(self.latitude, self.longitude, distance_km)
 		end
@@ -36,14 +36,15 @@ private
 			# To use radius search, append the following line (minus the one ending parens at end of above db call) to the db call, once it works
 				# && ( (acos(sin(lat1) * sin("latitude") + cos(lat1) * cos("latitude") * cos("#{lon1} - longitude")) * 6371 >= distance_km)))
 		end
+		puts "-"*50
+		puts splash_pool
+		puts "-"*50
 		if splash_pool
-			puts "-"*50
 			splash_pool.each do |match| 
 				match.splashes << self
 				puts match
 				puts match.first_name
 			end
-			puts "-"*50
 
 		end
 	end
