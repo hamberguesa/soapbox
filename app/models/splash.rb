@@ -36,11 +36,15 @@ private
 			# To use radius search, append the following line (minus the one ending parens at end of above db call) to the db call, once it works
 				# && ( (acos(sin(lat1) * sin("latitude") + cos(lat1) * cos("latitude") * cos("#{lon1} - longitude")) * 6371 >= distance_km)))
 		end
+		puts "~"*50
+		puts splash_pool
+		puts "~"*50
 		if splash_pool
 			splash_pool.each do |match| 
 				match.splashes << self
 				puts "-"*50
 				puts match
+				puts match.first_name
 				puts "-"*50
 			end
 		end
