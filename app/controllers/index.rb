@@ -1,6 +1,10 @@
 APP_ID = ENV['APP_ID']
 APP_SECRET = ENV['APP_SECRET']
-REDIRECT_URI = 'http://soap-box.herokuapp.com'
+REDIRECT_URI = 'http://localhost:9393'
+#REDIRECT_URI = 'http://soap-box.herokuapp.com'
+#Leave above URL for heroku
+
+
 
 #Show all of your splash, or show login page
 #if you are not logged in
@@ -15,10 +19,12 @@ end
 
 #Get all of your splashes
 get '/splashes' do
+  old_splashes = Splash.where("created_at <= ?", Time.now - 2.hours)
+  old_splashes.each {|old| old.destroy}
   @splashes = Splash.all
   if request.xhr?
     content_type :json
-    @current_user.splashes.to_json
+    current_user.splashes.to_json
   else
     redirect '/'
   end

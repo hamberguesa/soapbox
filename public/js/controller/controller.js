@@ -38,22 +38,25 @@ var controller = (function(){
       data: data
       }).done(view.addNewComment)
     $(this)[0].elements.content.value = ""
-
     }
 
+    // var data = $('#create-splash-form').serialize();
   function poll() {
     setTimeout(function () {
+      var data = $(this);
+
       $.ajax({
-        type: 'GET',
-        dataType: 'json',
         url: '/splashes',
         success: function(data) {
-                  MyNamespace.myFunction(data); //DO ANY PROCESS HERE
+                // make this function update the splashes every five seconds
+                // model.getSplashes
+                console.log(data)
                 },
                 complete: poll
               })
-      }, 5000)                               //this is 5 seconds
+      }, 5000)     //this is 5 seconds
   }
+
   function updateCoords(){
 
   }
@@ -75,3 +78,5 @@ var controller = (function(){
     updateCoords: updateCoords
   };
 })();
+
+controller.poll()
