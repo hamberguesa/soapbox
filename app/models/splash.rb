@@ -9,7 +9,7 @@ class Splash < ActiveRecord::Base
 
 	after_save :populate_splashes
 
-	private
+private
 	def inherit_from_author
 	 	if self.author
 	 		self.latitude = self.author.latitude
