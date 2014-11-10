@@ -11,9 +11,11 @@ var model = (function(){
             console.log(splashes_in_database[i])
             console.log($.inArray(splashes_in_database[i]))
 
-            if !($.inArray(splashes_in_database[i],splashesArray)){
+            if ($.inArray(splashes_in_database[i],splashesArray))
+                console.log()
+            else
                 splashesArray.push(splashes_in_database[i]);
-        }
+        
     }
     for(i=0; i < splashesArray.length; i++)
     {
