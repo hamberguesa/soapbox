@@ -13,7 +13,19 @@ ul{
   list-style-type:none;
 
 }
-
+a.paulund_modal{
+  color: blue;
+}
+a.paulund_modal h3{
+  transition: 0.5s all;
+}
+a.paulund_modal h3:hover{
+  transform:scale(1.2,1.2);
+  
+}
+a.paulund_modal:hover{
+  color:orange;
+}
 #splash_list{
   white-space:nowrap;
   overflow-y:visible;
