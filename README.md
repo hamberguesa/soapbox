@@ -1,5 +1,6 @@
 # SoapBox
-##Built By: Francis John, Nate Beers, Amber Hager, Jess Heron & John Lee
+##Built By: 
+Francis John, Nate Beers, Amber Hager, Jess Heron & John Lee
 ##User Stories
 - I want to be able to login with Facebook.
 - I want to send and receive splashes from people in and only in my immediate vicinity.
