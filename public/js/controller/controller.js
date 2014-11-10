@@ -45,9 +45,10 @@ var controller = (function(){
       $.ajax({
         type: 'GET',
         dataType: 'json',
-        url: '/splashes',
+        url: '/',
         success: function(data) {
                 // make this function update the splashes every five seconds
+                model.getSplashes
 
                 },
                 complete: poll
@@ -77,4 +78,4 @@ var controller = (function(){
   };
 })();
 
-// controller.poll()
+controller.poll()
