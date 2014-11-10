@@ -18,15 +18,15 @@ var template = (function(){
       return compiled(params);
   }
   
-  // this shit doesn't work. write logic to check if logged in
   function addLogin(){
-    var compiled = _.template('<div class="container-fluid"><div class="jumbotron" id="jumbotron"><h1>SoapBox</h1><p>Bridging the Gap in Communication</p><a href="/auth/facebook"><button type="button" class="btn btn-primary btn-lg">Login With Facebook</button></a><br></div></div>');
+    var compiled = _.template('<div class="container-fluid"><div class="jumbotron" id="jumbotron"><h1>SoapBox</h1><p>Connect with people in your area</p><a href="/auth/facebook"><button type="button" class="btn btn-primary btn-lg">Login With Facebook</button></a><br></div></div>');
     return compiled();
   }
   
   // this shit doesn't work 
   function addHeader(){
-    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3><% if (current_user) { %><div class="logout"><a href="/logout">Logout</a></div><div class="logged-in-as">Logged in as: <span id="login_name"><%= @current_user.first_name %> <%= @current_user.last_name %></span></div><% } %> </nav>');
+    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3></nav>'); 
+      // <% if (current_user) { %><div class="logout"><a href="/logout">Logout</a></div><div class="logged-in-as">Logged in as: <span id="login_name"><%= @current_user.first_name %> <%= @current_user.last_name %></span></div><% } %> </nav>');
     return compiled();
   }
   

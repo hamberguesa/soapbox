@@ -30,6 +30,11 @@ var view = (function(){
     $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());
 
   };
+  
+  var addSplashes = function(){
+    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time });
+    $('#splash_list').append($(compiled_html));
+  };
 
   // var addAllSplashes = function(splashes_list){
   //   for(var i=0; i < splashes_list.length; i++)

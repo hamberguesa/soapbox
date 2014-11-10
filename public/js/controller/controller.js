@@ -12,6 +12,14 @@ var controller = (function(){
   var latitude;
   var longitude;
   var base_url = "http://soap-box-api.herokuapp.com";
+  
+  function getSplashes(){
+    $.ajax({
+      url: base_url+'/splashes',
+      type: 'GET'
+    }).done(view.addSplashes);
+  }
+  
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
@@ -38,8 +46,8 @@ var controller = (function(){
       url: base_url+'/splashes/'+id+'/comment',
       type: 'POST',
       data: data
-    }).done(view.addNewComment)
-    $(this)[0].elements.content.value = ""
+    }).done(view.addNewComment);
+    $(this)[0].elements.content.value = "";
   }
 
   function poll() {
@@ -62,10 +70,28 @@ var controller = (function(){
     longitude = lon;
   }
 
-  function bindEvents(){
-    view.addColors();
-    view.addHeader();
+  function buildLoginPage() {
     view.addLogin();
+  }
+  
+  function buildIndexPage() {
+    view.addHeader();
+    view.addSplashContainer();
+    view.addCreateSplashButton();
+    // loop through the splashes that should be displayed and 'createSplash' for each 
+    createSplash();
+    // same for comments ('createComment')
+    createComment();
+  }
+  
+  function bindEvents(){
+    if(loggedin){
+      buildIndexPage();
+    } else {
+      buildLoginPage();
+    };
+    
+    view.addColors();
     geolocation.getLocation();
     $('#splash_list').on('submit', '.submit_comment', createComment);
     $('#splash_list').on('click','.splash', getComments);
@@ -83,4 +109,4 @@ var controller = (function(){
   };
 })();
 
-controller.poll()
+controller.poll();
