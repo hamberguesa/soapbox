@@ -37,7 +37,12 @@ private
 				# && ( (acos(sin(lat1) * sin("latitude") + cos(lat1) * cos("latitude") * cos("#{lon1} - longitude")) * 6371 >= distance_km)))
 		end
 		if splash_pool
-			splash_pool.each {|match| match.splashes << self}
+			splash_pool.each do |match| 
+				match.splashes << self
+				puts "-"*50
+				puts match
+				puts "-"*50
+			end
 		end
 	end
 
