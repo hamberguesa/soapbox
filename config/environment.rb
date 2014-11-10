@@ -43,6 +43,8 @@ configure do
   set :views, File.join(Sinatra::Application.root, "app", "views")
 end
 
+
+
 use OmniAuth::Builder do
     provider :facebook, APP_ID, APP_SECRET
 end
