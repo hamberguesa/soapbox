@@ -5,6 +5,8 @@ var model = (function(){
   function addSplashes(splashes_in_database){
     // Compare existing splashesArray to the splashes list given
     // If any new spashes, then add new splashes to splashesArray and return them
+    console.log('made it')
+    console.log(splashes_in_database)
     for (var i = 0; i < splashes_in_database.length; i++){
         for (var j = 0; j < splashesArray.length; j++){
             if(splashes_in_database[i] != splashesArray[j]){
@@ -30,6 +32,6 @@ var model = (function(){
   return{
     removeSplashes: removeSplashes,
     addSplashes: addSplashes,
-    getSplashes: splashesArray
+    getSplashes: getSplashes
   };
 })();
