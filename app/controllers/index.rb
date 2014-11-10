@@ -60,8 +60,6 @@ end
 
 #post new splash
 post '/splashes' do
-  puts "*"*50
-  puts "MAKING IT TO SPLASHES ROUTE"
   splash = Splash.create(:content => params[:content])
   current_user.splashes_created << splash
   current_user.splashes << splash
