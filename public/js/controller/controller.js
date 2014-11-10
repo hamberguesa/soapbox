@@ -17,7 +17,16 @@ var controller = (function(){
     $.ajax({
       url: base_url+'/splashes',
       type: 'GET'
-    }).done(view.addSplashes);
+    }).done(model.addSplashes);
+  }
+  
+  // not working yet
+  function getComments(){
+    id = 
+    $.ajax({
+      url: base_url+'splashes/'+id+'/comments',
+      type: 'GET'
+    }).done();
   }
   
   function createSplash(evt){
@@ -28,7 +37,7 @@ var controller = (function(){
       url: base_url+'/splashes',
       type: 'POST',
       data: data
-    }).done(view.addNewSplash);
+    }).done(view.addSplash);
     $('.paulund_block_page').fadeOut().remove();
   }
 
@@ -79,9 +88,9 @@ var controller = (function(){
     view.addSplashContainer();
     view.addCreateSplashButton();
     // loop through the splashes that should be displayed and 'createSplash' for each 
-    createSplash();
+    getSplashes();
     // same for comments ('createComment')
-    createComment();
+    getComments();
   }
   
   function bindEvents(){

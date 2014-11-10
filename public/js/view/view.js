@@ -2,7 +2,7 @@ var view = (function(){
   var interval;
   var counter = 0;
 
-  var addNewSplash = function(data){
+  var addSplash = function(data){
     var timeCreatedAt = Date.parse(data.created_at);
     var timeNow = new Date();
     var timeDifference = timeNow - timeCreatedAt;
@@ -29,11 +29,6 @@ var view = (function(){
       $('#splash_list').append($(compiled_html));
     $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());
 
-  };
-  
-  var addSplashes = function(){
-    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time });
-    $('#splash_list').append($(compiled_html));
   };
 
   // var addAllSplashes = function(splashes_list){
@@ -108,7 +103,7 @@ var view = (function(){
 
   return{
     showComments: showComments,
-    addNewSplash: addNewSplash,
+    addSplash: addSplash,
     addNewComment: addNewComment,
     moveRight: moveRight,
     moveLeft: moveLeft,
