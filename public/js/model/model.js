@@ -9,7 +9,7 @@ var model = (function(){
     console.log(splashes_in_database)
     for (var i = 0; i < splashes_in_database.length; i++){
         for (var j = 0; j < splashesArray.length; j++){
-            if(splashes_in_database[i] != splashesArray[j]){
+            if !($.inArray(splashes_in_database[i],splashesArray)){
                 splashesArray.push(splashes_in_database[i]);
             }
         }
