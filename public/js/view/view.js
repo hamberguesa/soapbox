@@ -76,12 +76,12 @@ var view = (function(){
   var addCreateSplashButton = function(){
     (template.addCreateSplashButton()).before( $('.container') );
   };
-
+  
   var showComments = function(id){
     $('#comment-'+ id).slideToggle();
   };
-
-  var addNewComment = function(data){
+  
+  var addComment = function(data){
     var commentContent = data["content"];
     var compiled_html = template.addComment({name: data["author_name"], content: commentContent});
     $('#comment-'+data["splash_id"]).append(compiled_html);
@@ -132,7 +132,7 @@ var view = (function(){
   return{
     showComments: showComments,
     addSplash: addSplash,
-    addNewComment: addNewComment,
+    addComment: addComment,
     moveRight: moveRight,
     moveLeft: moveLeft,
     addColors: addColors,

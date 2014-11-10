@@ -1,13 +1,3 @@
-// AJAX CALLS:
-// create splash and prepend to the front of the list. (PortfolioJS, SimplyScroll jquery plugin or MouseWheel Plugin)
-// inserts comment to bottom of comments and removes comment box on submission of comment form
-// set timeout function to refresh the feed of splashes
-
-// SLIDEDOWN MENU FOR COMMENTS
-// slideDown when user wants to create a comment
-// http://www.alessioatzeni.com/blog/signin-dropdown-box-like-twitter-with-jquery/
-// http://alexsblog.org/2014/08/21/custom-html-dropdown-with-jquery/
-
 var controller = (function(){
   var latitude;
   var longitude;
@@ -20,13 +10,16 @@ var controller = (function(){
     }).done(model.addSplashes);
   }
   
-  // not working yet
   function getComments(){
-    id = 
+    splashesArr = model.getSplashes();
+    for(i = 0; i < splashesArr.length; i++)
+    {
+      id = splashesArr[i]
     $.ajax({
       url: base_url+'splashes/'+id+'/comments',
       type: 'GET'
-    }).done();
+    }).done(view.addComment);
+    }
   }
   
   function createSplash(evt){
@@ -41,7 +34,7 @@ var controller = (function(){
     $('.paulund_block_page').fadeOut().remove();
   }
 
-  function getComments(evt){
+  function showComments(evt){
     if(evt.target !== this)
       return;
     view.showComments(this.id);
@@ -55,7 +48,7 @@ var controller = (function(){
       url: base_url+'/splashes/'+id+'/comment',
       type: 'POST',
       data: data
-    }).done(view.addNewComment);
+    }).done(view.addComment);
     $(this)[0].elements.content.value = "";
   }
 
@@ -103,7 +96,7 @@ var controller = (function(){
     view.addColors();
     geolocation.getLocation();
     $('#splash_list').on('submit', '.submit_comment', createComment);
-    $('#splash_list').on('click','.splash', getComments);
+    $('#splash_list').on('click','.splash', showComments);
     $('.container').on('submit','#create-splash-form', createSplash);
     $('.fa-chevron-right').mouseenter(view.moveRight);
     $('.fa-chevron-left').mouseenter(view.moveLeft);
