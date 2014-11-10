@@ -3,6 +3,7 @@ var view = (function(){
   var counter = 0;
 
   var addNewSplash = function(data){
+    console.log(data)
     var timeCreatedAt = Date.parse(data.created_at);
     var timeNow = new Date();
     var timeDifference = timeNow - timeCreatedAt;
