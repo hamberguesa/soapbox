@@ -9,14 +9,16 @@ var view = (function(){
     
     var hours = Math.floor(timeDifference/3600);
     var minutes = Math.floor(timeDifference/60);
-    
+    if (minutes === 0){
+      minutes += 1
+    }
     if (hours > 0){
-      time = hours + " and " + minutes + " ago "
-    } 
+      time = hours + " and " + minutes + " ago ";
+    }
     if (minutes < 2){
-      time = minutes + " minute ago "
+      time = minutes + " minute ago ";
     } else {
-      time = minutes + " minutes ago "
+      time = minutes + " minutes ago ";
     }
     
     
