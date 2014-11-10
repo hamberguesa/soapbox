@@ -1,7 +1,7 @@
 var template = (function(){
 
 	function addSplash(params){
-		var compiled = _.template('<li id="<%= id %>" class="splash inline-list"><p> <%= time_ago %><br><%= name %> <br> <%= content %></p><ul id="comment-<%=id%>" class="comment-list"><li><form action="/splashes/<%=id%>/comment" method="post" class="submit_comment" id="submit_comment-<%=id%>"><input type="textarea" rows="4" cols="10" placeholder="Reply" name="content"></form></li><li role="presentation" class="divider"></li></ul></li>')
+		var compiled = _.template('<li id="<%= id %>" class="splash inline-list"><div id="splash-created-on"><%= time_ago %></div><%= name %><br><%= content %></p><ul id="comment-<%=id%>" class="comment-list"><li><form action="/splashes/<%=id%>/comment" method="post" class="submit_comment" id="submit_comment-<%=id%>"><input type="textarea" rows="4" cols="10" placeholder="Reply" name="content"></form></li><li role="presentation" class="divider"></li></ul></li>');
     string = compiled(params);
 		return compiled(params);
 	}
@@ -15,13 +15,13 @@ var template = (function(){
   function addComment(params){
 
     var compiled = _.template('<li role="presentation" class="divider"></li><li role="presentation"><%= name %></li><li role="presentation"><%= content %></li>');
-      return compiled(params)
+      return compiled(params);
   }
 
 	return {
 		addSplash: addSplash,
     addModal: addModal,
     addComment: addComment
-	}
+	};
 
 })();

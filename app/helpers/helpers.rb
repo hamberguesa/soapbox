@@ -6,6 +6,11 @@ end
 def time_ago
   hours = ((Time.now - Splash.last.created_at)/3600).floor
   minutes = ((Time.now - Splash.last.created_at)/60).to_i
+  if minutes == 0
+    minutes += 1
+  else 
+    minutes = minutes
+  end
 
   if hours > 0
     @time_created = "#{hours} hour #{minutes} minutes ago"

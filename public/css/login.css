@@ -8,6 +8,11 @@ body,html{
   opacity:0.9;
 }
 
+#splash-created-on {
+  font-size: .6em;
+  font-style: italic;
+  color:black;
+}
 /*body {
   background-image:url(../images/golden-gate-2.jpg);
   background-repeat: no-repeat;
