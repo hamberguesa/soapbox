@@ -11,15 +11,16 @@
 var controller = (function(){
   var latitude;
   var longitude;
+  var base_url = "http://soap-box-api.herokuapp.com";
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
 
     $.ajax({
-      url: '/splashes',
+      url: base_url+'/splashes',
       type: 'POST',
       data: data
-    }).done(view.addNewSplash)
+    }).done(view.addNewSplash);
     $('.paulund_block_page').fadeOut().remove();
   }
 
@@ -31,10 +32,10 @@ var controller = (function(){
 
   function createComment(evt){
     evt.preventDefault();
-    id = $(this).parent().parent().parent()[0].id
+    id = $(this).parent().parent().parent()[0].id;
     var data = $(this).serialize();
     $.ajax({
-      url: '/splashes/'+id+'/comment',
+      url: base_url+'/splashes/'+id+'/comment',
       type: 'POST',
       data: data
     }).done(view.addNewComment)
@@ -46,7 +47,7 @@ var controller = (function(){
     setTimeout(function () {
       geolocation.getLocation();
       $.ajax({
-        url: '/splashes',
+        url: base_url+'/splashes',
         dataType: "json",
         data: {lat: latitude, lon: longitude}
       }).done(function(data){
@@ -63,6 +64,8 @@ var controller = (function(){
 
   function bindEvents(){
     view.addColors();
+    view.addHeader();
+    view.addLogin();
     geolocation.getLocation();
     $('#splash_list').on('submit', '.submit_comment', createComment);
     $('#splash_list').on('click','.splash', getComments);

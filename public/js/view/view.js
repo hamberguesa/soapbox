@@ -10,10 +10,10 @@ var view = (function(){
     var hours = Math.floor(timeDifference/3600);
     var minutes = Math.floor(timeDifference/60);
     if (minutes === 0){
-      minutes += 1
+      minutes += 1;
     }
     if (hours > 0){
-      time = hours + " and " + minutes + " ago ";
+      time = hours + " hour and " + (minutes - 60) + "minutes ago ";
     }
     if (minutes < 2){
       time = minutes + " minute ago ";
@@ -40,6 +40,14 @@ var view = (function(){
 
   //   }
   // }
+  
+  var addSplashContainer = function(){
+     (template.addSplashContainer()).after( $('nav') );
+  };
+  
+  var addCreateSplashButton = function(){
+    (template.addCreateSplashButton()).before( $('.container') );
+  };
 
   var showComments = function(id){
     $('#comment-'+ id).slideToggle();
@@ -50,28 +58,36 @@ var view = (function(){
     var compiled_html = template.addComment({name: data["author_name"], content: commentContent});
     $('#comment-'+data["splash_id"]).append(compiled_html);
   };
+  
+  var addHeader = function(){
+    $('body').prepend(template.addHeader());
+  };
+  
+  var addLogin = function(){
+    $('body').prepend(template.addLogin());
+  };
 
   var stop = function(){
-    clearInterval(interval)
-  }
+    clearInterval(interval);
+  };
 
   var addColors = function(){
       $('#splash_list .splash').each(function(index,element)
       {
-        $(element).css('background-color',Please.make_color())
+        $(element).css('background-color',Please.make_color());
       });
-  }
+  };
 
   var moveRight = function(data){
     $('.fa-chevron-right').mouseleave(stop);
     interval = setInterval(function(){
       if(parseInt($("#splash_list").css("right")) > ($("#splash_list .splash").length-3) * $(".splash").width())
       return
-      $("#splash_list").css("right",counter + "px")
+      $("#splash_list").css("right",counter + "px");
       counter += 10;
 
     },50);
-  }
+  };
 
   var moveLeft = function(data){
     $('.fa-chevron-left').mouseleave(stop);
@@ -80,10 +96,10 @@ var view = (function(){
     console.log($("#splash_list").css("right"));
      if(parseInt($("#splash_list").css("right")) < 0 )
       return;
-      $("#splash_list").css("right", counter + "px")
+      $("#splash_list").css("right", counter + "px");
       counter -= 10;
     },50);
-  }
+  };
 
   return{
     showComments: showComments,
@@ -91,6 +107,10 @@ var view = (function(){
     addNewComment: addNewComment,
     moveRight: moveRight,
     moveLeft: moveLeft,
-    addColors: addColors
+    addColors: addColors,
+    addHeader: addHeader,
+    addLogin: addLogin,
+    addSplashContainer: addSplashContainer,
+    addCreateSplashButton: addCreateSplashButton
   };
 })();
