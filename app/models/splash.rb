@@ -9,6 +9,7 @@ class Splash < ActiveRecord::Base
 
 	after_save :populate_splashes
 
+	validates :content, presence: true, length: {maximum: 255}, allow_blank: false
 	private
 	def inherit_from_author
 	 	if self.author
