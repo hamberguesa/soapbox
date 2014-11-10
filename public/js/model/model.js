@@ -8,10 +8,11 @@ var model = (function(){
     console.log('made it')
     console.log(splashes_in_database)
     for (var i = 0; i < splashes_in_database.length; i++){
-        for (var j = 0; j < splashesArray.length; j++){
+            console.log(splashes_in_database[i])
+            console.log($.inArray(splashes_in_database[i]))
+
             if !($.inArray(splashes_in_database[i],splashesArray)){
                 splashesArray.push(splashes_in_database[i]);
-            }
         }
     }
     for(i=0; i < splashesArray.length; i++)
