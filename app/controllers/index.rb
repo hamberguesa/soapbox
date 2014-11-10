@@ -20,8 +20,8 @@ end
 #Get all of your splashes
 get '/splashes' do
   if current_user
-    @current_user.latitude = params[:lat] 
-    @current_user.longitude = params[:lon] 
+    @current_user.latitude = params[:lat]
+    @current_user.longitude = params[:lon]
     @current_user.save!
   end
   old_splashes = Splash.where("created_at <= ?", Time.now - 2.hours)
