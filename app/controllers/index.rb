@@ -1,3 +1,7 @@
+before do
+  response.headers["Access-Control-Allow-Origin"] = "*"
+end
+
 get '/' do
   erb :index
 end
@@ -11,11 +15,11 @@ end
 
 
 
-# # before do 
+# # before do
 # #   puts "*"
 # #   if current_user
 # #       #check access token with facebook
-# #       # in_db = request.env["HTTP_ACCESSTOKEN"] == @current_user.token 
+# #       # in_db = request.env["HTTP_ACCESSTOKEN"] == @current_user.token
 # #       # puts in_db
 # #       # puts request.env["HTTP_ACCESSTOKEN"]
 # #       # if !in_db
@@ -26,8 +30,8 @@ end
 # #       #   fb_response = HTTParty.get "https://graph.facebook.com/debug_token?input_token=#{env["HTTP_ACCESSTOKEN"]}&access_token=#{APP_TOKEN}"
 # #       #   puts fb_response
 # #       # end
-# #     else 
-# #       #check user_id 
+# #     else
+# #       #check user_id
 # #       p session
 # #       p request.env["HTTP_ACCESSTOKEN"]
 # #       puts "~"
@@ -51,7 +55,7 @@ end
 #       content_type :json
 #       current_user.splashes.to_json
 #     end
-    
+
 #   end
 
 #   get '/splashes/:id/comments' do
@@ -107,15 +111,15 @@ end
 #     redirect '/'
 #   end
 
-#   namespace '/user' do 
+#   namespace '/user' do
 #     get '/logout' do
 #       session[:user_id] = nil
 #     end
 
-#     post '/login' do 
+#     post '/login' do
 #       session[:user_id] = params[:user_id]
 #       user = User.find_by(:fb_user_id => params[:user_id])
-#       if user 
+#       if user
 #        user.token = params[:token]
 #        user.save
 #      else

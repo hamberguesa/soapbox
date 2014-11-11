@@ -2,12 +2,19 @@ var controller = (function(){
   var latitude,longitude;
   var loggedIn = false;
   var accessToken;
+  var header = "";
   var base_url = "http://soap-box-api.herokuapp.com/api/v0";
 
   function getSplashes(){
+      geolocation.getLocation();
+
     $.ajax({
       url: base_url+'/splashes',
-      type: 'GET'
+      type: 'GET',
+      statusCode:{
+          401: function(){console.log("SHOOT!")}
+        },
+      data: {lat: latitude, lon: longitude, user_id: localStorage.getItem("user_id")}
     }).done(model.addSplashes);
   }
 
@@ -54,21 +61,20 @@ var controller = (function(){
     $(this)[0].elements.content.value = "";
   }
 
+
   function poll() {
 
-    setTimeout(function () {
-      geolocation.getLocation();
+    timeout = setTimeout(function () {
       $.ajax({
         url: base_url+'/splashes',
         dataType: "json",
-        data: {lat: latitude, lon: longitude},
-        headers: {"accessToken": accessToken},
+        data: {lat: latitude, lon: longitude, user_id: localStorage.getItem("user_id")},
         statusCode:{
           401: function(){console.log("SHIT!")}
-        }
+        },
       }).done(function(data){
         model.addSplashes(data);
-        poll();
+          poll();
       });
     }, 5000);
   }
@@ -91,15 +97,15 @@ var controller = (function(){
     // same for comments ('createComment')
     getComments();
   }
-  
+
   function wordCount(){
   //     var text_max = 255;
   //     $('#textarea_feedback').html(test_max + ' characters remaining');
-      
+
   //     $('#modal_content').keyup(function() {
   //       var text_length = $('#modal_content').val().length;
   //       var text_remaining = text_max - text_length;
-        
+
   //       $('#textarea_feedback').html(text_remaining + ' characters remaining');
   //   });
   }
@@ -111,19 +117,12 @@ var controller = (function(){
     loggedIn = status;
   }
 
-  function checkLoggedInStatus(data){
-    if(!data.id)
-      updateLoggedInStatus(false);
-    else
-      updateLoggedInStatus(true);
-  }
   function bindEvents(){
     if(loggedIn){
       buildIndexPage();
     } else {
       buildLoginPage();
     };
-
     view.addColors();
     geolocation.getLocation();
     // $('document').ready('wordCount')
@@ -140,6 +139,10 @@ var controller = (function(){
     accessToken = token;
   }
 
+  function setHeader(id){
+    header = id
+  }
+
   return{
     createSplash: createSplash,
     createComment: createComment,
@@ -149,9 +152,11 @@ var controller = (function(){
     wordCount: wordCount,
     updateLoggedInStatus: updateLoggedInStatus,
     loggedInStatus: loggedInStatus,
-    checkLoggedInStatus: checkLoggedInStatus,
     storeToken: storeToken,
-    baseUrl: base_url
+    buildIndexPage: buildIndexPage,
+    buildLoginPage: buildLoginPage,
+    baseUrl: base_url,
+    setHeader: setHeader
   };
 })();
 

@@ -1,12 +1,11 @@
 window.fbAsyncInit = function() {
     FB.init({
     appId      : '707092289381408',
+    status     : true,
     cookie     : true,  // enable cookies to allow the server to access                         // the session
     xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.1', // use version 2.1
-    status     : true
+    version    : 'v2.1' // use version 2.1
     });
-    oauth.getLoginStatus();
 };
 
 // Load the SDK asynchronously
@@ -27,17 +26,19 @@ var oauth = (function(){
         token = response.authResponse.accessToken
         console.log(token)
         $.ajax({
-          url: 'http://soap-box-api.herokuapp.com/auth/facebook/callback'
-        }).done(function(data) {
-        console.log("connected")
-        console.log(data)
+          url: 'http://soap-box-api.herokuapp.com/auth/facebook/callback',
+          data: {signed_request: response.authResponse.signedRequest}
+        }).done(loggedIn).fail(function(data){
+          console.log("FAIL?");
+          console.log(data);
         });
       }
       else {
         console.log('User cancelled login or did not fully authorize.');
       }
 
-        // FB.api('/me', function(response) 
+
+        // FB.api('/me', function(response)
         // {
         //   console.log('Good to see you, ' + response.name + '.');
         //   $('#fb').attr("onclick","oauth.logout();");
@@ -49,7 +50,7 @@ var oauth = (function(){
         //     url: '/user/login',
         //     type: 'POST',
         //     data: data
-        //   }).done(controller.checkLoggedInStatus); 
+        //   }).done(controller.checkLoggedInStatus);
 
     });
   }
@@ -59,35 +60,48 @@ var oauth = (function(){
   }
 
   function logout(){
-    $('#fb').text("login");
-    $('#fb').attr("onclick","oauth.login();");
+    localStorage.setItem("user_id", "");
+    FB.logout();
+    loggedOut();
 
-    $.ajax({
-      url: '/user/logout',
-      type: 'get'
-    }).done(controller.checkLoggedInStatus)
+  }
 
-    FB.logout(function(response) {
-      console.log(response)
-      console.log("USER LOGGED OUT")
-  });
+  function loggedOut(){
+    console.log("change login")
+    controller.updateLoggedInStatus(true);
+    controller.buildLoginPage();
+    $('#logout').text("login");
+    $('#logout').attr("onclick","oauth.login();");
+  }
+
+  function loggedIn(data){
+    console.log("SUP")
+    localStorage.setItem("user_id", data)
+    controller.updateLoggedInStatus(true);
+    controller.buildIndexPage();
+    controller.poll();
+    $('#logout').text("logout");
+    $('#logout').attr("onclick","oauth.logout();");
   }
 
   function getLoginStatus(){
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
         $.ajax({
-          url: 'http://soap-box-api.herokuapp.com/auth/facebook/callback'
-        }).done(function(data) {
-          console.log("connected")
-          console.log(data)
-          });
-    var uid = response.authResponse.userID;
-    var accessToken = response.authResponse.accessToken;
+          url: 'http://soap-box-api.herokuapp.com/auth/facebook/callback',
+          data: {signed_request: response.authResponse.signedRequest}
+        }).done(loggedIn).fail(function(){
+          controller.updateLoggedInStatus(false);
+          controller.buildLoginPage();
+        });
+
+      // the user has logged into facebook and authenticated our app
   } else if (response.status === 'not_authorized') {
-    // the user is logged in to Facebook, 
+      controller.updateLoggedInStatus(false);
+    }
+    // the user is logged in to Facebook,
     // but has not authenticated your app
-  } else {
+  else {
     // the user isn't logged in to Facebook.
   }
   });

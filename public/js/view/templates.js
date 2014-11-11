@@ -16,29 +16,29 @@ var template = (function(){
     var compiled = _.template('<li role="presentation" class="divider"></li><li role="presentation"><%= name %></li><li role="presentation"><%= content %></li>');
       return compiled(params);
   }
-  
+
   function addLogin(){
-    var compiled = _.template('<div class="container-fluid"><div class="jumbotron" id="jumbotron"><h1>SoapBox</h1><p>Connect with people in your area</p><a href="/auth/facebook"><button type="button" class="btn btn-primary btn-lg">Login With Facebook</button></a><br></div></div>');
+    var compiled = _.template('<div class="container-fluid"><div class="jumbotron" id="jumbotron"><h1>SoapBox</h1><p>Connect with people in your area</p><button id="logout" onclick="oauth.login();" type="button" class="btn btn-primary btn-lg">Login With Facebook</button><br></div></div>');
     return compiled();
   }
-  
-  // this shit doesn't work 
+
+  // this shit doesn't work
   function addHeader(){
-    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3></nav>'); 
+    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3></nav>');
       // <% if (current_user) { %><div class="logout"><a href="/logout">Logout</a></div><div class="logged-in-as">Logged in as: <span id="login_name"><%= @current_user.first_name %> <%= @current_user.last_name %></span></div><% } %> </nav>');
     return compiled();
   }
-  
+
   function addSplashContainer(){
     var compiled = _.template('<div class="container"><div class="row"><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-left"></i></div><div class="x-hidden col-md-10"><ul id="splash_list" class="col-md-10"></ul></div><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-right"></i></div></div></div>');
     return compiled();
   }
-  
+
   function addCreateSplashButton(){
     var compiled = _.template('<div class="create-new-splash-div"><a href="#" class="paulund_modal"><h3 class="new-splash-link">+New Splash</h3></div></a></div>');
     return compiled();
   }
-  
+
 	return {
 		addSplash: addSplash,
     addModal: addModal,
