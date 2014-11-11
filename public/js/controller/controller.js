@@ -53,7 +53,7 @@ var controller = (function(){
         model.addSplashes(data);
         poll();
       })
-    }, 5000);
+    }, 15000);
   }
 
   function updateCoords(lat, lon){

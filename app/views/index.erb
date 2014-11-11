@@ -18,26 +18,30 @@
   </div>
   <br>
 </nav>
-
-
 <div class="container">
   <div class="row">
-    <div class="col-md-1 arrow_container">
-      <i class="fa fa-5x fa-chevron-left"></i>
+    <div class="col-xs-2">
+      <i class="fa fa-5x fa-chevron-left hidden-xs brand_color"></i>
     </div>
-      <a href="#" class="paulund_modal col-md-8"><h3 class="new-splash-link">New Splash</h3>
+    <div class="col-xs-8">
+      <a href="#" class="paulund_modal"><h3 class="new-splash-link">New Splash</h3>
       </a>
-    <div class="arrow_container col-md-1">
-        <i class="fa fa-5x fa-chevron-right"></i>
+    </div>
+    <div class="col-xs-2">
+        <i class="fa fa-5x fa-chevron-right hidden-xs brand_color z-front"></i>
     </div>
   </div>
-<!-- Jumbotron to span width of page -->
-  <div class="container splash_bgrnd">
-    <div class="row">
-      <!-- <div id="jumbotron-index"></div> -->
-  <!-- <a href="#" class="paulund_modal">Splash</a> -->
+</div>
 
-    <!-- Begin Splash List -->
+  <!-- Jumbotron to span width of page -->
+  <div class="container">
+    <div class="row">
+
+        <!-- Begin Splash List -->
+    <div class="col-xs-2">
+        <i class="fa fa-5x fa-chevron-right hidden-xs brand_color z-front"></i>
+    </div>
+
         <div class="col-md-10">
           <ul id="splash_list" class="col-md-10">
             <% @splashes.each do |splash| %>

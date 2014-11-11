@@ -6,7 +6,7 @@ var view = (function(){
     var timeCreatedAt = Date.parse(data.created_at);
     var timeNow = new Date();
     var timeDifference = timeNow - timeCreatedAt;
-    
+
     var hours = Math.floor(timeDifference/3600);
     var minutes = Math.floor(timeDifference/60);
     if (minutes === 0){
@@ -20,14 +20,17 @@ var view = (function(){
     } else {
       time = minutes + " minutes ago ";
     }
-    
-    
+
+
     var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time });
     if($('#splash_list li.splash').length > 0)
       $('#splash_list li.splash:eq(0)').before($(compiled_html));
     else
       $('#splash_list').append($(compiled_html));
-    $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());
+    $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color({
+  greyscale: true, //for the brits
+  grayscale: true  //for the yanks
+}));
 
   };
 
@@ -58,7 +61,7 @@ var view = (function(){
   var addColors = function(){
       $('#splash_list .splash').each(function(index,element)
       {
-        $(element).css('background-color',Please.make_color())
+        $(element).css('background-color', 'gray')
       });
   }
 
@@ -70,7 +73,7 @@ var view = (function(){
       $("#splash_list").css("right",counter + "px")
       counter += 10;
 
-    },50);
+    },30);
   }
 
   var moveLeft = function(data){
@@ -82,7 +85,7 @@ var view = (function(){
       return;
       $("#splash_list").css("right", counter + "px")
       counter -= 10;
-    },50);
+    },30);
   }
 
   return{
