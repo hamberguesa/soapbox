@@ -87,7 +87,19 @@ var controller = (function(){
     // same for comments ('createComment')
     getComments();
   }
-
+  
+  // function wordCount(){
+  //     var text_max = 255;
+  //     $('#textarea_feedback').html(test_max + ' characters remaining');
+      
+  //     $('#modal_content').keyup(function() {
+  //       var text_length = $('#modal_content').val().length;
+  //       var text_remaining = text_max - text_length;
+        
+  //       $('#textarea_feedback').html(text_remaining + ' characters remaining');
+  //   });
+  // }
+  
   function bindEvents(){
     if(loggedin){
       buildIndexPage();
@@ -97,19 +109,22 @@ var controller = (function(){
 
     view.addColors();
     geolocation.getLocation();
+    // $('document').ready('wordCount')
     $('#splash_list').on('submit', '.submit_comment', createComment);
     $('#splash_list').on('click','.splash', showComments);
     $('body').on('submit','#create-splash-form', createSplash);
     $('.fa-chevron-right').mouseenter(view.moveRight);
     $('.fa-chevron-left').mouseenter(view.moveLeft);
   }
-
+  
+  
   return{
     createSplash: createSplash,
     createComment: createComment,
     poll: poll,
     bindEvents: bindEvents,
-    updateCoords: updateCoords
+    updateCoords: updateCoords,
+    wordCount: wordCount
   };
 })();
 
