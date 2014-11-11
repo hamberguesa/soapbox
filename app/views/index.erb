@@ -17,14 +17,17 @@
     <div class="arrow_container col-md-1">
       <i class="fa fa-5x fa-chevron-left"></i>
     </div>
- 
+
     <!-- Begin Splash List -->
     <div class="x-hidden col-md-10">
       <ul id="splash_list" class="col-md-10">
         <% @splashes.each do |splash| %>
         <li id="<%= splash.id %>" class="splash inline-list">
           <% author = User.find(splash.author_id) %><div id="splash-created-on"><%= time_ago %></div><%= author.first_name %> <%= author.last_name %><br>
-          <%= splash.content %>
+          <%= splash.content %> <br>
+          <div class="splash-count">
+            Comments: <%= splash.comments.length %>
+          </div>
           <!-- Begin Comment List -->
           <ul id="comment-<%=splash.id%>" class="comment-list">
             <li>
