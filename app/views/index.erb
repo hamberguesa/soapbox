@@ -1,62 +1,87 @@
 <!-- black nav header -->
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-inverse row nav_color" role="navigation">
 
-  <div class="logo col-md-2">
-
-  </div>
+  <div class="col-md-6">
+    <img class="logo" src="../images/SoapSimple.svg" alt="">
     <h3 class="logo_type">SoapBox</h3>
-      <% if current_user %>
-        <div class="logout"><a href='/logout'>Logout</a></div>
-        <div class="logged-in-as">Logged in as: <span id="login_name"><%= @current_user.first_name %> <%= @current_user.last_name %></span></div>
-      <% end %>
+  </div>
+
+
+
+  <% if current_user %>
+  <div class="col-md-3 .col-md-offset-3"></div>
+    <ul>
+      <li class="logged-in-as" id="login_name">Logged in as: <%= @current_user.first_name %> <%= @current_user.last_name %></li>
+      <li><a class="logout" href='/logout'>Logout</a></li>
+    </ul>
+  <% end %>
+  </div>
+  <br>
 </nav>
-  <div class="container">
-    <div class="row arrow_container col-md-1">
-        <i class="fa fa-5x fa-chevron-left"></i>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-1 arrow_container">
+      <i class="fa fa-5x fa-chevron-left"></i>
     </div>
-      <a href="#" class="paulund_modal col-md-8"><h3 class="new-splash-link">+New Splash</h3>
+      <a href="#" class="paulund_modal col-md-8"><h3 class="new-splash-link">New Splash</h3>
       </a>
-      <div class="arrow_container col-md-1">
+    <div class="arrow_container col-md-1">
         <i class="fa fa-5x fa-chevron-right"></i>
     </div>
   </div>
 <!-- Jumbotron to span width of page -->
-<div class="jumbotron" id="jumbotron-index"></div>
-<div class="container">
+  <div class="container splash_bgrnd">
+    <div class="row">
+      <!-- <div id="jumbotron-index"></div> -->
   <!-- <a href="#" class="paulund_modal">Splash</a> -->
-  <div class="row">
 
     <!-- Begin Splash List -->
-    <div class="x-hidden col-md-10">
-      <ul id="splash_list" class="col-md-10">
-        <% @splashes.each do |splash| %>
-        <li id="<%= splash.id %>" class="splash inline-list">
-          <% author = User.find(splash.author_id) %><div id="splash-created-on"><%= time_ago %></div><%= author.first_name %> <%= author.last_name %><br>
-          <%= splash.content %>
-          <!-- Begin Comment List -->
-          <ul id="comment-<%=splash.id%>" class="comment-list">
-            <li>
-              <form action='/splashes/<%=splash.id%>/comment' method='post' class="submit_comment" id="submit-comment-<%=splash.id%>">
-                <input type='textarea' rows="4" cols="10" placeholder='Reply' name="content">
-              </form>
+        <div class="col-md-10">
+          <ul id="splash_list" class="col-md-10">
+            <% @splashes.each do |splash| %>
+            <li id="<%= splash.id %>" class="splash inline-list">
+              <% author = User.find(splash.author_id) %><div id="splash-created-on"><%= time_ago %></div><%= author.first_name %> <%= author.last_name %><br>
+              <%= splash.content %>
+              <!-- Begin Comment List -->
+              <ul id="comment-<%=splash.id%>" class="comment-list">
+                <li>
+                  <form action='/splashes/<%=splash.id%>/comment' method='post' class="submit_comment" id="submit-comment-<%=splash.id%>">
+                    <input type='textarea' rows="4" cols="10" placeholder='Reply' name="content">
+                  </form>
+                </li>
+                <li role="presentation" class="divider"></li>
+                <% splash.comments.each do |comment| %>
+                <% user = User.find(comment.user_id) %>
+                <li role="presentation"><p><%= comment.user.first_name %> <%= comment.user.last_name %></li>
+                <li role="presentation"><%= comment.content %></li></p>
+                <% end %>
+              </ul>
             </li>
-
-            <li role="presentation" class="divider"></li>
-
-            <% splash.comments.each do |comment| %>
-            <% user = User.find(comment.user_id) %>
-            <li role="presentation"><p><%= comment.user.first_name %> <%= comment.user.last_name %></li>
-            <li role="presentation"><%= comment.content %></li></p>
-            <hr>
             <% end %>
           </ul>
-        </li>
-        <% end %>
-      </ul>
+        </div>
+      <!-- </div> -->
     </div>
-
   </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="wild_card col-lg-12">
 
-
+    </div>
+  </div>
 </div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="container">
+      <div class="col-lg-12">
+        <div class="row">
+          // ©2014 Soapbox Limited // Jobs // Privacy // Press // Terms
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

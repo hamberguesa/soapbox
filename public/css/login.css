@@ -1,6 +1,7 @@
-/** {
-  border: 1px red dotted !important;
-}*/
+* {
+  /*border: 1px red dotted !important;*/
+    /*background-color: #3D7999;*/
+}
 
 @font-face {
   font-family: "norwester";
@@ -11,14 +12,47 @@
   src: url("../images/Fairview_SmallCaps.otf") format("opentype");
 }
 
-body,html{
-  height:100%;
+body{
+  /*height: 100%;*/
+  /*background-color: tan !important;*/
 }
-#jumbotron {
-  width:100%;
-  margin-top:3em;
-  text-align:center;
-  opacity:0.9;
+
+.splash_img{
+  /*clear: both;*/
+  display: absolute;
+  /*float: left;*/
+  margin-left: 4em;
+  height: 8em;
+  background: url("../images/SoapSimple.svg");
+  /*background-image: url("../images/soapBox.svg");*/
+  background-size: cover;
+  background-color: white;
+  background-repeat: no-repeat;
+}
+
+.login {
+  background-color: black;
+  width: 100%;
+  text-align: center;
+  opacity: 0.9;
+  /*margin-top:3em;*/
+  font-family: Fairview;
+  font-size: 4em;
+  color: white;
+}
+
+.login h1{
+  color: white;
+  width: 100%;
+  text-align: center;
+  opacity: 0.9;
+  /*margin-top: 1em;*/
+  font-family: Fairview;
+  font-size: 2em;
+}
+
+.regFnt {
+  font-family: sans-serif;
 }
 
 #splash-created-on {
@@ -33,32 +67,43 @@ body,html{
 }*/
 
 #jumbotron-index {
-  padding: 10em;
-  margin-top: 8.4em;
   width: 100%;
-  /*margin-top: 10em;*/
-  opacity: 0.8;
   z-index: 0;
   position: absolute;
 }
+  /*margin-top: 10em;*/
+  /*opacity: 0.8;*/
+  /*margin-top: 8.4em;*/
 
-.navbar-inverse {
-  color:white;
-  padding: 1em;
+.nav_color{
+  color: white;
+  padding: 0.4em;
+  border-bottom: solid 20px #FF8C40;
 }
 
 .logout {
- float: right;
-font-family: Fairview;
-font-size: 2em;
-padding-top: 1em;
-color: #FFB84D;
+  display: block;
+  /*float: right;*/
+  font-family: Fairview;
+  font-size: 2em;
+  text-align: right;
+  padding-right: 1em;
+  /*color: #FFB84D;  */
+  color: #FF8C40; 
+  transition: color 0.5s ease;
+}
+
+.logout:hover{
+  font-family: Fairview;
+  font-size: 2em;
+  display: block;
+  color: #CC481B;
 }
 
 .logged-in-as{
-  float: right;
-  padding-top: 1em;
-  margin-right: 2em;
+  display: block;
+  text-align: right;
+  padding-right: 1em;
   font-family: Fairview;
   font-size: 2em;
 }
