@@ -6,6 +6,11 @@
   border: 1px dotted black;
   text-align: center;
 }
+#fb{
+  width:200px;
+  height:70px;
+  background-color:red;
+}
 .row{
   overflow-y:visible;
 }

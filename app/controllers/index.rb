@@ -11,7 +11,7 @@ REDIRECT_URI = 'http://localhost:9393'
 get '/' do
   # if current_user
   #   @splashes = @current_user.splashes.order('created_at').reverse
-  erb :index
+  erb :login
   # else
   #   # erb :login
   # end
