@@ -3,26 +3,11 @@ var view = (function(){
   var counter = 0;
 
   var addNewSplash = function(data){
-    var timeCreatedAt = Date.parse(data.created_at);
-    var timeNow = new Date();
-    var timeDifference = timeNow - timeCreatedAt;
-    
-    var hours = Math.floor(timeDifference/3600);
-    var minutes = Math.floor(timeDifference/60);
-    if (minutes === 0){
-      minutes += 1
-    }
-    if (hours > 0){
-      time = hours + " and " + minutes + " ago ";
-    }
-    if (minutes < 2){
-      time = minutes + " minute ago ";
-    } else {
-      time = minutes + " minutes ago ";
-    }
-    
-    
-    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time });
+
+    model.splashTime;
+    console.log(model.time)
+
+    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: model.time });
     if($('#splash_list li.splash').length > 0)
       $('#splash_list li.splash:eq(0)').before($(compiled_html));
     else
