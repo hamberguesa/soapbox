@@ -1,8 +1,109 @@
 .container {
   margin: 20px auto;
+  margin-top: 10em;
   width: 85%;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
   text-align: center;
 }
+#fb{
+  width:200px;
+  height:70px;
+  background-color:red;
+}
+.row{
+  overflow-y:visible;
+}
+ul{
+  list-style-type:none;
 
+}
+a.paulund_modal{
+  color: blue;
+}
+a.paulund_modal h3{
+  transition: 0.5s all;
+}
+a.paulund_modal h3:hover{
+  transform:scale(1.2,1.2);
+  
+}
+a.paulund_modal:hover{
+  color:orange;
+}
+#splash_list{
+  white-space:nowrap;
+  overflow-y:visible;
+  display:inline-block;
+}
+.x-hidden{
+  margin:0px;
+  height:700px;
+  overflow-x:hidden;
+}
+#splash_list:after{
+  content:""; clear:both; display:block;
+}
+.cf{
+  content:""; clear:both; display:block;
+}
+
+.arrow_container{
+  padding-top:80px;
+
+}
+.arrow_container:hover{
+  color:#EC573C;
+}
+.splash{
+  display:inline-block;
+  width:250px;
+  height:250px;
+  font-size:20px;
+  color:white;
+  white-space: normal;
+  vertical-align: middle;
+  word-wrap: break-word;
+  border-radius:10px;
+  box-shadow:0px 0px 5px #3F3F3F;
+  padding:.5em;
+
+}
+.splash:hover {
+  opacity: 0.8;
+  border: 1px solid black;
+  cursor:pointer;
+}
+.paulund_modal_close{
+  transition: all 0.5s;
+}
+.paulund_modal_close:hover{
+  transform:scale(1.2,1.2);
+}
+
+#modal_content{
+  border-radius: 3px;
+  font-size:1.3em;
+  border:none;
+}
+#modal_content:focus{
+
+}
+
+.comment-list{
+  position:absolute;
+  top:100%;
+  display:none;
+  color:#3F3F3F;
+  text-shadow: 0px 0px 3px white;
+  padding: 0;
+}
+
+.comment-list li{
+  float:none;
+  position:relative;
+}
+
+#create_splash{
+  margin-top:15px;
+}
