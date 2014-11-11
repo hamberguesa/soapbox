@@ -3,9 +3,10 @@ var view = (function(){
   var counter = 0;
 
   var addSplash = function(data){
+    
     var timeCreatedAt = Date.parse(data.created_at);
     var newDate = new Date();
-    var timeNow = Date.parse(newDate)
+    var timeNow = Date.parse(newDate);
 
     var timeDifference = (timeNow - timeCreatedAt)/1000;
 
@@ -15,7 +16,7 @@ var view = (function(){
       minutes += 1;
     }
     if (hours > 0){
-      var newMinutes = minutes - hours * 60
+      var newMinutes = minutes - hours * 60;
       time = hours + " and " + newMinutes + " ago ";
     }
     if (minutes < 2){
@@ -30,8 +31,7 @@ var view = (function(){
       $('#splash_list li.splash:eq(0)').before($(compiled_html));
     else
       $('#splash_list').append($(compiled_html));
-    $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());
-
+    $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());    
   };
 
   // var timeElapsed = function(){
@@ -70,25 +70,26 @@ var view = (function(){
   // }
   
   var addSplashContainer = function(){
-     (template.addSplashContainer()).after( $('nav') );
+     $('body').append(template.addSplashContainer());
+  };
+    
+  var addCreateSplashButton = function(){
+    $('body').append(template.addCreateSplashButton());
   };
   
-  var addCreateSplashButton = function(){
-    (template.addCreateSplashButton()).before( $('.container') );
-  };
-
   var showComments = function(id){
     $('#comment-'+ id).slideToggle();
   };
-
-  var addNewComment = function(data){
+  
+  var addComment = function(data){
     var commentContent = data["content"];
     var compiled_html = template.addComment({name: data["author_name"], content: commentContent});
     $('#comment-'+data["splash_id"]).append(compiled_html);
   };
   
   var addHeader = function(){
-    $('body').prepend(template.addHeader());
+    $('body').append(template.addHeader());
+    // $('.container').before(template.addHeader());
   };
   
   var addLogin = function(){
@@ -132,7 +133,7 @@ var view = (function(){
   return{
     showComments: showComments,
     addSplash: addSplash,
-    addNewComment: addNewComment,
+    addComment: addComment,
     moveRight: moveRight,
     moveLeft: moveLeft,
     addColors: addColors,
