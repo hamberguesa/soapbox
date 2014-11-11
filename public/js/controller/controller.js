@@ -2,14 +2,14 @@ var controller = (function(){
   var latitude;
   var longitude;
   var base_url = "http://soap-box-api.herokuapp.com";
-  
+
   function getSplashes(){
     $.ajax({
       url: base_url+'/splashes',
       type: 'GET'
     }).done(model.addSplashes);
   }
-  
+
   function getComments(){
     splashesArr = model.getSplashes();
     for(i = 0; i < splashesArr.length; i++)
@@ -21,7 +21,7 @@ var controller = (function(){
     }).done(view.addComment);
     }
   }
-  
+
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
@@ -39,7 +39,7 @@ var controller = (function(){
       return;
     view.showComments(this.id);
   }
-  
+
   // Might work; need to test after log-in capability returned
   function createComment(evt){
     evt.preventDefault();
@@ -77,12 +77,12 @@ var controller = (function(){
   function buildLoginPage() {
     view.addLogin();
   }
-  
+
   function buildIndexPage() {
     view.addHeader();
     view.addCreateSplashButton();
     view.addSplashContainer();
-    // loop through the splashes that should be displayed and 'createSplash' for each 
+    // loop through the splashes that should be displayed and 'createSplash' for each
     getSplashes();
     // same for comments ('createComment')
     getComments();
@@ -101,12 +101,12 @@ var controller = (function(){
   // }
   
   function bindEvents(){
-    // if(loggedin){
+    if(loggedin){
       buildIndexPage();
-    // } else {
-      // buildLoginPage();
-    // };
-    
+    } else {
+      buildLoginPage();
+    };
+
     view.addColors();
     geolocation.getLocation();
     // $('document').ready('wordCount')
