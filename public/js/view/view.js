@@ -3,9 +3,10 @@ var view = (function(){
   var counter = 0;
 
   var addSplash = function(data){
+    
     var timeCreatedAt = Date.parse(data.created_at);
     var newDate = new Date();
-    var timeNow = Date.parse(newDate)
+    var timeNow = Date.parse(newDate);
 
     var timeDifference = (timeNow - timeCreatedAt)/1000;
 
@@ -15,7 +16,7 @@ var view = (function(){
       minutes += 1;
     }
     if (hours > 0){
-      var newMinutes = minutes - hours * 60
+      var newMinutes = minutes - hours * 60;
       time = hours + " and " + newMinutes + " ago ";
     }
     if (minutes < 2){
@@ -30,8 +31,7 @@ var view = (function(){
       $('#splash_list li.splash:eq(0)').before($(compiled_html));
     else
       $('#splash_list').append($(compiled_html));
-    $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());
-
+    $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());    
   };
 
   // var timeElapsed = function(){
@@ -70,11 +70,11 @@ var view = (function(){
   // }
   
   var addSplashContainer = function(){
-     (template.addSplashContainer()).after( $('nav') );
+     $('body').append(template.addSplashContainer());
   };
-  
+    
   var addCreateSplashButton = function(){
-    (template.addCreateSplashButton()).before( $('.container') );
+    $('body').append(template.addCreateSplashButton());
   };
   
   var showComments = function(id){
@@ -88,7 +88,8 @@ var view = (function(){
   };
   
   var addHeader = function(){
-    $('body').prepend(template.addHeader());
+    $('body').append(template.addHeader());
+    // $('.container').before(template.addHeader());
   };
   
   var addLogin = function(){

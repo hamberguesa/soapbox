@@ -39,10 +39,12 @@ var controller = (function(){
       return;
     view.showComments(this.id);
   }
-
+  
+  // Might work; need to test after log-in capability returned
   function createComment(evt){
     evt.preventDefault();
     id = $(this).parent().parent().parent()[0].id;
+    console.log($(this).parent().parent().parent())
     var data = $(this).serialize();
     $.ajax({
       url: base_url+'/splashes/'+id+'/comment',
@@ -78,8 +80,8 @@ var controller = (function(){
   
   function buildIndexPage() {
     view.addHeader();
-    view.addSplashContainer();
     view.addCreateSplashButton();
+    view.addSplashContainer();
     // loop through the splashes that should be displayed and 'createSplash' for each 
     getSplashes();
     // same for comments ('createComment')
@@ -97,7 +99,7 @@ var controller = (function(){
     geolocation.getLocation();
     $('#splash_list').on('submit', '.submit_comment', createComment);
     $('#splash_list').on('click','.splash', showComments);
-    $('.container').on('submit','#create-splash-form', createSplash);
+    $('body').on('submit','#create-splash-form', createSplash);
     $('.fa-chevron-right').mouseenter(view.moveRight);
     $('.fa-chevron-left').mouseenter(view.moveLeft);
   }

@@ -6,7 +6,7 @@ var model = (function(){
     // Compare existing splashesArray to the splashes list given
     // If any new spashes, then add new splashes to splashesArray and return them
     var initial = false;
-    if (splashesArray === [])
+    if (splashesArray === []){
       initial = true;
     for (var i = 0; i < splashes_in_database.length; i++){
            if ($.inArray(splashes_in_database[i].id,indexArray) === -1)
@@ -19,16 +19,16 @@ var model = (function(){
     }
   }
 
-  function removeSplashes(){
-    var now = new Date();
-  }
+  // function removeSplashes(){
+  //   var now = new Date();
+  // }
 
-  function getSplashes(){
+  function getSplashes() {
     return indexArray;
   }
 
   return{
-    removeSplashes: removeSplashes,
+    // removeSplashes: removeSplashes,
     addSplashes: addSplashes,
     getSplashes: getSplashes
   };
