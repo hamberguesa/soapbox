@@ -1,3 +1,151 @@
+@font-face {
+  font-family: "norwester";
+  src: url("../images/norwester.otf") format("opentype");
+  font-family: "Track";
+  src: url("../images/Track.ttf") format("truetype");
+  font-family: "Fairview";
+  src: url("../images/Fairview_SmallCaps.otf") format("opentype");
+}
+.container {
+  margin: 1% auto;
+  margin-top: 1em;
+  width: 85%;
+  padding: 0px 20px 0px 20px;
+  text-align: center;
+}
+
+
+.logo_type {
+  /*font-family: norwester;*/
+  /*font-family: Track;*/
+  font-family: Fairview;
+  font-size: 6em;
+  float: left;
+}
+
+.logo {
+  display: block;
+  float: left;
+  text-indent: -9999px;
+  height: 10em;
+  background: url("../images/SoapSimple.svg");
+  /*background-image: url("../images/soapBox.svg");*/
+  background-size: cover;
+  background-color: white;
+  background-repeat: no-repeat;
+}
+
+.create-new-splash-div {
+  /*margin: 0 auto;*/
+  /*height: 5%;*/
+}
+
+.new-splash-link {
+  margin: 0 auto;
+}
+.row{
+  overflow-y:visible;
+}
+ul{
+  list-style-type:none;
+
+}
+a.paulund_modal{
+  color: #476BB2;
+}
+a.paulund_modal h3{
+  transition: 0.4s all;
+}
+a.paulund_modal h3:hover{
+  transform:scale(1.05,1.05);
+
+}
+a.paulund_modal:hover{
+  color: #6699FF;
+}
+#splash_list{
+  white-space:nowrap;
+  overflow-y:visible;
+  display:inline-block;
+}
+.x-hidden{
+  margin:0px;
+  height:700px;
+  overflow-x:hidden;
+}
+#splash_list:after{
+  content:""; clear:both; display:block;
+}
+.cf{
+  content:""; clear:both; display:block;
+}
+
+.arrow_container{
+  /*padding-top:80px;*/
+  display: block;
+  float: left;
+
+}
+.arrow_container:hover{
+  color:#EC573C;
+  display: block;
+  float: left;
+}
+.splash{
+  display:inline-block;
+  width:250px;
+  height:250px;
+  font-size:20px;
+  color:white;
+  white-space: normal;
+  vertical-align: middle;
+  word-wrap: break-word;
+  border-radius:10px;
+  box-shadow:0px 0px 5px #3F3F3F;
+  padding:.5em;
+
+}
+.splash:hover {
+  opacity: 0.8;
+  border: 1px solid black;
+  cursor:pointer;
+}
+.paulund_modal_close{
+
+
+  transition: all 0.4s;
+}
+.paulund_modal_close:hover{
+  transform:scale(1.05,1.05);
+}
+
+#modal_content{
+  border-radius: 3px;
+  font-size:1.3em;
+  border:none;
+}
+#modal_content:focus{
+
+}
+
+.comment-list{
+  position:absolute;
+  top:100%;
+  display:none;
+  color:#3F3F3F;
+  text-shadow: 0px 0px 3px white;
+  padding: 0;
+}
+
+.comment-list li{
+  float:none;
+  position:relative;
+}
+/*=========== ORIGINAL CSS FOR REFERENCE JBH =====================
+/*#create_splash{
+  margin-top:15px;
+}
+
 .container {
   margin: 20px auto;
   margin-top: 10em;
@@ -21,7 +169,7 @@ a.paulund_modal h3{
 }
 a.paulund_modal h3:hover{
   transform:scale(1.2,1.2);
-  
+
 }
 a.paulund_modal:hover{
   color:orange;
@@ -101,4 +249,4 @@ a.paulund_modal:hover{
 
 #create_splash{
   margin-top:15px;
-}
+}*/
