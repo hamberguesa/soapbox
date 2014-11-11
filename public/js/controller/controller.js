@@ -1,7 +1,8 @@
 var controller = (function(){
-  var latitude;
-  var longitude;
-  var base_url = "http://soap-box-api.herokuapp.com";
+  var latitude,longitude;
+  var loggedIn = false;
+  var accessToken;
+  var base_url = "http://soap-box-api.herokuapp.com/api/v0";
 
   function getSplashes(){
     $.ajax({
@@ -25,7 +26,7 @@ var controller = (function(){
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
-
+    data.token = accessToken
     $.ajax({
       url: base_url+'/splashes',
       type: 'POST',
@@ -44,7 +45,6 @@ var controller = (function(){
   function createComment(evt){
     evt.preventDefault();
     id = $(this).parent().parent().parent()[0].id;
-    console.log($(this).parent().parent().parent())
     var data = $(this).serialize();
     $.ajax({
       url: base_url+'/splashes/'+id+'/comment',
@@ -61,7 +61,11 @@ var controller = (function(){
       $.ajax({
         url: base_url+'/splashes',
         dataType: "json",
-        data: {lat: latitude, lon: longitude}
+        data: {lat: latitude, lon: longitude},
+        headers: {"accessToken": accessToken},
+        statusCode:{
+          401: function(){console.log("SHIT!")}
+        }
       }).done(function(data){
         model.addSplashes(data);
         poll();
@@ -88,7 +92,7 @@ var controller = (function(){
     getComments();
   }
   
-  // function wordCount(){
+  function wordCount(){
   //     var text_max = 255;
   //     $('#textarea_feedback').html(test_max + ' characters remaining');
       
@@ -98,10 +102,23 @@ var controller = (function(){
         
   //       $('#textarea_feedback').html(text_remaining + ' characters remaining');
   //   });
-  // }
-  
+  }
+  function loggedInStatus(){
+    return loggedIn;
+  }
+
+  function updateLoggedInStatus(status){
+    loggedIn = status;
+  }
+
+  function checkLoggedInStatus(data){
+    if(!data.id)
+      updateLoggedInStatus(false);
+    else
+      updateLoggedInStatus(true);
+  }
   function bindEvents(){
-    if(loggedin){
+    if(loggedIn){
       buildIndexPage();
     } else {
       buildLoginPage();
@@ -115,17 +132,26 @@ var controller = (function(){
     $('body').on('submit','#create-splash-form', createSplash);
     $('.fa-chevron-right').mouseenter(view.moveRight);
     $('.fa-chevron-left').mouseenter(view.moveLeft);
+   // oauth.getLoginStatus();
+
   }
-  
-  
+
+  function storeToken(token){
+    accessToken = token;
+  }
+
   return{
     createSplash: createSplash,
     createComment: createComment,
     poll: poll,
     bindEvents: bindEvents,
     updateCoords: updateCoords,
-    wordCount: wordCount
+    wordCount: wordCount,
+    updateLoggedInStatus: updateLoggedInStatus,
+    loggedInStatus: loggedInStatus,
+    checkLoggedInStatus: checkLoggedInStatus,
+    storeToken: storeToken,
+    baseUrl: base_url
   };
 })();
 
-controller.poll();
