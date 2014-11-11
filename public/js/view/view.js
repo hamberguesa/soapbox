@@ -5,7 +5,6 @@ var view = (function(){
   var addNewSplash = function(data){
 
     model.splashTime;
-    console.log(model.time)
 
     var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: model.time });
     if($('#splash_list li.splash').length > 0)

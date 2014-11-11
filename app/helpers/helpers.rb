@@ -5,8 +5,18 @@ end
 
 def time_ago
   # this is where all the times are being set to the last splash time
-  hours = ((Time.now - Splash.last.created_at)/3600).floor
-  minutes = ((Time.now - Splash.last.created_at)/60).to_i
+  puts "*"*50
+  p @splashes.last.created_at
+  p Time.now
+  puts "~"*50
+  @splashes.each do |blargh|
+    p "blargh id:"
+    p blargh
+    p "this is the blargh"
+    p Time.now - blargh.created_at
+    p ""
+  hours = ((Time.now - blargh.created_at)/3600).floor
+  minutes = ((Time.now - blargh.created_at)/60).to_i
   if minutes == 0
     minutes += 1
   else
@@ -21,4 +31,5 @@ def time_ago
     else
       @time_created = "#{minutes} minutes ago"
     end
+  end
 end
