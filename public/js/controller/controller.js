@@ -65,7 +65,7 @@ var controller = (function(){
       }).done(function(data){
         model.addSplashes(data);
         poll();
-      })
+      });
     }, 5000);
   }
 
@@ -89,11 +89,11 @@ var controller = (function(){
   }
   
   function bindEvents(){
-    if(loggedin){
+    // if(loggedin){
       buildIndexPage();
-    } else {
-      buildLoginPage();
-    };
+    // } else {
+      // buildLoginPage();
+    // };
     
     view.addColors();
     geolocation.getLocation();
