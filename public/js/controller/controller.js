@@ -94,11 +94,11 @@ var controller = (function(){
   }
   
   function bindEvents(){
-    if(loggedin){
-      buildIndexPage();
-    } else {
+    // if(loggedin){
+    //   buildIndexPage();
+    // } else {
       buildLoginPage();
-    };
+
     
     view.addColors();
     geolocation.getLocation();
