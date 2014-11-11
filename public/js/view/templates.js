@@ -5,17 +5,9 @@ var template = (function(){
     string = compiled(params);
 		return compiled(params);
 	}
-function characterCount(element, maxCount){
-  var elementId = document.getElementById(element);
-  var charCount = document.getElementById('Char-Count')
-  for (var i = 0; i < elementId.length; i++){
-    elementId.innerText[i];
-    +charCount.innerText - [i];
-  }
-}
 
   function addModal(){
-    var compiled = _.template('<div class="paulund_modal_box"><a href="#" class="paulund_modal_close"></a><div class="paulund_inner_modal_box"><form id="create-splash-form" action="/splashes" method="post"><label for="Create-Splash">Splash!</label><br><textarea id="modal_content" rows="4" cols="30" name="content" placeholder="255 Characters or Less"></textarea><br><input type="submit" class="btn btn-success" id="create_splash"><br></form></div><p id="Char-Count">255</p></div>');
+    var compiled = _.template('<div class="paulund_modal_box"><a href="#" class="paulund_modal_close"></a><div class="paulund_inner_modal_box"><form id="create-splash-form" action="/splashes" method="post"><label for="Create-Splash">Splash!</label><br><textarea id="modal_content" rows="4" cols="30" name="content" placeholder="255 Characters or Less"></textarea><br><input type="submit" class="btn btn-success" id="create_splash"><br></form><div id="textarea_feedback"></div></div></div>');
     return compiled();
   }
 
