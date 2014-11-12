@@ -17,7 +17,7 @@ get '/' do
     @splashes = @current_user.splashes.order('created_at').reverse
     erb :index
   else
-    erb :index
+    erb :login
   end
 end
 
