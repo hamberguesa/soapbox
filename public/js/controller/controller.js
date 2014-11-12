@@ -27,7 +27,6 @@ var controller = (function(){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
     // data.user_id = localStorage.getItem("user_id")
-    data.token = accessToken
     $.ajax({
       url: base_url+'/splashes',
       type: 'POST',

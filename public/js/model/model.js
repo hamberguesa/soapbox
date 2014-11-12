@@ -17,7 +17,8 @@ var model = (function(){
                 if (initial === false && splashes_in_database[i].author_name !== $('#login_name').text())
                   view.addSplash(splashes_in_database[i]);
             }
-
+    }
+  }
   // function removeSplashes(){
   //   var now = new Date();
   // }
