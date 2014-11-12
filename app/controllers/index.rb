@@ -27,18 +27,26 @@ get '/splashes' do
   #old_splashes = UserSplash.where("created_at <= ?", Time.now - 2.hours)
   #old_splashes.each {|old| old.destroy}
   @splashes = Splash.all
+  countArr = []
+  current_user.splashes.order('created_at').each do |splash|
+    num = UserSplash.where("splash_id = #{splash.id} AND favorited = true").count
+    countArr.push(num)
+  end
+  puts countArr
   if request.xhr?
     content_type :json
-    current_user.splashes.to_json
+    {:splashes=> current_user.splashes.order('created_at'), :meta=> current_user.user_splashes.order('created_at'), :count => countArr}.to_json
   else
     redirect '/'
   end
 end
 
 get '/splashes/:id/favorite' do
-  usersplash = UserSplash.find_by(:splash_id => params[:id])
+  usersplash = UserSplash.find_by(:splash_id => params[:id], :user_id => current_user.id)
   usersplash.favorited = !usersplash.favorited
   usersplash.save!
+  content_type :json
+  usersplash.to_json
 end
 
 get '/splashes/:id/comments' do
@@ -65,7 +73,7 @@ post '/splashes' do
   current_user.splashes << splash
   if request.xhr?
     content_type :json
-    splash.to_json
+    {:splashes=> splash, :meta=> UserSplash.find_by(:splash_id => splash.id, :user_id => current_user.id)}.to_json
   else
     redirect '/'
   end
@@ -81,7 +89,6 @@ get '/auth/facebook/callback' do
   if user
     user.token = auth['credentials'].token
     user.save
-    #Update latitude and longitude
   else
     User.create(:fb_user_id => facebook_id, :token =>  auth['credentials'].token, :first_name => auth['extra']['raw_info'].first_name, :last_name => auth['extra']['raw_info'].last_name)
   end

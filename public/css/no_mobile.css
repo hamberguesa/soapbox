@@ -1,10 +1,18 @@
 .favorite{
+
+}
+
+.favorite:hover{
+  color:gold;
+}
+
+.gold{
+  color: gold;
+}
+
+.lower_corner{
   position:relative;
   bottom:0;
   top:120px;
   left:90px;
 }
-
-.favorite:hover{
-  color:gold;
-};

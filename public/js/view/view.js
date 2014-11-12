@@ -2,15 +2,13 @@ var view = (function(){
   var interval;
   var counter = 0;
 
-  var addSplash = function(data){
+  var addSplash = function(data, favorited){
     time = model.splashTime(data);
-    if(data.favorited)
+    if(favorited)
       color = "gold"
     else
-      color = "black"
-
-    console.log(data)
-    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time, color: color });
+      color = ""
+    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time, color: color, count: count });
     if($('#splash_list li.splash').length > 0)
       $('#splash_list li.splash:eq(0)').before($(compiled_html));
     else
@@ -27,7 +25,13 @@ var view = (function(){
 
   //   }
   // }
-
+  var switchFavorite = function(data){
+    console.log(data)
+    if(data.favorited === true)
+      $("#"+data.splash_id+" .favorite").addClass("gold")
+    else
+      $("#"+data.splash_id+" .favorite").removeClass("gold")
+  }
 
   var addLogin = function(){
     $('body').html(template.addLogin());
@@ -109,6 +113,7 @@ var view = (function(){
     addHeader: addHeader,
     addLogin: addLogin,
     addSplashContainer: addSplashContainer,
-    addCreateSplashButton: addCreateSplashButton
+    addCreateSplashButton: addCreateSplashButton,
+    switchFavorite: switchFavorite
   };
 })();
