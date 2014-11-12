@@ -1,5 +1,3 @@
-
-
 @font-face {
   font-family: "norwester";
   src: url("../images/norwester.otf") format("opentype");
@@ -20,9 +18,6 @@
 
 .bgrnd {
   height: 19em;
-  /*width: 120%;*/
-  /*position: relative;*/
-  /*left: -10%;*/
 }
 
 body {
@@ -35,15 +30,11 @@ body {
 }
 
 .logo_type {
-  /*font-family: norwester;*/
-  /*font-family: Track;*/
   margin-left: 0.1em;
   font-family: Fairview;
   font-size: 4em;
   float: left;
   display: block;
-  /*color: #00ADFF;*/
-  /*color: #FF8C40; */
   color: white;
 }
 
@@ -71,6 +62,7 @@ body {
 .row{
   overflow-y:visible;
 }
+
 ul{
   list-style-type:none;
 
