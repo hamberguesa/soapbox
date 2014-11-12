@@ -28,7 +28,9 @@ var model = (function(){
       }
     }
 
-    total_favs; = user_splashes.total_favs
+    total_favs = user_splashes.total_favs
+    view.addScore(total_favs)
+    console.log(total_favs)
   }
 
   function splashTime(data){

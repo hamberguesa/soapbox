@@ -39,7 +39,10 @@ var template = (function(){
     return compiled();
   }
 
-
+  function addScore(params){
+    var compiled = _.template('<div class="score"><h4><%=score%></h4></div>');
+    return compiled(params);
+  }
 
 	return {
 		addSplash: addSplash,
@@ -48,6 +51,7 @@ var template = (function(){
     addHeader: addHeader,
     addLogin: addLogin,
     addSplashContainer: addSplashContainer,
-    addCreateSplashButton: addCreateSplashButton
+    addCreateSplashButton: addCreateSplashButton,
+    addScore: addScore
   };
 })();
