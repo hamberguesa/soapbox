@@ -2,24 +2,8 @@ var view = (function(){
   var interval;
   var counter = 0;
 
-  var addNewSplash = function(data){
-    var timeCreatedAt = Date.parse(data.created_at);
-    var timeNow = new Date();
-    var timeDifference = timeNow - timeCreatedAt;
-    
-    var hours = Math.floor(timeDifference/3600);
-    var minutes = Math.floor(timeDifference/60);
-    if (minutes === 0){
-      minutes += 1
-    }
-    if (hours > 0){
-      time = hours + " and " + minutes + " ago ";
-    }
-    if (minutes < 2){
-      time = minutes + " minute ago ";
-    } else {
-      time = minutes + " minutes ago ";
-    }
+  var addSplash = function(data){
+    model.splashTime;
     
     
     var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time });
@@ -27,7 +11,7 @@ var view = (function(){
       $('#splash_list li.splash:eq(0)').before($(compiled_html));
     else
       $('#splash_list').append($(compiled_html));
-    $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());
+    // $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());
 
   };
 
@@ -40,7 +24,23 @@ var view = (function(){
 
   //   }
   // }
+  
+  var addLogin = function(){
+    $('body').html(template.addLogin());
+  };
 
+  var addHeader = function(){
+    $('body').html(template.addHeader());
+  };
+
+  var addCreateSplashButton = function(){
+    (template.addCreateSplashButton()).before( $('.container') );
+  };
+
+  var addSplashContainer = function(){
+     (template.addSplashContainer()).after( $('nav') );
+  };
+  
   var showComments = function(id){
     $('#comment-'+ id).slideToggle();
   };
@@ -50,28 +50,28 @@ var view = (function(){
     var compiled_html = template.addComment({name: data["author_name"], content: commentContent});
     $('#comment-'+data["splash_id"]).append(compiled_html);
   };
-
+  
   var stop = function(){
-    clearInterval(interval)
-  }
+    clearInterval(interval);
+  };
 
   var addColors = function(){
-      $('#splash_list .splash').each(function(index,element)
-      {
-        $(element).css('background-color',Please.make_color())
-      });
-  }
+      // $('#splash_list .splash').each(function(index,element)
+      // {
+      //   $(element).css('background-color',Please.make_color());
+      // });
+  };
 
   var moveRight = function(data){
     $('.fa-chevron-right').mouseleave(stop);
     interval = setInterval(function(){
       if(parseInt($("#splash_list").css("right")) > ($("#splash_list .splash").length-3) * $(".splash").width())
       return
-      $("#splash_list").css("right",counter + "px")
+      $("#splash_list").css("right",counter + "px");
       counter += 10;
 
     },50);
-  }
+  };
 
   var moveLeft = function(data){
     $('.fa-chevron-left').mouseleave(stop);
@@ -80,17 +80,21 @@ var view = (function(){
     console.log($("#splash_list").css("right"));
      if(parseInt($("#splash_list").css("right")) < 0 )
       return;
-      $("#splash_list").css("right", counter + "px")
+      $("#splash_list").css("right", counter + "px");
       counter -= 10;
     },50);
-  }
+  };
 
   return{
     showComments: showComments,
-    addNewSplash: addNewSplash,
+    addSplash: addSplash,
     addNewComment: addNewComment,
     moveRight: moveRight,
     moveLeft: moveLeft,
-    addColors: addColors
+    addColors: addColors,
+    addHeader: addHeader,
+    addLogin: addLogin,
+    addSplashContainer: addSplashContainer,
+    addCreateSplashButton: addCreateSplashButton
   };
 })();
