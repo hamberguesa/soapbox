@@ -90,6 +90,6 @@
 
 })(jQuery);
 
-$(document).ready(function(){
-  $('.paulund_modal').paulund_modal_box();
-});
+// $(document).ready(function(){
+//   $('.paulund_modal').paulund_modal_box();
+// });

@@ -3,8 +3,8 @@ var controller = (function(){
   var loggedIn = false;
   var accessToken;
   var header = "";
-  var base_url = "http://soap-box-api.herokuapp.com/api/v0";
-
+  //var base_url = "http://soap-box-api.herokuapp.com/api/v0";
+  var base_url = "http://soap-box-api.herokuapp.com/api/v0"
   function getSplashes(){
       geolocation.getLocation();
 
@@ -14,7 +14,10 @@ var controller = (function(){
       statusCode:{
           401: function(){console.log("No good!")}
         },
-      data: {lat: latitude, lon: longitude, user_id: localStorage.getItem("user_id")}
+      data: {lat: latitude, lon: longitude}
+
+
+        // user_id: localStorage.getItem("user_id")}
     }).done(model.addSplashes);
   }
 
@@ -25,8 +28,8 @@ var controller = (function(){
       id = splashesArr[i]
     $.ajax({
       url: base_url+'splashes/'+id+'/comments',
-      type: 'GET',
-      data: {user_id: localStorage.getItem("user_id")}
+      type: 'GET'
+      // data: {user_id: localStorage.getItem("user_id")}
     }).done(view.addComment);
     }
   }
@@ -34,7 +37,7 @@ var controller = (function(){
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
-    data.user_id = localStorage.getItem("user_id")
+    // data.user_id = localStorage.getItem("user_id")
     data.token = accessToken
     $.ajax({
       url: base_url+'/splashes',
@@ -55,7 +58,7 @@ var controller = (function(){
     evt.preventDefault();
     id = $(this).parent().parent().parent()[0].id;
     var data = $(this).serialize();
-    data.user_id = localStorage.getItem("user_id")
+    // data.user_id = localStorage.getItem("user_id")
     $.ajax({
       url: base_url+'/splashes/'+id+'/comment',
       type: 'POST',
@@ -71,7 +74,9 @@ var controller = (function(){
       $.ajax({
         url: base_url+'/splashes',
         dataType: "json",
-        data: {lat: latitude, lon: longitude, user_id: localStorage.getItem("user_id")},
+        data: {lat: latitude, lon: longitude},
+
+          // user_id: localStorage.getItem("user_id")},
         statusCode:{
           401: function(){}
         },
@@ -99,6 +104,7 @@ var controller = (function(){
     getSplashes();
     // same for comments ('createComment')
     getComments();
+    $('.paulund_modal').paulund_modal_box();
   }
 
   function wordCount(){
@@ -121,11 +127,11 @@ var controller = (function(){
   }
 
   function bindEvents(){
-    // if(localStorage.getItem("user_id")){
-    //   buildIndexPage();
-    // } else {
+    if(localStorage.getItem("loggedIn")){
+      buildIndexPage();
+    } else {
       buildLoginPage();
-    // };
+    };
     view.addColors();
     geolocation.getLocation();
     // $('document').ready('wordCount')
