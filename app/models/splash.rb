@@ -11,6 +11,7 @@ class Splash < ActiveRecord::Base
 	validates :content, presence: true, length: {maximum: 255}, allow_blank: false
 
 	validates :content, presence: true, length: {maximum: 255}, allow_blank: false
+
 private
 
 	def inherit_from_author
@@ -37,7 +38,7 @@ private
 				# && ( (acos(sin(lat1) * sin("latitude") + cos(lat1) * cos("latitude") * cos("#{lon1} - longitude")) * 6371 >= distance_km)))
 		end
 		if splash_pool
-			splash_pool.each do |match| 
+			splash_pool.each do |match|
 				match.splashes << self
 			end
 

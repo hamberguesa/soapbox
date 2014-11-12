@@ -117,3 +117,8 @@ a.paulund_modal:hover{
 #create_splash{
   margin-top:15px;
 }
+
+#textarea_feedback{
+  min-height: 20px;
+  min-width: 20px;
+}

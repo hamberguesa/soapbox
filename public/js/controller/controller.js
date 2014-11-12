@@ -72,7 +72,7 @@ var controller = (function(){
         model.addSplashes(data);
         poll();
       });
-    }, 5000);
+    }, 50000);
   }
 
   function updateCoords(lat, lon){
@@ -96,15 +96,14 @@ var controller = (function(){
   }
 
   function wordCount(){
-    //   var text_max = 255;
-    //   $('#textarea_feedback').html(test_max + ' characters remaining');
+    var text_max = 255;
+    $('#textarea_feedback').text(text_max + ' characters remaining');
 
-    //   $('#modal_content').keyup(function() {
-    //     var text_length = $('#modal_content').val().length;
-    //     var text_remaining = text_max - text_length;
-
-    //     $('#textarea_feedback').html(text_remaining + ' characters remaining');
-    // });
+    $('body').keyup('#modal_content',function() {
+        var text_length = $('#modal_content').val().length;
+        var text_remaining = text_max - text_length;
+        $('#textarea_feedback').text(text_remaining + ' characters remaining');
+    });
   }
 
   function bindEvents(){
