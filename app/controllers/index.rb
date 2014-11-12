@@ -24,8 +24,8 @@ get '/splashes' do
     @current_user.longitude = params[:lon]
     @current_user.save!
   end
-  old_splashes = Splash.where("created_at <= ?", Time.now - 2.hours)
-  old_splashes.each {|old| old.destroy}
+  #old_splashes = UserSplash.where("created_at <= ?", Time.now - 2.hours)
+  #old_splashes.each {|old| old.destroy}
   @splashes = Splash.all
   if request.xhr?
     content_type :json
@@ -33,6 +33,12 @@ get '/splashes' do
   else
     redirect '/'
   end
+end
+
+get '/splashes/:id/favorite' do
+  usersplash = UserSplash.find_by(:splash_id => params[:id])
+  usersplash.favorited = !usersplash.favorited
+  usersplash.save!
 end
 
 get '/splashes/:id/comments' do

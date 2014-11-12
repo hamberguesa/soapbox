@@ -3,6 +3,7 @@ var model = (function(){
   var splashesArray = [];
   var indexArray = [];
   function addSplashes(splashes_in_database){
+    console.log(splashes_in_database)
 
     // Compare existing splashesArray to the splashes list given
     // If any new spashes, then add new splashes to splashesArray and return them
@@ -26,11 +27,6 @@ var model = (function(){
 
   function splashTime(data){
     time = moment(data.created_at).fromNow()
-    console.log(data)
-    console.log(moment(data.created_at))
-    console.log(moment(data.created_at).fromNow());
-    //console.log(moment(data.created_at, moment.ISO_8601))
-
     return time
   }
 

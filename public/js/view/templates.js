@@ -2,7 +2,7 @@ var template = (function(){
 
 
 	function addSplash(params){
-		var compiled = _.template('<li id="<%= id %>" class="splash inline-list"><div id="splash-created-on"><%= time %></div><%= name %><br><%= content %></p><ul id="comment-<%=id%>" class="comment-list"><li><form action="/splashes/<%=id%>/comment" method="post" class="submit_comment" id="submit_comment-<%=id%>"><input type="textarea" rows="4" cols="10" placeholder="Reply" name="content"></form></li><li role="presentation" class="divider"></li></ul></li>');
+		var compiled = _.template('<li id="<%= id %>" class="splash inline-list"><div id="splash-created-on"><%= time %></div><%= name %><br><%= content %></p><i class="fa fa-star-o favorite" style="color:<%= color %>" ></i><ul id="comment-<%=id%>" class="comment-list"><li><form action="/splashes/<%=id%>/comment" method="post" class="submit_comment" id="submit_comment-<%=id%>"><input type="textarea" rows="4" cols="10" placeholder="Reply" name="content"></form></li><li role="presentation" class="divider"></li></ul></li>');
     string = compiled(params);
 		return compiled(params);
 	}
