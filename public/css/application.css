@@ -26,16 +26,26 @@ a.paulund_modal h3{
 }
 a.paulund_modal h3:hover{
   transform:scale(1.2,1.2);
-  
+
 }
 a.paulund_modal:hover{
   color:orange;
 }
+
+#splash-count{
+  position: absolute;
+  bottom: 0;
+  font-size: 15px;
+  padding-bottom: 10px;
+
+}
+
 #splash_list{
   white-space:nowrap;
   overflow-y:visible;
   display:inline-block;
 }
+
 .x-hidden{
   margin:0px;
   height:700px;
