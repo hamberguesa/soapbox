@@ -32,9 +32,9 @@ get '/splashes' do
     num = UserSplash.where("splash_id = #{splash.id} AND favorited = true").count
     countArr.push(num)
   end
-  total_favs = 0
+   total_favs = 0
   current_user.splashes_created.each do |splash|
-    total_favs += UserSplash.where("splash_id = #{splash.id} AND favorited = true")
+    total_favs = total_favs + UserSplash.where("splash_id = #{splash.id} AND favorited = true").count
   end
   if request.xhr?
     content_type :json

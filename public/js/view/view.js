@@ -31,12 +31,16 @@ var view = (function(){
       $("#"+data.splash_id+" .favorite").addClass("gold")
       curr = parseInt($('#'+data.splash_id +" .number").text())
       $('#'+data.splash_id +" .number").text(curr+1)
+      val = $(".score").text()
+      $(".score").text(parseInt(val)+1)
     }
     else
     {
       $("#"+data.splash_id+" .favorite").removeClass("gold")
       curr = parseInt($('#'+data.splash_id +" .number").text())
       $('#'+data.splash_id +" .number").text(curr-1)
+      val = $(".score").text()
+      $(".score").text(parseInt(val) - 1)
     }
   }
 
@@ -66,6 +70,13 @@ var view = (function(){
     var compiled_html = template.addComment({name: data["author_name"], content: commentContent});
     $('#comment-'+data["splash_id"]).append(compiled_html);
   };
+
+  var addScore = function(score){
+    if ($(".score").length === 0)
+      $("nav").after($(template.addScore({score: score})))
+    else
+      $(".score").text(score)
+  }
 
   var addHeader = function(){
     $('body').html(template.addHeader());
@@ -121,6 +132,7 @@ var view = (function(){
     addLogin: addLogin,
     addSplashContainer: addSplashContainer,
     addCreateSplashButton: addCreateSplashButton,
-    switchFavorite: switchFavorite
+    switchFavorite: switchFavorite,
+    addScore: addScore
   };
 })();
