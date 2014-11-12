@@ -6,19 +6,18 @@
     <h3 class="logo_type">SoapBox</h3>
   </div>
 
-
-
   <% if current_user %>
-  <div class="col-md-3 .col-md-offset-3"></div>
-    <ul>
-      <li class="logged-in-as" id="login_name">Logged in as: <%= @current_user.first_name %> <%= @current_user.last_name %></li>
-      <li><a class="logout" href='/logout'>Logout</a></li>
-    </ul>
+    <div class="col-md-4 col-md-offset-2">
+      <ul>
+        <li class="logged-in-as" id="login_name">Logged in as: <%= @current_user.first_name %> <%= @current_user.last_name %></li>
+        <li><a class="logout" href='/logout'>Logout</a></li>
+      </ul>
+    </div>
   <% end %>
-  </div>
-  <br>
+
 </nav>
 
+<!-- Updated upstream -->
 
 <div class="container">
   <div class="row">
@@ -59,13 +58,60 @@
                 <% end %>
               </ul>
             </li>
-            <% end %>
-          </ul>
-        </div>
-      <!-- </div> -->
+<!-- ==== 'GIT MERGE THING' === -->
+<!-- End Black Nav Header -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <a href="#" class="paulund_modal"><h3 class="new-splash-link">New Splash</h3>
+      </a>
     </div>
-  </div>
-</div>
+  </div> <!-- Close Row -->
+</div><!--  Close Container -->
+
+<!-- <div class="container"> -->
+  <!-- <div class="row"> -->
+
+<!-- SplashList Wrapper -->
+    <!-- <div class="col-md-10"> -->
+      <div id="slideshow">
+        <div id="slidesContainer">
+<!-- Begin Splash List -->
+ <% @splashes.each do |splash| %>
+              <div id="splash_list" class="slide" >
+                <div id="<%= splash.id %>" class="slide inline-list">
+                  <% author = User.find(splash.author_id) %><div id="splash-created-on"><%= time_ago %></div><%= author.first_name %> <%= author.last_name %><br>
+                  <%= splash.content %>
+                  <!-- Begin Comment List -->
+                  <ul id="comment-<%=splash.id%>" class="comment-list">
+                    <li>
+                      <form action='/splashes/<%=splash.id%>/comment' method='post' class="submit_comment" id="submit-comment-<%=splash.id%>">
+                        <input type='textarea' rows="4" cols="10" placeholder='Reply' name="content">
+                      </form>
+                    </li>
+                    <li role="presentation" class="divider"></li>
+                    <% splash.comments.each do |comment| %>
+                    <% user = User.find(comment.user_id) %>
+                    <li role="presentation"><p><%= comment.user.first_name %> <%= comment.user.last_name %></li>
+                    <li role="presentation"><%= comment.content %></li></p>
+                    <% end %>
+                  </ul> <!-- End Comment List -->
+                </div>
+              </div> <!-- End Slide -->
+<!-- Stashed 'OTHER GIT MERGE THING' changes -->
+            <% end %>
+<!-- End Splash List -->
+        </div> <!-- End slidesContainer -->
+      </div> <!-- End #slideshow -->
+    <!-- </div> End col-md-10 -->
+<!-- SplashList Wrapper -->
+
+
+  <!-- </div> Close Row -->
+<!-- </div> Close Container -->
+
+
 <div class="container-fluid">
   <div class="row">
     <div class="wild_card col-lg-12">
@@ -79,7 +125,7 @@
     <div class="container">
       <div class="col-lg-12">
         <div class="row">
-          // ©2014 Soapbox Limited // Jobs // Privacy // Press // Terms
+          //   ©2014 Soapbox Limited   //   Jobs   //   Privacy   //   Press   //   Terms   //
         </div>
       </div>
     </div>

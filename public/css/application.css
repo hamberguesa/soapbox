@@ -1,4 +1,6 @@
-
+* {
+  border: 1px red dotted !important;
+}
 
 @font-face {
   font-family: "norwester";
@@ -17,6 +19,30 @@
   z-index: -1111;
   /*background-color: pink;*/
 }
+/**
+ * Slideshow controls style rules.
+ */
+.control {
+  display:block;
+  width:39px;
+  height:263px;
+  text-indent:-10000px;
+  position:absolute;
+  cursor: pointer;
+}
+#leftControl {
+  /*top: 14em;*/
+  /*left: -5em;*/
+  background:transparent url(../images/control_left.png) no-repeat 0 0;
+  background-size: 100%;
+}
+#rightControl {
+  top: 14em;
+  right: 5em;
+  background:transparent url(../images/control_left.png) no-repeat 0 0;
+  background-size: 100%;
+}
+/*End of Slideshow Controls*/
 
 .bgrnd {
   height: 19em;
@@ -64,6 +90,19 @@ body {
   /*margin: 0 auto;*/
   /*height: 5%;*/
 }
+#slideshow #slidesContainer {
+  margin: 0 auto;
+  width:51em;
+  height: 30em;
+  overflow:auto; /* allow scrollbar */
+  position:relative;
+}
+
+#slideshow #slidesContainer .slide {
+  margin:0 auto;
+  width: 500px; /* reduce by 20 pixels to avoid horizontal scroll */
+  height: 240px;
+}
 
 .new-splash-link {
   margin: 0 auto;
@@ -86,6 +125,7 @@ a.paulund_modal h3:hover{
 }
 a.paulund_modal:hover{
   color: #6699FF;
+  background-color: black;
 }
 #splash_list{
   white-space:nowrap;
@@ -123,6 +163,7 @@ a.paulund_modal:hover{
   display:inline-block;
   width: 18em;
   height: 18em;
+  height:200px;
   font-size: 1.2em;
   color:white;
   white-space: normal;

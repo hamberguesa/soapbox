@@ -1,7 +1,4 @@
-* {
-  /*border: 1px red dotted !important;*/
-    /*background-color: #3D7999;*/
-}
+
 
 @font-face {
   font-family: "norwester";
@@ -60,11 +57,6 @@ body{
   font-style: italic;
   color:black;
 }
-/*body {
-  background-image:url(../images/golden-gate-2.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}*/
 
 #jumbotron-index {
   width: 100%;

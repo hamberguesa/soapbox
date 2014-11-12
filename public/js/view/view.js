@@ -6,7 +6,7 @@ var view = (function(){
     var timeCreatedAt = Date.parse(data.created_at);
     var timeNow = new Date();
     var timeDifference = timeNow - timeCreatedAt;
-    
+
     var hours = Math.floor(timeDifference/3600);
     var minutes = Math.floor(timeDifference/60);
     if (minutes === 0){
@@ -20,14 +20,17 @@ var view = (function(){
     } else {
       time = minutes + " minutes ago ";
     }
-    
-    
+
+
     var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time });
-    if($('#splash_list li.splash').length > 0)
-      $('#splash_list li.splash:eq(0)').before($(compiled_html));
+    if($('#splash_list div.slide').length > 0)
+      $('#splash_list div.slide:eq(0)').before($(compiled_html));
     else
       $('#splash_list').append($(compiled_html));
-    $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());
+    $('#splash_list div.slide:eq(0)').css("background-color",Please.make_color({
+  greyscale: true, //for the brits
+  grayscale: true  //for the yanks
+}));
 
   };
 
@@ -89,8 +92,8 @@ var view = (function(){
     showComments: showComments,
     addNewSplash: addNewSplash,
     addNewComment: addNewComment,
-    moveRight: moveRight,
-    moveLeft: moveLeft,
+    // moveRight: moveRight,
+    // moveLeft: moveLeft,
     addColors: addColors
   };
 })();
