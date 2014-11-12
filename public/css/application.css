@@ -27,7 +27,7 @@ a.paulund_modal:hover{
   color:orange;
 }
 
-.splash-count{
+#splash-count{
   position: absolute;
   bottom: 0;
   font-size: 15px;

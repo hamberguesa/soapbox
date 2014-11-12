@@ -25,7 +25,7 @@
         <li id="<%= splash.id %>" class="splash inline-list">
           <% author = User.find(splash.author_id) %><div id="splash-created-on"><%= time_ago %></div><%= author.first_name %> <%= author.last_name %><br>
           <%= splash.content %> <br>
-          <div class="splash-count">
+          <div id="splash-count">
             Comments: <%= splash.comments.length %>
           </div>
           <!-- Begin Comment List -->
