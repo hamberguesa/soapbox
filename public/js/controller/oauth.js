@@ -8,6 +8,7 @@ window.fbAsyncInit = function() {
     });
 };
 
+
 // Load the SDK asynchronously
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -59,18 +60,12 @@ var oauth = (function(){
     return data
   }
 
-  function logout(){
-    localStorage.setItem("user_id", "");
-    FB.logout();
-    loggedOut();
 
-  }
 
   function loggedOut(){
-    console.log("change login")
     controller.updateLoggedInStatus(true);
     controller.buildLoginPage();
-    $('#logout').text("login");
+    $('#logout').text("Login with Facebook");
     $('#logout').attr("onclick","oauth.login();");
   }
 
@@ -82,6 +77,14 @@ var oauth = (function(){
     controller.poll();
     $('#logout').text("logout");
     $('#logout').attr("onclick","oauth.logout();");
+  }
+
+  function logout(){
+    localStorage.setItem("user_id", "");
+    FB.logout(function(response) {
+      // user is now logged out
+      loggedOut();
+    });
   }
 
   function getLoginStatus(){
@@ -114,3 +117,4 @@ var oauth = (function(){
 
   }
 })();
+
