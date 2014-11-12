@@ -4,7 +4,13 @@ var view = (function(){
 
   var addSplash = function(data){
     time = model.splashTime(data);
-    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time });
+    if(data.favorited)
+      color = "gold"
+    else
+      color = "black"
+
+    console.log(data)
+    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time, color: color });
     if($('#splash_list li.splash').length > 0)
       $('#splash_list li.splash:eq(0)').before($(compiled_html));
     else

@@ -106,6 +106,16 @@ var controller = (function(){
     });
   }
 
+  function switchFavorite(data){
+    id = $(this).parent().attr("id")
+    //id = this.parent().parent().id
+    //console.log(id)
+    $.ajax({
+      url: '/splashes/'+id+'/favorite'
+    })
+  }
+
+
   function bindEvents(){
    if($('#indexpage').length === 1){
       buildIndexPage();
@@ -117,6 +127,7 @@ var controller = (function(){
     view.addColors();
     geolocation.getLocation();
     // $('document').ready('wordCount')
+    $('body').on('click','.favorite', switchFavorite)
     $('body').on('submit', '.submit_comment', createComment);
     $('body').on('click','.splash', showComments);
     $('body').on('submit','#create-splash-form', createSplash);
@@ -133,7 +144,8 @@ var controller = (function(){
     poll: poll,
     bindEvents: bindEvents,
     updateCoords: updateCoords,
-    wordCount: wordCount
+    wordCount: wordCount,
+    switchFavorite: switchFavorite
   };
 })();
 

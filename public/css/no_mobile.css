@@ -1,0 +1,10 @@
+.favorite{
+  position:relative;
+  bottom:0;
+  top:120px;
+  left:90px;
+}
+
+.favorite:hover{
+  color:gold;
+};
