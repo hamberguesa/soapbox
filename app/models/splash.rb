@@ -8,8 +8,11 @@ class Splash < ActiveRecord::Base
 	before_save :inherit_from_author
 
 	after_save :populate_splashes
+	validates :content, presence: true, length: {maximum: 255}, allow_blank: false
 
-	private
+	validates :content, presence: true, length: {maximum: 255}, allow_blank: false
+private
+
 	def inherit_from_author
 	 	if self.author
 	 		self.latitude = self.author.latitude
@@ -20,7 +23,7 @@ class Splash < ActiveRecord::Base
 
 	# Will check to see if coords are within bounding box && then 1 block (100m) radius for every splash, pushing selections to matched users
 	def populate_splashes
-		distance_km = 0.1 # Normal setting: 0.1. Change this value to change soapbox radius (in kilometers)
+		distance_km = 10 # Normal setting: 0.1. Change this value to change soapbox radius (in kilometers)
 		if self.latitude && self.longitude
 			bounds = find_bounding_coordinates(self.latitude, self.longitude, distance_km)
 		end
@@ -34,7 +37,10 @@ class Splash < ActiveRecord::Base
 				# && ( (acos(sin(lat1) * sin("latitude") + cos(lat1) * cos("latitude") * cos("#{lon1} - longitude")) * 6371 >= distance_km)))
 		end
 		if splash_pool
-			splash_pool.each {|match| match.splashes << self}
+			splash_pool.each do |match| 
+				match.splashes << self
+			end
+
 		end
 	end
 
