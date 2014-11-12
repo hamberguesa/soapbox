@@ -11,12 +11,13 @@ REDIRECT_URI = 'http://localhost:9393'
 get '/' do
   p "*" * 80
   p current_user
+  p session
   p "*" * 80
   if current_user
     @splashes = @current_user.splashes.order('created_at').reverse
-    erb :layout
+    erb :index
   else
-    erb :layout
+    erb :index
   end
 end
 
@@ -95,4 +96,12 @@ get '/logout' do
   session[:user_id] = nil
   redirect '/'
 end
+
+# 1130pm signin status: 
+# current user: nil
+# session: {"session_id"=>"be49b2925e6ab5666ecf5bbb6d6dd4623474aa0048ec8c3313b3ec752088d372", "tracking"=>{"HTTP_USER_AGENT"=>"7be1a42d74a413474898ddb9adfef9a5a84719e3", "HTTP_ACCEPT_ENCODING"=>"ed2b3ca90a4e723402367a1d17c8b28392842398", "HTTP_ACCEPT_LANGUAGE"=>"66eae971492938c2dcc2fb1ddc8d7ec3196037da"}, "csrf"=>"e7b89ace610c7c7b1d3b56b6bd27aaed"}
+# "********************************************************************************"
+# ERROR:
+# I, [2014-11-11T23:17:54.890283 #22108]  INFO -- omniauth: (facebook) Callback phase initiated.
+# E, [2014-11-11T23:17:54.890619 #22108] ERROR -- omniauth: (facebook) Authentication failure! no_authorization_code: OmniAuth::Strategies::Facebook::NoAuthorizationCodeError, must pass either a `code` (via URL or by an `fbsr_XXX` signed request cookie)
 

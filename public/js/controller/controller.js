@@ -103,11 +103,11 @@ var controller = (function(){
   // }
   
   function bindEvents(){
-    // if(current_user){
+    if(current_user){
       buildIndexPage();
-    // } else {
-      // buildLoginPage();
-    // };
+    } else {
+      buildLoginPage();
+    };
     
     view.addColors();
     geolocation.getLocation();

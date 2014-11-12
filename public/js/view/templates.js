@@ -32,9 +32,9 @@ function characterCount(element, maxCount){
   
   // current user not feeding through 
   function addHeader(){
-    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3></nav>'); 
-      // <% if (current_user) { %><div class="logout"><a href="/logout">Logout</a></div><div class="logged-in-as">Logged in as: <span id="login_name"><%= @current_user.first_name %> <%= @current_user.last_name %></span></div><% } %> </nav>');
-    return compiled();
+    // var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3></nav>'); 
+    //   // <% if (current_user) { %><div class="logout"><a href="/logout">Logout</a></div><div class="logged-in-as">Logged in as: <span id="login_name"><%= @current_user.first_name %> <%= @current_user.last_name %></span></div><% } %> </nav>');
+    // return compiled();
   }
   
   function addSplashContainer(){
