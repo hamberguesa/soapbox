@@ -18,13 +18,13 @@ var template = (function(){
   }
 
   function addLogin(){
-    var compiled = _.template('<div class="container-fluid"><div class="jumbotron" id="jumbotron"><h1>SoapBox</h1><p>Connect with people in your area</p><button id="logout" onclick="oauth.login();" type="button" class="btn btn-primary btn-lg">Login With Facebook</button><br></div></div>');
+    var compiled = _.template('<div class="container-fluid"><div class="jumbotron" id="jumbotron"><h1>SoapBox</h1><p>Connect with people in your area</p><a href="http://soap-box-api.herokuapp.com/auth/facebook" onclick="oauth.login();"><button id="logout"  type="button" class="btn btn-primary btn-lg">Login With Facebook</button></a><br></div></div>');
     return compiled();
   }
 
   // this shit doesn't work
   function addHeader(){
-    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3><% if (localStorage.getItem("user_id")) { %><div class="logout"><button onclick="oauth.logout();">Logout</button></div><div class="logged-in-as">Logged in as: </span></div><% } %> </nav>')
+    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3><% if (localStorage.getItem("loggedIn")) { %><div class="logout"><button onclick="oauth.logout();">Logout</button></div><div class="logged-in-as">Logged in as: </span></div><% } %> </nav>')
 
       // <span id="login_name"><%= @current_user.first_name %> <%= @current_user.last_name %>
 

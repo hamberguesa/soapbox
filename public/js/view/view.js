@@ -5,29 +5,7 @@ var view = (function(){
   var addSplash = function(data){
 
     model.splashTime;
-
-
-    var timeCreatedAt = Date.parse(data.created_at);
-    var newDate = new Date();
-    var timeNow = Date.parse(newDate);
-
-    var timeDifference = (timeNow - timeCreatedAt)/1000;
-
-    var hours = Math.floor(timeDifference/3600);
-    var minutes = Math.floor(timeDifference/60);
-    if (minutes === 0){
-      minutes += 1;
-    }
-    if (hours > 0){
-      var newMinutes = minutes - hours * 60;
-      time = hours + " and " + newMinutes + " ago ";
-    }
-    if (minutes < 2){
-      time = minutes + " minute ago ";
-    } else {
-      time = minutes + " minutes ago ";
-    }
-
+    console.log(data)
 
     var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time });
     if($('#splash_list li.splash').length > 0)
@@ -91,7 +69,7 @@ var view = (function(){
   };
 
   var addHeader = function(){
-    $('body').append(template.addHeader());
+    $('body').html(template.addHeader());
     // $('.container').before(template.addHeader());
   };
 
