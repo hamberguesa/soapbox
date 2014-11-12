@@ -15,7 +15,7 @@ var model = (function(){
                 if (initial === false && splashes_in_database[i].author_name !== $('#login_name').text())
                   view.addSplash(splashes_in_database[i]);
             }
-        
+
     }
   }
 
@@ -44,6 +44,7 @@ var model = (function(){
     } else {
       time = minutes + " minutes ago ";
     }
+    return time
   }
 
   function getSplashes() {
@@ -53,7 +54,7 @@ var model = (function(){
   return{
     // removeSplashes: removeSplashes,
     addSplashes: addSplashes,
-    getSplashes: getSplashes, 
+    getSplashes: getSplashes,
     splashTime: splashTime
   };
 })();

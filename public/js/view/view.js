@@ -3,9 +3,9 @@ var view = (function(){
   var counter = 0;
 
   var addSplash = function(data){
-    model.splashTime;
-    
-    
+    time = model.splashTime;
+
+
     var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time });
     if($('#splash_list li.splash').length > 0)
       $('#splash_list li.splash:eq(0)').before($(compiled_html));
@@ -24,7 +24,7 @@ var view = (function(){
 
   //   }
   // }
-  
+
   var addLogin = function(){
     $('body').html(template.addLogin());
   };
@@ -33,24 +33,28 @@ var view = (function(){
     $('body').html(template.addHeader());
   };
 
-  var addCreateSplashButton = function(){
-    (template.addCreateSplashButton()).before( $('.container') );
-  };
+
 
   var addSplashContainer = function(){
-     (template.addSplashContainer()).after( $('nav') );
+     // ($(template.addSplashContainer())).after( $('nav') );
+     $('body').append(template.addSplashContainer());
   };
-  
+
+
+  var addCreateSplashButton = function(){
+    $('body').append(template.addCreateSplashButton());
+  };
+
   var showComments = function(id){
     $('#comment-'+ id).slideToggle();
   };
 
-  var addNewComment = function(data){
+  var addComment = function(data){
     var commentContent = data["content"];
     var compiled_html = template.addComment({name: data["author_name"], content: commentContent});
     $('#comment-'+data["splash_id"]).append(compiled_html);
   };
-  
+
   var stop = function(){
     clearInterval(interval);
   };
@@ -88,7 +92,7 @@ var view = (function(){
   return{
     showComments: showComments,
     addSplash: addSplash,
-    addNewComment: addNewComment,
+    addComment: addComment,
     moveRight: moveRight,
     moveLeft: moveLeft,
     addColors: addColors,
