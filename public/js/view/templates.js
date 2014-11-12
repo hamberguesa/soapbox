@@ -1,5 +1,6 @@
 var template = (function(){
 
+
 	function addSplash(params){
 		var compiled = _.template('<li id="<%= id %>" class="splash inline-list"><div id="splash-created-on"></div><%= name %><br><%= content %></p><ul id="comment-<%=id%>" class="comment-list"><li><form action="/splashes/<%=id%>/comment" method="post" class="submit_comment" id="submit_comment-<%=id%>"><input type="textarea" rows="4" cols="10" placeholder="Reply" name="content"></form></li><li role="presentation" class="divider"></li></ul></li>');
     string = compiled(params);
@@ -18,18 +19,13 @@ var template = (function(){
   }
 
   function addLogin(){
-    var compiled = _.template('<div class="container-fluid"><div class="jumbotron" id="jumbotron"><h1>SoapBox</h1><p>Connect with people in your area</p><a href="http://soap-box-api.herokuapp.com/auth/facebook" onclick="oauth.login();"><button id="logout"  type="button" class="btn btn-primary btn-lg">Login With Facebook</button></a><br></div></div>');
+    var compiled = _.template('<div class="container-fluid"><div class="jumbotron" id="jumbotron"><h1>SoapBox</h1><p>Connect with people in your area</p><a href="/auth/facebook"><button type="button" class="btn btn-primary btn-lg">Login With Facebook</button></a><br></div></div>');
     return compiled();
   }
 
-  // this shit doesn't work
+  // current user not feeding through
   function addHeader(){
-    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3><% if (localStorage.getItem("loggedIn")) { %><div class="logout"><button onclick="oauth.logout();">Logout</button></div><div class="logged-in-as">Logged in as: </span></div><% } %> </nav>')
-
-      // <span id="login_name"><%= @current_user.first_name %> <%= @current_user.last_name %>
-
-      // '<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3></nav>');
-      // );
+    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3><div class="logout"><a href="/logout">Logout</a></div><div class="logged-in-as">Logged in as: <span id="login_name"></span></div></nav>');
     return compiled();
   }
 
@@ -43,6 +39,7 @@ var template = (function(){
     return compiled();
   }
 
+
 	return {
 		addSplash: addSplash,
     addModal: addModal,
@@ -51,6 +48,5 @@ var template = (function(){
     addLogin: addLogin,
     addSplashContainer: addSplashContainer,
     addCreateSplashButton: addCreateSplashButton
-	};
-
+  };
 })();

@@ -1,23 +1,13 @@
 var controller = (function(){
-  var latitude,longitude;
-  var loggedIn = false;
-  var accessToken;
-  var header = "";
-  //var base_url = "http://soap-box-api.herokuapp.com/api/v0";
-  var base_url = "http://soap-box-api.herokuapp.com/api/v0"
-  function getSplashes(){
-      geolocation.getLocation();
+  var latitude;
+  var longitude;
+  var base_url = "http://localhost:9393"
+  // var base_url = "http://soap-box-api.herokuapp.com";
 
+  function getSplashes(){
     $.ajax({
       url: base_url+'/splashes',
-      type: 'GET',
-      statusCode:{
-          401: function(){console.log("No good!")}
-        },
-      data: {lat: latitude, lon: longitude}
-
-
-        // user_id: localStorage.getItem("user_id")}
+      type: 'GET'
     }).done(model.addSplashes);
   }
 
@@ -29,7 +19,6 @@ var controller = (function(){
     $.ajax({
       url: base_url+'splashes/'+id+'/comments',
       type: 'GET'
-      // data: {user_id: localStorage.getItem("user_id")}
     }).done(view.addComment);
     }
   }
@@ -82,7 +71,7 @@ var controller = (function(){
         },
       }).done(function(data){
         model.addSplashes(data);
-          poll();
+        poll();
       });
     }, 5000);
   }
@@ -108,35 +97,30 @@ var controller = (function(){
   }
 
   function wordCount(){
-  //     var text_max = 255;
-  //     $('#textarea_feedback').html(test_max + ' characters remaining');
+    //   var text_max = 255;
+    //   $('#textarea_feedback').html(test_max + ' characters remaining');
 
-  //     $('#modal_content').keyup(function() {
-  //       var text_length = $('#modal_content').val().length;
-  //       var text_remaining = text_max - text_length;
+    //   $('#modal_content').keyup(function() {
+    //     var text_length = $('#modal_content').val().length;
+    //     var text_remaining = text_max - text_length;
 
-  //       $('#textarea_feedback').html(text_remaining + ' characters remaining');
-  //   });
-  }
-  function loggedInStatus(){
-    return loggedIn;
-  }
-
-  function updateLoggedInStatus(status){
-    loggedIn = status;
+    //     $('#textarea_feedback').html(text_remaining + ' characters remaining');
+    // });
   }
 
   function bindEvents(){
-    if(localStorage.getItem("loggedIn")){
+   if($('#indexpage').length === 1){
       buildIndexPage();
-    } else {
-      buildLoginPage();
-    };
+    }
+    else {
+     buildLoginPage();
+   };
+    poll();
     view.addColors();
     geolocation.getLocation();
     // $('document').ready('wordCount')
-    $('#splash_list').on('submit', '.submit_comment', createComment);
-    $('#splash_list').on('click','.splash', showComments);
+    $('body').on('submit', '.submit_comment', createComment);
+    $('body').on('click','.splash', showComments);
     $('body').on('submit','#create-splash-form', createSplash);
     $('.fa-chevron-right').mouseenter(view.moveRight);
     $('.fa-chevron-left').mouseenter(view.moveLeft);
@@ -144,13 +128,6 @@ var controller = (function(){
 
   }
 
-  function storeToken(token){
-    accessToken = token;
-  }
-
-  function setHeader(id){
-    header = id
-  }
 
   return{
     createSplash: createSplash,
@@ -158,14 +135,7 @@ var controller = (function(){
     poll: poll,
     bindEvents: bindEvents,
     updateCoords: updateCoords,
-    wordCount: wordCount,
-    updateLoggedInStatus: updateLoggedInStatus,
-    loggedInStatus: loggedInStatus,
-    storeToken: storeToken,
-    buildIndexPage: buildIndexPage,
-    buildLoginPage: buildLoginPage,
-    baseUrl: base_url,
-    setHeader: setHeader
+    wordCount: wordCount
   };
 })();
 

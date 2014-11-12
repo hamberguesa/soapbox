@@ -18,9 +18,9 @@ var model = (function(){
                   view.addSplash(splashes_in_database[i]);
             }
 
-
-    }
-  }
+  // function removeSplashes(){
+  //   var now = new Date();
+  // }
 
   function splashTime(){
     var timeCreatedAt = Date.parse(data.created_at);
@@ -43,21 +43,17 @@ var model = (function(){
     } else {
       time = minutes + " minutes ago ";
     }
+    return time
   }
-
-  function removeSplashes(){
-    var now = new Date();
-  }
-
 
   function getSplashes() {
     return indexArray;
   }
 
   return{
-    removeSplashes: removeSplashes,
-    splashTime: splashTime,
+    // removeSplashes: removeSplashes,
     addSplashes: addSplashes,
-    getSplashes: getSplashes
+    getSplashes: getSplashes,
+    splashTime: splashTime
   };
 })();
