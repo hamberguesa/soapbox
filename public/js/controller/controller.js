@@ -31,7 +31,7 @@ var controller = (function(){
       url: base_url+'/splashes',
       type: 'POST',
       data: data
-    }).done(view.addSplash);
+    }).done(model.addSplashes);
     $('.paulund_block_page').fadeOut().remove();
   }
 
@@ -107,12 +107,12 @@ var controller = (function(){
   }
 
   function switchFavorite(data){
-    id = $(this).parent().attr("id")
+    id = $(this).parent().parent().attr("id")
     //id = this.parent().parent().id
     //console.log(id)
     $.ajax({
       url: '/splashes/'+id+'/favorite'
-    })
+    }).done(view.switchFavorite)
   }
 
 
