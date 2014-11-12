@@ -12,7 +12,7 @@ var controller = (function(){
       url: base_url+'/splashes',
       type: 'GET',
       statusCode:{
-          401: function(){console.log("SHOOT!")}
+          401: function(){console.log("No good!")}
         },
       data: {lat: latitude, lon: longitude, user_id: localStorage.getItem("user_id")}
     }).done(model.addSplashes);
@@ -25,7 +25,8 @@ var controller = (function(){
       id = splashesArr[i]
     $.ajax({
       url: base_url+'splashes/'+id+'/comments',
-      type: 'GET'
+      type: 'GET',
+      data: {user_id: localStorage.getItem("user_id")}
     }).done(view.addComment);
     }
   }
@@ -33,6 +34,7 @@ var controller = (function(){
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
+    data.user_id = localStorage.getItem("user_id")
     data.token = accessToken
     $.ajax({
       url: base_url+'/splashes',
@@ -53,6 +55,7 @@ var controller = (function(){
     evt.preventDefault();
     id = $(this).parent().parent().parent()[0].id;
     var data = $(this).serialize();
+    data.user_id = localStorage.getItem("user_id")
     $.ajax({
       url: base_url+'/splashes/'+id+'/comment',
       type: 'POST',
@@ -70,7 +73,7 @@ var controller = (function(){
         dataType: "json",
         data: {lat: latitude, lon: longitude, user_id: localStorage.getItem("user_id")},
         statusCode:{
-          401: function(){console.log("SHIT!")}
+          401: function(){}
         },
       }).done(function(data){
         model.addSplashes(data);
@@ -118,11 +121,11 @@ var controller = (function(){
   }
 
   function bindEvents(){
-    if(loggedIn){
-      buildIndexPage();
-    } else {
+    // if(localStorage.getItem("user_id")){
+    //   buildIndexPage();
+    // } else {
       buildLoginPage();
-    };
+    // };
     view.addColors();
     geolocation.getLocation();
     // $('document').ready('wordCount')

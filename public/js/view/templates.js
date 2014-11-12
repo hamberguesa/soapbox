@@ -24,8 +24,12 @@ var template = (function(){
 
   // this shit doesn't work
   function addHeader(){
-    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3></nav>');
-      // <% if (current_user) { %><div class="logout"><a href="/logout">Logout</a></div><div class="logged-in-as">Logged in as: <span id="login_name"><%= @current_user.first_name %> <%= @current_user.last_name %></span></div><% } %> </nav>');
+    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3><% if (localStorage.getItem("user_id")) { %><div class="logout"><button onclick="oauth.logout();">Logout</button></div><div class="logged-in-as">Logged in as: </span></div><% } %> </nav>')
+
+      // <span id="login_name"><%= @current_user.first_name %> <%= @current_user.last_name %>
+
+      // '<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3></nav>');
+      // );
     return compiled();
   }
 
