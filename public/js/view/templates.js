@@ -40,7 +40,7 @@ var template = (function(){
   }
 
   function addScore(params){
-    var compiled = _.template('<div class="score"><h4><%=score%></h4></div>');
+    var compiled = _.template('<div class="score"><h4>Total Favorites: <%=score%></h4></div>');
     return compiled(params);
   }
 

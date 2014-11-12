@@ -9,9 +9,8 @@ var model = (function(){
     // Compare existing splashesArray to the splashes list given
     // If any new spashes, then add new splashes to splashesArray and return them
     var initial = false;
-    if (splashesArray === [])
+    if (splashesArray.length === 0)
       initial = true;
-
 
     for (var i = 0; i < splashes_in_database.length; i++){
       favorited = meta_data[i].favorited
@@ -20,17 +19,18 @@ var model = (function(){
       {
         splashesArray.push(splashes_in_database[i]);
         indexArray.push(splashes_in_database[i].id);
-
-        if (initial === false && splashes_in_database[i].author_name !== $('#login_name').text())
+        if (initial === true)
+           view.addSplash(splashes_in_database[i],favorited, count);
+        else
         {
-          view.addSplash(splashes_in_database[i],favorited, count);
+          if (!(splashes_in_database[i].author_name === $("#login_name").text()))
+           view.addSplash(splashes_in_database[i],favorited, count);
         }
       }
     }
 
     total_favs = user_splashes.total_favs
     view.addScore(total_favs)
-    console.log(total_favs)
   }
 
   function splashTime(data){

@@ -104,6 +104,11 @@ get '/auth/failure' do
   redirect '/'
 end
 
+get '/user' do
+  content_type :json
+  current_user.to_json
+end
+
 get '/logout' do
   session[:user_id] = nil
   redirect '/'
