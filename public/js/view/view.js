@@ -26,11 +26,18 @@ var view = (function(){
   //   }
   // }
   var switchFavorite = function(data){
-    console.log(data)
     if(data.favorited === true)
+    {
       $("#"+data.splash_id+" .favorite").addClass("gold")
+      curr = parseInt($('#'+data.splash_id +" .number").text())
+      $('#'+data.splash_id +" .number").text(curr+1)
+    }
     else
+    {
       $("#"+data.splash_id+" .favorite").removeClass("gold")
+      curr = parseInt($('#'+data.splash_id +" .number").text())
+      $('#'+data.splash_id +" .number").text(curr-1)
+    }
   }
 
   var addLogin = function(){

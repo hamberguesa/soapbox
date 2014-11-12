@@ -32,16 +32,20 @@ get '/splashes' do
     num = UserSplash.where("splash_id = #{splash.id} AND favorited = true").count
     countArr.push(num)
   end
-  puts countArr
+  total_favs = 0
+  current_user.splashes_created.each do |splash|
+    total_favs += UserSplash.where("splash_id = #{splash.id} AND favorited = true")
+  end
   if request.xhr?
     content_type :json
-    {:splashes=> current_user.splashes.order('created_at'), :meta=> current_user.user_splashes.order('created_at'), :count => countArr}.to_json
+    {:splashes=> current_user.splashes.order('created_at'), :meta=> current_user.user_splashes.order('created_at'), :count => countArr, :total_favs => total_favs}.to_json
   else
     redirect '/'
   end
 end
 
 get '/splashes/:id/favorite' do
+  puts params[:id]
   usersplash = UserSplash.find_by(:splash_id => params[:id], :user_id => current_user.id)
   usersplash.favorited = !usersplash.favorited
   usersplash.save!

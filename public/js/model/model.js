@@ -27,6 +27,8 @@ var model = (function(){
         }
       }
     }
+
+    total_favs; = user_splashes.total_favs
   }
 
   function splashTime(data){

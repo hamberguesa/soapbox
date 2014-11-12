@@ -107,7 +107,7 @@ var controller = (function(){
   }
 
   function switchFavorite(data){
-    id = $(this).parent().attr("id")
+    id = $(this).parent().parent().attr("id")
     //id = this.parent().parent().id
     //console.log(id)
     $.ajax({
