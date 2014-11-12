@@ -2,7 +2,9 @@ var view = (function(){
   var interval;
   var counter = 0;
 
+
   var addSplash = function(data, favorited){
+    console.log(data.splashes)
     time = model.splashTime(data);
     if(favorited)
       color = "gold"
@@ -31,16 +33,17 @@ var view = (function(){
       $("#"+data.splash_id+" .favorite").addClass("gold")
       curr = parseInt($('#'+data.splash_id +" .number").text())
       $('#'+data.splash_id +" .number").text(curr+1)
-      val = $(".score").text()
-      $(".score").text(parseInt(val)+1)
+      val = parseInt($(".score h4").text().match(/\d/g)[0])
+      console.log(val)
+      $(".score h4").text("Total Favorites: "+ (parseInt(val+1)))
     }
     else
     {
       $("#"+data.splash_id+" .favorite").removeClass("gold")
       curr = parseInt($('#'+data.splash_id +" .number").text())
       $('#'+data.splash_id +" .number").text(curr-1)
-      val = $(".score").text()
-      $(".score").text(parseInt(val) - 1)
+      val = parseInt($(".score h4").text().match(/\d/g)[0])
+      $(".score h4").text("Total Favorites: "+ (parseInt(val-1)))
     }
   }
 
@@ -75,7 +78,7 @@ var view = (function(){
     if ($(".score").length === 0)
       $("nav").after($(template.addScore({score: score})))
     else
-      $(".score").text(score)
+      $(".score").html("<h4>Total favorites: "+ score +"</h4>")
   }
 
   var addHeader = function(){

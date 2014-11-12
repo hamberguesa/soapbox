@@ -2,6 +2,7 @@ var controller = (function(){
   var latitude;
   var longitude;
   var base_url = "http://localhost:9393"
+  var currUser;
   // var base_url = "http://soap-box-api.herokuapp.com";
 
   function getSplashes(){
@@ -26,13 +27,18 @@ var controller = (function(){
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
-    // data.user_id = localStorage.getItem("user_id")
     $.ajax({
       url: base_url+'/splashes',
       type: 'POST',
       data: data
-    }).done(model.addSplashes);
+    }).done(addSplash);
     $('.paulund_block_page').fadeOut().remove();
+  }
+
+  function addSplash(data)
+  {
+    console.log(data)
+    view.addSplash(data.splashes)
   }
 
   function showComments(evt){
@@ -72,12 +78,21 @@ var controller = (function(){
         model.addSplashes(data);
         poll();
       });
-    }, 50000);
+    }, 10000);
   }
 
   function updateCoords(lat, lon){
     latitude = lat;
     longitude = lon;
+  }
+
+  function getUser(){
+    $.ajax({
+      url: '/user'
+    }).done(function(data){
+      $("#login_name").text(data.first_name + " " + data.last_name);
+    });
+
   }
 
   function buildLoginPage() {
@@ -88,11 +103,13 @@ var controller = (function(){
     view.addHeader();
     view.addCreateSplashButton();
     view.addSplashContainer();
+
     // loop through the splashes that should be displayed and 'createSplash' for each
     getSplashes();
     // same for comments ('createComment')
     getComments();
     $('.paulund_modal').paulund_modal_box();
+    getUser();
   }
 
   function wordCount(){
@@ -100,9 +117,13 @@ var controller = (function(){
     $('#textarea_feedback').text(text_max + ' characters remaining');
 
     $('body').keyup('#modal_content',function() {
+      console.log($('#modal_content').val())
+      if ($('#modal_content').val())
+      {
         var text_length = $('#modal_content').val().length;
         var text_remaining = text_max - text_length;
         $('#textarea_feedback').text(text_remaining + ' characters remaining');
+      }
     });
   }
 
