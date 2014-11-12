@@ -10,9 +10,15 @@
   color: gold;
 }
 
-.lower_corner{
+.lower_right{
   position:relative;
   bottom:0;
   top:120px;
   left:90px;
+}
+.lower_left{
+  position:relative;
+  bottom:0;
+  top:120px;
+  right:90px;
 }
