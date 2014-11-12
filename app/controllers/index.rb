@@ -56,6 +56,7 @@ end
 post '/splashes' do
   splash = Splash.create(:content => params[:content])
   current_user.splashes_created << splash
+  current_user.splashes << splash
   if request.xhr?
     content_type :json
     splash.to_json

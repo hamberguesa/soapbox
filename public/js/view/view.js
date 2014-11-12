@@ -3,8 +3,7 @@ var view = (function(){
   var counter = 0;
 
   var addSplash = function(data){
-    time = model.splashTime;
-
+    time = model.splashTime(data);
     var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time });
     if($('#splash_list li.splash').length > 0)
       $('#splash_list li.splash:eq(0)').before($(compiled_html));
@@ -12,31 +11,6 @@ var view = (function(){
       $('#splash_list').append($(compiled_html));
     // $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());
   };
-
-  // var timeElapsed = function(){
-  //   var timeCreatedAt = Date.parse(data.created_at);
-  //   var newDate = new Date();
-  //   var timeNow = Date.parse(newDate)
-
-  //   var timeDifference = (timeNow - timeCreatedAt)/1000;
-
-  //   var hours = Math.floor(timeDifference/3600);
-  //   var minutes = Math.floor(timeDifference/60);
-  //   //need to add logic to subtract hours from minutes when there are hours
-  //   if (minutes === 0){
-  //     minutes += 1
-  //   }
-  //   if (hours > 0){
-  //     var newMinutes = minutes - hours * 60
-  //     time = hours + " and " + newMinutes + " ago ";
-  //   }
-  //   if (minutes < 2){
-  //     time = minutes + " minute ago ";
-  //   } else {
-  //     time = minutes + " minutes ago ";
-  //   }
-  //   return time
-  // };
 
   // var addAllSplashes = function(splashes_list){
   //   for(var i=0; i < splashes_list.length; i++)
@@ -103,7 +77,7 @@ var view = (function(){
       if(parseInt($("#splash_list").css("right")) > ($("#splash_list .splash").length-3) * $(".splash").width())
       return
       $("#splash_list").css("right",counter + "px");
-      counter += 10;
+      counter += 30;
 
     },50);
   };
@@ -112,11 +86,10 @@ var view = (function(){
     $('.fa-chevron-left').mouseleave(stop);
 
     interval = setInterval(function(){
-    console.log($("#splash_list").css("right"));
      if(parseInt($("#splash_list").css("right")) < 0 )
       return;
       $("#splash_list").css("right", counter + "px");
-      counter -= 10;
+      counter -= 30;
     },50);
   };
 
