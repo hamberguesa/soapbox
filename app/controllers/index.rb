@@ -52,3 +52,41 @@ post '/splashes/:id/comment' do
     redirect '/'
   end
 end
+
+post '/splashes' do
+  splash = Splash.create(:content => params[:content])
+  current_user.splashes_created << splash
+  if request.xhr?
+    content_type :json
+    splash.to_json
+  else
+    redirect '/'
+  end
+end
+
+get '/auth/facebook/callback' do
+
+  auth = request.env['omniauth.auth']
+  facebook_id = auth['uid']
+  session[:user_id] = facebook_id
+  user = User.find_by(:fb_user_id => facebook_id)
+
+  if user
+    user.token = auth['credentials'].token
+    user.save
+    #Update latitude and longitude
+  else
+    User.create(:fb_user_id => facebook_id, :token =>  auth['credentials'].token, :first_name => auth['extra']['raw_info'].first_name, :last_name => auth['extra']['raw_info'].last_name)
+  end
+  redirect to '/'
+end
+
+get '/auth/failure' do
+  flash[:notice] = params[:message] # if using sinatra-flash or rack-flash
+  redirect '/'
+end
+
+get '/logout' do
+  session[:user_id] = nil
+  redirect '/'
+end
