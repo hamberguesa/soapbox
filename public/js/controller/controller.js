@@ -26,7 +26,8 @@ var controller = (function(){
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
-
+    // data.user_id = localStorage.getItem("user_id")
+    data.token = accessToken
     $.ajax({
       url: base_url+'/splashes',
       type: 'POST',
@@ -45,8 +46,8 @@ var controller = (function(){
   function createComment(evt){
     evt.preventDefault();
     id = $(this).parent().parent().parent()[0].id;
-    console.log($(this).parent().parent().parent())
     var data = $(this).serialize();
+    // data.user_id = localStorage.getItem("user_id")
     $.ajax({
       url: base_url+'/splashes/'+id+'/comment',
       type: 'POST',
@@ -55,14 +56,19 @@ var controller = (function(){
     $(this)[0].elements.content.value = "";
   }
 
+
   function poll() {
 
-    setTimeout(function () {
-      geolocation.getLocation();
+    timeout = setTimeout(function () {
       $.ajax({
         url: base_url+'/splashes',
         dataType: "json",
-        data: {lat: latitude, lon: longitude}
+        data: {lat: latitude, lon: longitude},
+
+          // user_id: localStorage.getItem("user_id")},
+        statusCode:{
+          401: function(){}
+        },
       }).done(function(data){
         model.addSplashes(data);
         poll();
@@ -83,7 +89,6 @@ var controller = (function(){
     view.addHeader();
     view.addCreateSplashButton();
     view.addSplashContainer();
-
     // loop through the splashes that should be displayed and 'createSplash' for each
     getSplashes();
     // same for comments ('createComment')
@@ -119,6 +124,8 @@ var controller = (function(){
     $('body').on('submit','#create-splash-form', createSplash);
     $('.fa-chevron-right').mouseenter(view.moveRight);
     $('.fa-chevron-left').mouseenter(view.moveLeft);
+   // oauth.getLoginStatus();
+
   }
 
 
@@ -131,3 +138,4 @@ var controller = (function(){
     wordCount: wordCount
   };
 })();
+

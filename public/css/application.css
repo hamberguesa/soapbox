@@ -6,6 +6,11 @@
   border: 1px dotted black;
   text-align: center;
 }
+#fb{
+  width:200px;
+  height:70px;
+  background-color:red;
+}
 .row{
   overflow-y:visible;
 }
@@ -26,11 +31,21 @@ a.paulund_modal h3:hover{
 a.paulund_modal:hover{
   color:orange;
 }
+
+#splash-count{
+  position: absolute;
+  bottom: 0;
+  font-size: 15px;
+  padding-bottom: 10px;
+
+}
+
 #splash_list{
   white-space:nowrap;
   overflow-y:visible;
   display:inline-block;
 }
+
 .x-hidden{
   margin:0px;
   height:700px;

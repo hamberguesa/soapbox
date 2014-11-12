@@ -3,6 +3,8 @@ var model = (function(){
   var splashesArray = [];
   var indexArray = [];
   function addSplashes(splashes_in_database){
+
+    console.log(splashes_in_database)
     // Compare existing splashesArray to the splashes list given
     // If any new spashes, then add new splashes to splashesArray and return them
     var initial = false;
@@ -15,9 +17,6 @@ var model = (function(){
                 if (initial === false && splashes_in_database[i].author_name !== $('#login_name').text())
                   view.addSplash(splashes_in_database[i]);
             }
-
-    }
-  }
 
   // function removeSplashes(){
   //   var now = new Date();
