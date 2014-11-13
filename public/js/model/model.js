@@ -37,8 +37,19 @@ var model = (function(){
       {
         if ($.inArray(commentsArr[i][j].id,commentIndexArray) === -1)
         {
-          view.addComment(commentsArr[i][j]);
-          commentIndexArray.push(commentsArr[i][j].id)
+
+          if(initial === true)
+          {
+            view.addComment(commentsArr[i][j]);
+            commentIndexArray.push(commentsArr[i][j].id)
+          }
+          else
+          {
+            if (!(commentsArr[i][j].author_name === $("#login_name").text()))
+            {
+             view.addSplash(splashes_in_database[i],favorited, count);
+            }
+          }
         }
       }
 
