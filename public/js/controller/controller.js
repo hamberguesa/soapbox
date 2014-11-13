@@ -1,7 +1,7 @@
 var controller = (function(){
   var latitude;
   var longitude;
-  var base_url = "http://soap-box.herokuapp.com"
+  var base_url = "http://localhost:9393"
   var currUser;
   // var base_url = "http://soap-box-api.herokuapp.com";
 
@@ -27,8 +27,6 @@ var controller = (function(){
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
-    // console.log($('#create-splash-form'))
-    console.log(data)
     $.ajax({
       url: base_url+'/splashes',
       type: 'POST',
@@ -53,7 +51,6 @@ var controller = (function(){
   function createComment(evt){
     evt.preventDefault();
     id = $(this).parent().parent()[0].id;
-    console.log(id)
     var data = $(this).serialize();
     // data.user_id = localStorage.getItem("user_id")
     $.ajax({
@@ -132,7 +129,6 @@ var controller = (function(){
     $('#textarea_feedback').text(text_max + ' characters remaining');
 
     $('body').keyup('#modal_content',function() {
-      console.log($('#modal_content').val())
       if ($('#modal_content').val())
       {
         var text_length = $('#modal_content').val().length;
