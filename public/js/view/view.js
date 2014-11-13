@@ -148,6 +148,25 @@ var view = (function(){
   var addDashboard = function(data){
     $('body').append(template.addDashboard())
   }
+
+  var addLoading = function(){
+    $('body').append(template.addLoading())
+  }
+
+  var removeLoading = function(){
+    $('.loading').fadeOut("slow",function(){
+      $('.loading').remove()
+    });
+  }
+
+  var enterSite = function(){
+    $("#spinner").fadeOut()
+    $("#entersite").addClass("fadeIn")
+    $("#entersite").show()
+    $("#spinner").hide()
+
+  }
+
   return{
     showComments: showComments,
     addSplash: addSplash,
@@ -162,6 +181,9 @@ var view = (function(){
     switchFavorite: switchFavorite,
     addScore: addScore,
     addFooter: addFooter,
-    addDashboard: addDashboard
+    addDashboard: addDashboard,
+    addLoading: addLoading,
+    removeLoading: removeLoading,
+    enterSite: enterSite
   };
 })();
