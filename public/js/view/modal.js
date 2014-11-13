@@ -65,7 +65,6 @@
           'width':(options.width - 50) + 'px',
           'padding':'10px',
           'margin':'15px',
-          // 'border-radius':'10px',
           '-moz-border-radius':'10px',
           '-webkit-border-radius':'10px', 
         });
@@ -74,14 +73,11 @@
         })
       }
 
-// #FF8C40
        function add_block_page(){
         var block_page = $('<div class="paulund_block_page"></div>');
 
         $(block_page).appendTo('body');
       }
-
-
 
        function add_popup_box(){
          var pop_up = $(template.addModal());
@@ -109,7 +105,3 @@
     };
 
 })(jQuery);
-
-// $(document).ready(function(){
-//   $('.paulund_modal').paulund_modal_box();
-// });
