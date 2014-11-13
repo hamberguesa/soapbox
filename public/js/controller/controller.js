@@ -28,7 +28,7 @@ var controller = (function(){
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
-    console.log($('#create-splash-form'))
+    // console.log($('#create-splash-form'))
     console.log(data)
     $.ajax({
       url: base_url+'/splashes',
@@ -104,7 +104,7 @@ var controller = (function(){
       animation: "tada"
     });
   }
-  
+
   function buildLoginPage() {
     view.addLogin();
   }
@@ -116,7 +116,7 @@ var controller = (function(){
     view.addDashboard();
     view.addFooter();
     view.addLoading();
-    
+
     // loop through the splashes that should be displayed and 'createSplash' for each
     getSplashes();
     // same for comments ('createComment')
@@ -178,7 +178,7 @@ var controller = (function(){
     updateCoords: updateCoords,
     wordCount: wordCount,
     switchFavorite: switchFavorite,
-    getComments: getComments, 
+    getComments: getComments,
     animateNewSplash: animateNewSplash
   };
 })();

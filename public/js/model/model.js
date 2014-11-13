@@ -22,7 +22,6 @@ var model = (function(){
         if (initial === true)
         {
            view.addSplash(splashes_in_database[i],favorited, count);
-           view.enterSite();
          }
         else
         {
@@ -31,6 +30,8 @@ var model = (function(){
         }
       }
     }
+             view.enterSite();
+
     //controller.getComments();
     total_favs = user_splashes.total_favs
     view.addScore(total_favs)
