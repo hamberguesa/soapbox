@@ -38,7 +38,7 @@ var template = (function(){
   }
 
   function addCreateSplashButton(){
-    var compiled = _.template('<div class="container"><div class="row"><div class="arrow_container col-md-1"></div><a href="#" id="create_new_btn" class="paulund_modal col-md-8"><h1 id="js-rotating" class="new-splash-link">New Splash</h1></a><div class="arrow_container col-md-1"></div></div></div>');
+    var compiled = _.template('<div class="container-fluid center-splash-button"><a href="#" id="create_new_btn" class="paulund_modal col-md-8"><h1 id="js-rotating" class="new-splash-link">New Splash</h1></a></div>');
     return compiled();
   }
 

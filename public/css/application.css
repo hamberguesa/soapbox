@@ -67,7 +67,7 @@ body {
 }
 
 .new-splash-link {
-  margin: 0 auto;
+  margin-left: 15em;
 }
 .scrolly{
   overflow-y: scroll;
@@ -212,6 +212,12 @@ label {
 }
 
 .container-fluid {
+  text-align: center;
+  padding-left: 20em;
+}
+
+.center-splash-button {
+  padding-left: 50em;
 }
 
 /* ************CREATE SPLASH LINK************ */
