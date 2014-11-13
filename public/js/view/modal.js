@@ -33,8 +33,6 @@
           '-moz-border-radius':'10px',
           '-webkit-border-radius':'10px',
           'background': 'grey',
-
-          // 'background': '#f2f2f2',
           'z-index':'50',
         });
         $('.paulund_modal_close').css({
@@ -62,12 +60,12 @@
           'z-index':'10'
         });        
         $('.paulund_inner_modal_box').css({
-          'background-color':'#fff',
+          'background-color':'grey',
           'height':(options.height - 50) + 'px',
           'width':(options.width - 50) + 'px',
           'padding':'10px',
           'margin':'15px',
-          'border-radius':'10px',
+          // 'border-radius':'10px',
           '-moz-border-radius':'10px',
           '-webkit-border-radius':'10px', 
         });
@@ -76,6 +74,7 @@
         })
       }
 
+// #FF8C40
        function add_block_page(){
         var block_page = $('<div class="paulund_block_page"></div>');
 
