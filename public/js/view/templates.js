@@ -2,7 +2,7 @@ var template = (function(){
 
 
 	function addSplash(params){
-		var compiled = _.template('<li id="<%= id %>" class="splash inline-list" style="<%= bgcolor %>"><div id="splash-created-on"><%= time %></div><%= name %><br><%= content %><span class="lower_left"><i class="fa fa-bullhorn"></i></span><span class="lower_right"><span class="number"><%= count %></span><i class="fa fa-star-o favorite <%=color%>"></span></i><div class="comment-<%=id%>-container"><form action="/splashes/<%=id%>/comment" method="post" class="submit_comment" id="submit_comment-<%=id%>"><input type="textarea" placeholder="Reply" rows="4" cols="10" name="content"><br><input type="submit" class="btn btn-success" id="create_comment"><br></form><ul id="comment-<%=id%>" class="comment-list"><li></li><li role="presentation" class="divider"></li></ul></div></li>');
+		var compiled = _.template('<li id="<%= id %>" class="splash col-sm-12 col-md-12 col-lg-12 inline-list" style="<%= bgcolor %>"><div id="splash-created-on"><%= time %></div><%= name %><br><%= content %><span class="lower_left"><i class="fa fa-bullhorn"></i></span><span class="lower_right"><span class="number"><%= count %></span><i class="fa fa-star-o favorite <%=color%>"></span></i><div class="comment-<%=id%>-container"><form action="/splashes/<%=id%>/comment" method="post" class="submit_comment" id="submit_comment-<%=id%>"><input type="textarea" placeholder="Reply" rows="4" cols="10" name="content"><br><input type="submit" class="btn btn-success" id="create_comment"><br></form><ul id="comment-<%=id%>" class="comment-list"><li></li><li role="presentation" class="divider"></li></ul></div></li>');
     string = compiled(params);
 		return compiled(params);
 	}
@@ -13,7 +13,7 @@ var template = (function(){
   }
 
   function addFooter(){
-    var compiled = _.template('<div class="container-fluid"><div class="row"><div class="container"><div class="col-lg-12"><div class="row">// ©2014 Soapbox Limited // Jobs // Privacy // Press // Terms</div></div></div></div></div>')
+    var compiled = _.template('<footer ><div class="row"><div class="container-fluid"><div class="col-lg-12"><div class="row footer">// ©2014 Soapbox Limited // Jobs // Privacy // Press // Terms</div></div></div></div></footer>')
     return compiled();
   }
   function addComment(params){
@@ -33,7 +33,7 @@ var template = (function(){
   }
 
   function addSplashContainer(){
-    var compiled = _.template('<div class="container" id="main_content"><div class="row col-md-12"><div class="x-hidden col-md-12 "><ul id="splash_list" class="col-md-12"></ul></div></div></div>');
+    var compiled = _.template('<div class="container col-lg-offset-3 col-lg-6" id="main_content"><div class="row col-lg-12 "><div class="x-hidden col-sm-12  col-md-12 col-lg-12 "><ul id="splash_list" class="col-md-12 scrolly"></ul></div></div></div>');
     return compiled();
   }
 
@@ -48,8 +48,8 @@ var template = (function(){
   }
 
   function addDashboard(){
-    var compiled = _.template('<div class="container-fluid" id="dashboard"><div class="row"><div class="wild_card col-lg-12"></div></div></div>')
-    return compiled();
+    // var compiled = _.template('<div class="container-fluid" id="dashboard"><div class="row"><div class="wild_card col-lg-12"></div></div></div>')
+    // return compiled();
   }
 
   function addLoading(){
