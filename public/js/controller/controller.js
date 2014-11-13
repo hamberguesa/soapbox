@@ -27,7 +27,7 @@ var controller = (function(){
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
-    console.log($('#create-splash-form'))
+    // console.log($('#create-splash-form'))
     console.log(data)
     $.ajax({
       url: base_url+'/splashes',

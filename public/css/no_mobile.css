@@ -12,9 +12,13 @@
 
 .lower_right{
   position:relative;
+  margin-top: 3px;
+  margin-left: 7px;
 }
 .lower_left{
   position:relative;
+  margin-bottom: 3px;
+  margin-right: 7px;
  }
 .score{
   color:white;
