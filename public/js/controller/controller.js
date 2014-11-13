@@ -28,7 +28,7 @@ var controller = (function(){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
     // console.log($('#create-splash-form'))
-    console.log(data)
+    // console.log(data)
     $.ajax({
       url: base_url+'/splashes',
       type: 'POST',
@@ -37,9 +37,9 @@ var controller = (function(){
     $('.paulund_block_page').fadeOut().remove();
   }
 
-  function addSplash(data)
-  {
-    view.addSplash(data.splashes)
+  function addSplash(data){
+    view.addSplash(data.splashes, false, data.count)
+    console.log(data)
   }
 
   function showComments(evt){
