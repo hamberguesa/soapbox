@@ -1,0 +1,27 @@
+.loading{
+	background-color:black;
+	height: 100vh;
+  color:white;
+  font-family: "Fairview";
+  z-index:10;
+  position:absolute;
+  top:0;
+  width:100%;
+  height:100%;
+}
+.loading h1{
+  margin-top:0px;
+  font-size:8em;
+
+}
+.loading button{
+	display:none;
+}
+.loading h3{
+	margin-top:100px;
+  font-family: "norwester";
+}
+.loading .container{
+	margin-top:0px;
+}
+

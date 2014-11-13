@@ -7,7 +7,7 @@ require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 
 # Require gems we care about
 require 'rubygems'
-
+require 'faker'
 require 'uri'
 require 'pathname'
 
@@ -18,10 +18,11 @@ require 'logger'
 
 require 'sinatra'
 require "sinatra/reloader" if development?
-
-
-
+require 'httparty'
 require 'erb'
+require 'omniauth-facebook'
+require 'dotenv'
+Dotenv.load
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
@@ -36,10 +37,14 @@ configure do
   enable :sessions
   set :session_secret, ENV['SESSION_SECRET'] || 'this is a secret shhhhh'
 
+  set :protection, :except => :session_hijacking
   # Set the views to
   set :views, File.join(Sinatra::Application.root, "app", "views")
 end
 
+use OmniAuth::Builder do
+  provider :facebook, APP_ID, APP_SECRET
+end
 
 
 # Set up the controllers and helpers
