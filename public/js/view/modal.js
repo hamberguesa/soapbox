@@ -25,14 +25,16 @@
           'display':'none',
           'height': options.height + 'px',
           'width': options.width + 'px',
-          'border':'1px solid #fff',
+          'border':'1px solid grey',
           'box-shadow': '0px 2px 7px #292929',
           '-moz-box-shadow': '0px 2px 7px #292929',
           '-webkit-box-shadow': '0px 2px 7px #292929',
           'border-radius':'10px',
           '-moz-border-radius':'10px',
           '-webkit-border-radius':'10px',
-          'background': '#f2f2f2',
+          'background': 'grey',
+
+          // 'background': '#f2f2f2',
           'z-index':'50',
         });
         $('.paulund_modal_close').css({
