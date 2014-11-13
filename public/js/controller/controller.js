@@ -14,7 +14,7 @@ var controller = (function(){
 
   function getComments(){
     splashesArr = model.getSplashes();
-    console.log("HERE")
+    // console.log("HERE")
     for(i = 0; i < splashesArr.length; i++)
     {
       id = splashesArr[i]
@@ -99,11 +99,6 @@ var controller = (function(){
 
   }
 
-  function animateNewSplash(){
-    $("#js-rotating").Morphext({
-      animation: "tada"
-    });
-  }
   
   function buildLoginPage() {
     view.addLogin();
@@ -123,7 +118,6 @@ var controller = (function(){
     getComments();
     $('.paulund_modal').paulund_modal_box();
     getUser();
-    animateNewSplash();
   }
 
   function wordCount(){
@@ -143,8 +137,6 @@ var controller = (function(){
 
   function switchFavorite(data){
     id = $(this).parent().parent().attr("id")
-    //id = this.parent().parent().id
-    //console.log(id)
     $.ajax({
       url: '/splashes/'+id+'/favorite'
     }).done(view.switchFavorite)
@@ -159,15 +151,12 @@ var controller = (function(){
    };
     poll();
     geolocation.getLocation();
-    // $('document').ready('wordCount')
-    $('body').on('click','.favorite', switchFavorite)
+    $('body').on('click','.favorite', switchFavorite);
     $('body').on('submit', '.submit_comment', createComment);
     $('body').on('click','.splash', showComments);
     $('body').on('submit','#create-splash-form', createSplash);
     $('.fa-chevron-right').mouseenter(view.moveRight);
     $('.fa-chevron-left').mouseenter(view.moveLeft);
-   // oauth.getLoginStatus();
-
   }
 
   return{
@@ -179,7 +168,6 @@ var controller = (function(){
     wordCount: wordCount,
     switchFavorite: switchFavorite,
     getComments: getComments, 
-    animateNewSplash: animateNewSplash
   };
 })();
 

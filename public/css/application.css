@@ -127,6 +127,9 @@ ul{
   cursor:pointer;
 }
 
+/* ************MODAL************ */
+
+
 .paulund_modal_close{
   transition: all 0.4s;
 }
@@ -163,6 +166,9 @@ label {
 #textarea_feedback{
   margin-left: 35%
 }
+
+/* ************END MODAL************ */
+
 
 .submit_comment{
   color:black;
@@ -210,15 +216,16 @@ label {
 
 /* ************CREATE SPLASH LINK************ */
 .paulund_modal {
-  font-family: Track;  
+  font-family: Fairview;  
   color: black;
+  font-size: 3.5em;
 }
 
-a.paulund_modal h1{
+a.paulund_modal p{
   transition: 0.4s all;
 }
 
-a.paulund_modal h1:hover{
+a.paulund_modal p:hover{
     color: #FF8C40;
 }
 
