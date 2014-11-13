@@ -2,7 +2,7 @@ var template = (function(){
 
 
 	function addSplash(params){
-		var compiled = _.template('<li id="<%= id %>" class="splash inline-list"><div id="splash-created-on"><%= time %></div><%= name %><br><%= content %></p><span class="lower_left"><i class="fa fa-bullhorn"></i></span><span class="lower_right"><span class="number"><%= count %></span><i class="fa fa-star-o favorite <%=color%>"></span></i><ul id="comment-<%=id%>" class="comment-list"><li><form action="/splashes/<%=id%>/comment" method="post" class="submit_comment" id="submit_comment-<%=id%>"><input type="textarea" placeholder="Reply" rows="4" cols="10" name="content"><br><input type="submit" class="btn btn-success id="create_comment"><br></form></li><li role="presentation" class="divider"></li></ul></li>');
+		var compiled = _.template('<li id="<%= id %>" class="splash inline-list" style="<%= bgcolor %>"><div id="splash-created-on"><%= time %></div><%= name %><br><%= content %><span class="lower_left"><i class="fa fa-bullhorn"></i></span><span class="lower_right"><span class="number"><%= count %></span><i class="fa fa-star-o favorite <%=color%>"></span></i><div class="comment-<%=id%>-container"><form action="/splashes/<%=id%>/comment" method="post" class="submit_comment" id="submit_comment-<%=id%>"><input type="textarea" placeholder="Reply" rows="4" cols="10" name="content"><br><input type="submit" class="btn btn-success" id="create_comment"><br></form><ul id="comment-<%=id%>" class="comment-list"><li></li><li role="presentation" class="divider"></li></ul></div></li>');
     string = compiled(params);
 		return compiled(params);
 	}
@@ -12,6 +12,10 @@ var template = (function(){
     return compiled();
   }
 
+  function addFooter(){
+    var compiled = _.template('<div class="container-fluid"><div class="row"><div class="container"><div class="col-lg-12"><div class="row">// ©2014 Soapbox Limited // Jobs // Privacy // Press // Terms</div></div></div></div></div>')
+    return compiled();
+  }
   function addComment(params){
 
     var compiled = _.template('<li role="presentation" class="divider"></li><li role="presentation"><%= name %></li><li role="presentation"><%= content %></li>');
@@ -25,23 +29,28 @@ var template = (function(){
 
   // current user not feeding through
   function addHeader(){
-    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><h3>SoapBox</h3><div class="logout"><a href="/logout">Logout</a></div><div class="logged-in-as">Logged in as: <span id="login_name"></span></div></nav>');
+    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><div class="col-md-6"><img class="logo" src="../images/SoapSimple.svg" alt=""><h3 class="logo_type">SoapBox</h3></div><div class="col-md-3 .col-md-offset-3"><ul><li class="logged-in-as">Logged in as: <span id="login_name"></span></li><li><a class="logout" href="/logout">Logout</a></li></ul></div></nav>');
     return compiled();
   }
 
   function addSplashContainer(){
-    var compiled = _.template('<div class="container"><div class="row"><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-left"></i></div><div class="x-hidden col-md-10"><ul id="splash_list" class="col-md-10"></ul></div><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-right"></i></div></div></div>');
+    var compiled = _.template('<div class="container" id="main_content"><div class="row"><div class="x-hidden col-md-10"><ul id="splash_list" class="col-md-12"></ul></div></div></div>');
     return compiled();
   }
 
   function addCreateSplashButton(){
-    var compiled = _.template('<div class="create-new-splash-div"><a href="#" class="paulund_modal"><h3 class="new-splash-link">+New Splash</h3></div></a></div>');
+    var compiled = _.template('<div class="container"><div class="row"><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-left"></i></div><a href="#" class="paulund_modal col-md-8"><h3 class="new-splash-link">New Splash</h3></a><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-right"></i></div></div></div>');
     return compiled();
   }
 
   function addScore(params){
-    var compiled = _.template('<div class="score"><h4>Total Favorites: <%=score%></h4></div>');
+    var compiled = _.template('<div class="score">Total Favorites: <%=score%></div>');
     return compiled(params);
+  }
+
+  function addDashboard(){
+    var compiled = _.template('<div class="container-fluid" id="dashboard"><div class="row"><div class="wild_card col-lg-12"></div></div></div>')
+    return compiled();
   }
 
 	return {
@@ -52,6 +61,8 @@ var template = (function(){
     addLogin: addLogin,
     addSplashContainer: addSplashContainer,
     addCreateSplashButton: addCreateSplashButton,
-    addScore: addScore
+    addScore: addScore,
+    addFooter: addFooter,
+    addDashboard: addDashboard
   };
 })();

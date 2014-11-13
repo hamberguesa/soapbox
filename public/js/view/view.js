@@ -4,18 +4,24 @@ var view = (function(){
 
 
   var addSplash = function(data, favorited){
-    console.log(data.splashes)
     time = model.splashTime(data);
     if(favorited)
       color = "gold"
     else
       color = ""
-    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time, color: color, count: count });
+    bgcolor = Please.make_color({
+          greyscale: true, //for the brits
+          grayscale: true  //for the yanks}));
+      });
+    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time, color: color, count: count, bgcolor: bgcolor });
+
     if($('#splash_list li.splash').length > 0)
       $('#splash_list li.splash:eq(0)').before($(compiled_html));
     else
       $('#splash_list').append($(compiled_html));
     // $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());
+    view.addColors();
+
   };
 
   // var addAllSplashes = function(splashes_list){
@@ -34,7 +40,6 @@ var view = (function(){
       curr = parseInt($('#'+data.splash_id +" .number").text())
       $('#'+data.splash_id +" .number").text(curr+1)
       val = parseInt($(".score h4").text().match(/\d/g)[0])
-      console.log(val)
       $(".score h4").text("Total Favorites: "+ (parseInt(val+1)))
     }
     else
@@ -65,7 +70,7 @@ var view = (function(){
   };
 
   var showComments = function(id){
-    $('#comment-'+ id).slideToggle();
+    // $('#comment-'+ id+'container').slideToggle();
   };
 
   var addComment = function(data){
@@ -76,7 +81,10 @@ var view = (function(){
 
   var addScore = function(score){
     if ($(".score").length === 0)
-      $("nav").after($(template.addScore({score: score})))
+    {
+      console.log(template.addScore({score: score}))
+      $(".wild_card").html(template.addScore({score: score}))
+    }
     else
       $(".score").html("<h4>Total favorites: "+ score +"</h4>")
   }
@@ -95,12 +103,13 @@ var view = (function(){
   };
 
   var addColors = function(){
-      // $('#splash_list .splash').each(function(index,element)
-      // {
-      //   $(element).css('background-color',Please.make_color());
-      // });
-
-  };
+      $('#splash_list .splash').each(function(index,element){
+       $(element).css("background-color",Please.make_color({
+          greyscale: true, //for the brits
+          grayscale: true  //for the yanks}));
+      }));
+    });
+  }
 
   var moveRight = function(data){
     $('.fa-chevron-right').mouseleave(stop);
@@ -124,6 +133,13 @@ var view = (function(){
     },50);
   };
 
+  var addFooter = function(data){
+    $('body').append(template.addFooter())
+  }
+
+  var addDashboard = function(data){
+    $('body').append(template.addDashboard())
+  }
   return{
     showComments: showComments,
     addSplash: addSplash,
@@ -136,6 +152,8 @@ var view = (function(){
     addSplashContainer: addSplashContainer,
     addCreateSplashButton: addCreateSplashButton,
     switchFavorite: switchFavorite,
-    addScore: addScore
+    addScore: addScore,
+    addFooter: addFooter,
+    addDashboard: addDashboard
   };
 })();
