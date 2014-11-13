@@ -33,17 +33,19 @@ get '/splashes' do
   #old_splashes.each {|old| old.destroy}
   @splashes = Splash.all
   countArr = []
+  commentsArr = []
   current_user.splashes.order('created_at').each do |splash|
     num = UserSplash.where("splash_id = #{splash.id} AND favorited = true").count
     countArr.push(num)
+    commentsArr.push splash.comments
   end
-   total_favs = 0
+  total_favs = 0
   current_user.splashes_created.each do |splash|
     total_favs = total_favs + UserSplash.where("splash_id = #{splash.id} AND favorited = true").count
   end
   if request.xhr?
     content_type :json
-    {:splashes=> current_user.splashes.order('created_at'), :meta=> current_user.user_splashes.order('created_at'), :count => countArr, :total_favs => total_favs}.to_json
+    {:splashes=> current_user.splashes.order('created_at'), :meta=> current_user.user_splashes.order('created_at'), :count => countArr, :total_favs => total_favs, :comments => commentsArr}.to_json
   else
     redirect '/'
   end
