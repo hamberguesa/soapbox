@@ -228,8 +228,8 @@ label {
   padding-left: 50em;
 }
 
-/* ************CREATE SPLASH LINK************ */
-.paulund_modal {
+/* ************CREATE SPLASH IMAGE************ */
+/*.paulund_modal {
   font-family: Fairview;  
   color: black;
   font-size: 3.5em;
@@ -245,7 +245,9 @@ a.paulund_modal p:hover{
 
 #create_new_btn:hover{
   text-decoration: none;
-}
+}*/
+
+
 
 /*=========== ORIGINAL CSS FOR REFERENCE JBH =====================
 /*#create_splash{

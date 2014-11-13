@@ -36,9 +36,11 @@
   }
 
   function addCreateSplashButton(){
-    var compiled = _.template('<div class="container"><div class="row"><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-left"></i></div><a href="#" id="create_new_btn" class="paulund_modal col-md-8"><p class="pulse" class="new-splash-link">New Splash</p></a><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-right"></i></div></div></div>');
+    var compiled = _.template('<div class="container"><div class="row"><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-left"></i></div><a href="#" id="create_new_btn" class="paulund_modal col-md-8"><img class="pulse" class="new-splash-link" src="../images/bullhorn_Fotor.png"></img></a><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-right"></i></div></div></div>');
     return compiled();
   }
+
+
 
   function addScore(params){
     var compiled = _.template('<div class="score">Total Favorites: <%=score%></div>');
