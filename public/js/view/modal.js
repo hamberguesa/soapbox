@@ -12,6 +12,7 @@
         add_block_page();
         add_popup_box();
         add_styles();
+        addRipples();
 
         $('.paulund_modal_box').fadeIn();
       });
@@ -24,14 +25,14 @@
           'display':'none',
           'height': options.height + 'px',
           'width': options.width + 'px',
-          'border':'1px solid #fff',
+          'border':'1px solid grey',
           'box-shadow': '0px 2px 7px #292929',
           '-moz-box-shadow': '0px 2px 7px #292929',
           '-webkit-box-shadow': '0px 2px 7px #292929',
           'border-radius':'10px',
           '-moz-border-radius':'10px',
           '-webkit-border-radius':'10px',
-          'background': '#f2f2f2',
+          'background': 'grey',
           'z-index':'50',
         });
         $('.paulund_modal_close').css({
@@ -52,21 +53,24 @@
           'position':'absolute',
           'top':'0',
           'left':'0',
-          'background-color':'rgba(0,0,0,0.6)',
+          'background-image' : 'url(/images/modalbg.png)',
+          'background-size' : '100%',
           'height':pageHeight,
           'width':pageWidth,
           'z-index':'10'
-        });
+        });        
         $('.paulund_inner_modal_box').css({
-          'background-color':'#fff',
+          'background-color':'grey',
           'height':(options.height - 50) + 'px',
           'width':(options.width - 50) + 'px',
           'padding':'10px',
           'margin':'15px',
-          'border-radius':'10px',
           '-moz-border-radius':'10px',
-          '-webkit-border-radius':'10px'
+          '-webkit-border-radius':'10px', 
         });
+        $('jquery-ripples').css({
+          'position': 'relative; z-index: 0',
+        })
       }
 
        function add_block_page(){
@@ -87,11 +91,16 @@
          });
       }
 
+      function addRipples(){
+        $('.paulund_block_page').ripples({
+          resolution: 512,
+          dropRadius: 20,
+          perturbance: 0.04,
+        }); 
+      }
+      
+
       return this;
     };
 
 })(jQuery);
-
-// $(document).ready(function(){
-//   $('.paulund_modal').paulund_modal_box();
-// });
