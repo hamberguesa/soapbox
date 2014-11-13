@@ -99,6 +99,12 @@ var controller = (function(){
 
   }
 
+  function animateNewSplash(){
+    $('#js-rotating').Morphext({
+      animation: "tada"    
+    });
+  }
+  
   function buildLoginPage() {
     view.addLogin();
   }
@@ -116,6 +122,7 @@ var controller = (function(){
     getComments();
     $('.paulund_modal').paulund_modal_box();
     getUser();
+    animateNewSplash();
   }
 
   function wordCount(){
@@ -142,7 +149,6 @@ var controller = (function(){
     }).done(view.switchFavorite)
   }
 
-
   function bindEvents(){
    if($('#indexpage').length === 1){
       buildIndexPage();
@@ -163,7 +169,6 @@ var controller = (function(){
 
   }
 
-
   return{
     createSplash: createSplash,
     createComment: createComment,
@@ -172,7 +177,8 @@ var controller = (function(){
     updateCoords: updateCoords,
     wordCount: wordCount,
     switchFavorite: switchFavorite,
-    getComments: getComments
+    getComments: getComments, 
+    animateNewSplash: animateNewSplash
   };
 })();
 
