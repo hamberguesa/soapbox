@@ -35,9 +35,9 @@ var controller = (function(){
     $('.paulund_block_page').fadeOut().remove();
   }
 
-  function addSplash(data)
-  {
-    view.addSplash(data.splashes)
+  function addSplash(data){
+    view.addSplash(data.splashes, false, data.count)
+    console.log(data)
   }
 
   function showComments(evt){
