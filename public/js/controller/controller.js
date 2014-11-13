@@ -109,7 +109,8 @@ var controller = (function(){
     view.addSplashContainer();
     view.addDashboard();
     view.addFooter();
-
+    view.addLoading();
+    
     // loop through the splashes that should be displayed and 'createSplash' for each
     getSplashes();
     // same for comments ('createComment')

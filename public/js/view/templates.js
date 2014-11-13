@@ -28,17 +28,17 @@ var template = (function(){
 
   // current user not feeding through
   function addHeader(){
-    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><div class="col-md-6"><img class="logo" src="../images/SoapSimple.svg" alt=""><h3 class="logo_type">SoapBox</h3></div><div class="col-md-3 .col-md-offset-3"><ul><li class="logged-in-as">Logged in as: <span id="login_name"></span></li><li><a class="logout" href="/logout">Logout</a></li></ul></div></nav>');
+    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><div class="col-md-6"><img class="logo" src="../images/SoapSimple.svg" alt=""><h3 class="logo_type">SoapBox</h3></div><div class="col-md-3 col-md-offset-3"><ul><li class="logged-in-as">Logged in as: <span id="login_name"></span></li><li><a class="logout" href="/logout">Logout</a></li></ul></div></nav>');
     return compiled();
   }
 
   function addSplashContainer(){
-    var compiled = _.template('<div class="container" id="main_content"><div class="row"><div class="x-hidden col-md-10"><ul id="splash_list" class="col-md-12"></ul></div></div></div>');
+    var compiled = _.template('<div class="container" id="main_content"><div class="row col-md-12"><div class="x-hidden col-md-12 "><ul id="splash_list" class="col-md-12"></ul></div></div></div>');
     return compiled();
   }
 
   function addCreateSplashButton(){
-    var compiled = _.template('<div class="container"><div class="row"><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-left"></i></div><a href="#" class="paulund_modal col-md-8"><h3 class="new-splash-link">New Splash</h3></a><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-right"></i></div></div></div>');
+    var compiled = _.template('<div class="container"><div class="row"><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-left"></i></div><a href="#" class="paulund_modal col-md-10"><h3 class="new-splash-link">New Splash</h3></a><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-right"></i></div></div></div>');
     return compiled();
   }
 
@@ -52,6 +52,11 @@ var template = (function(){
     return compiled();
   }
 
+  function addLoading(){
+    var compiled = _.template('<div class="loading"><div class="container"><h1> SoapBox</h1><i id="spinner" class="fa fa-4x fa-spinner fa-spin"></i><button id="entersite" onclick="view.removeLoading();" class="btn btn-lg btn-success">Enter Site</button><br><h3 class="col-md-6 col-md-offset-3">It\'s simple. <br><br>1. Send messages to those within 1 km of you<br> 2. Receive messages from those same people. <br><br><br> SoapBox breaks the bounds of requiring prior contact information before interacting with those around you on the internet.</div>')
+    return compiled();
+  }
+
 	return {
 		addSplash: addSplash,
     addModal: addModal,
@@ -62,6 +67,7 @@ var template = (function(){
     addCreateSplashButton: addCreateSplashButton,
     addScore: addScore,
     addFooter: addFooter,
-    addDashboard: addDashboard
+    addDashboard: addDashboard,
+    addLoading: addLoading
   };
 })();
