@@ -23,7 +23,7 @@ var template = (function(){
   }
 
   function addLogin(){
-    var compiled = _.template('<div class="container-fluid"><div class="jumbotron" id="jumbotron"><h1>SoapBox</h1><p>Connect with people in your area</p><a href="/auth/facebook"><button type="button" class="btn btn-primary btn-lg">Login With Facebook</button></a><br></div></div>');
+    var compiled = _.template('<div class="login"><img class="splash_img" src="../images/SoapSimple.svg" alt=""><h1>SoapBox</h1><p>Bridging the Gap in Communication</p><a href="/auth/facebook"><button type="button" class="regFnt btn btn-primary btn-lg">Login With Facebook</button></a><br></div>');
     return compiled();
   }
 
