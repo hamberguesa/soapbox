@@ -14,11 +14,12 @@ var controller = (function(){
 
   function getComments(){
     splashesArr = model.getSplashes();
+    console.log("HERE")
     for(i = 0; i < splashesArr.length; i++)
     {
       id = splashesArr[i]
     $.ajax({
-      url: base_url+'splashes/'+id+'/comments',
+      url: base_url+'/splashes/'+id+'/comments',
       type: 'GET'
     }).done(view.addComment);
     }
@@ -170,7 +171,8 @@ var controller = (function(){
     bindEvents: bindEvents,
     updateCoords: updateCoords,
     wordCount: wordCount,
-    switchFavorite: switchFavorite
+    switchFavorite: switchFavorite,
+    getComments: getComments
   };
 })();
 
