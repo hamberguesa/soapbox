@@ -13,13 +13,19 @@ var view = (function(){
           greyscale: true, //for the brits
           grayscale: true  //for the yanks}));
       });
-    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time, color: color, count: count, bgcolor: bgcolor });
+    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time, color: color, count: data.count, bgcolor: bgcolor });
 
-    if($('#splash_list li.splash').length > 0)
-      $('#splash_list li.splash:eq(0)').before($(compiled_html));
-    else
-      $('#splash_list').append($(compiled_html));
+    var $hopeThisWorks = $(compiled_html)
+
+    if($('#splash_list li.splash').length > 0){
+      // $('#splash_list li.splash:eq(0)').hide().before($hopeThisWorks).fadeIn(500)
+        $($hopeThisWorks).hide().prependTo($('#splash_list')).fadeIn(2000)
+    } else {
+      // $('#splash_list').append($hopeThisWorks);
+      // $hopeThisWorks.fadeIn(500)
+        $($hopeThisWorks).hide().appendTo($('#splash_list')).fadeIn(2000)
     // $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());
+    }
     view.addColors();
 
   };
