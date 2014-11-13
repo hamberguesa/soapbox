@@ -39,7 +39,9 @@ private
 		end
 		if splash_pool
 			splash_pool.each do |match|
-				match.splashes << self
+				if match != self.author
+					match.splashes << self
+				end
 			end
 
 		end

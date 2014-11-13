@@ -14,11 +14,12 @@ var controller = (function(){
 
   function getComments(){
     splashesArr = model.getSplashes();
+    console.log("HERE")
     for(i = 0; i < splashesArr.length; i++)
     {
       id = splashesArr[i]
     $.ajax({
-      url: base_url+'splashes/'+id+'/comments',
+      url: base_url+'/splashes/'+id+'/comments',
       type: 'GET'
     }).done(view.addComment);
     }
@@ -27,6 +28,8 @@ var controller = (function(){
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
+    console.log($('#create-splash-form'))
+    console.log(data)
     $.ajax({
       url: base_url+'/splashes',
       type: 'POST',
@@ -37,7 +40,6 @@ var controller = (function(){
 
   function addSplash(data)
   {
-    console.log(data)
     view.addSplash(data.splashes)
   }
 
@@ -46,6 +48,7 @@ var controller = (function(){
       return;
     view.showComments(this.id);
   }
+
 
   // Might work; need to test after log-in capability returned
   function createComment(evt){
@@ -106,7 +109,8 @@ var controller = (function(){
     view.addSplashContainer();
     view.addDashboard();
     view.addFooter();
-
+    view.addLoading();
+    
     // loop through the splashes that should be displayed and 'createSplash' for each
     getSplashes();
     // same for comments ('createComment')
@@ -167,7 +171,8 @@ var controller = (function(){
     bindEvents: bindEvents,
     updateCoords: updateCoords,
     wordCount: wordCount,
-    switchFavorite: switchFavorite
+    switchFavorite: switchFavorite,
+    getComments: getComments
   };
 })();
 

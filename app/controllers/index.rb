@@ -8,6 +8,11 @@ REDIRECT_URI = 'http://localhost:9393'
 
 #Show all of your splashes, or show login page
 #if you are not logged in
+
+before do 
+  current_user
+end
+
 get '/' do
   if current_user
     @splashes = @current_user.splashes.order('created_at').reverse
@@ -74,10 +79,10 @@ end
 post '/splashes' do
   splash = Splash.create(:content => params[:content])
   current_user.splashes_created << splash
-  current_user.splashes << splash
+  # current_user.splashes << splash
   if request.xhr?
     content_type :json
-    {:splashes=> splash, :meta=> UserSplash.find_by(:splash_id => splash.id, :user_id => current_user.id)}.to_json
+    {:splashes=> splash, :meta=> UserSplash.find_by(:splash_id => splash.id, :user_id => current_user.id), :count => splash.comments.length}.to_json
   else
     redirect '/'
   end

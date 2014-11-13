@@ -13,13 +13,19 @@ var view = (function(){
           greyscale: true, //for the brits
           grayscale: true  //for the yanks}));
       });
-    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time, color: color, count: count, bgcolor: bgcolor });
+    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time, color: color, count: data.count, bgcolor: bgcolor });
 
-    if($('#splash_list li.splash').length > 0)
-      $('#splash_list li.splash:eq(0)').before($(compiled_html));
-    else
-      $('#splash_list').append($(compiled_html));
+    var $hopeThisWorks = $(compiled_html)
+
+    if($('#splash_list li.splash').length > 0){
+      // $('#splash_list li.splash:eq(0)').hide().before($hopeThisWorks).fadeIn(500)
+        $($hopeThisWorks).hide().prependTo($('#splash_list')).fadeIn(2000)
+    } else {
+      // $('#splash_list').append($hopeThisWorks);
+      // $hopeThisWorks.fadeIn(500)
+        $($hopeThisWorks).hide().appendTo($('#splash_list')).fadeIn(2000)
     // $('#splash_list li.splash:eq(0)').css("background-color",Please.make_color());
+    }
     view.addColors();
 
   };
@@ -74,15 +80,17 @@ var view = (function(){
   };
 
   var addComment = function(data){
+    console.log(data)
+    console.log("here")
     var commentContent = data["content"];
     var compiled_html = template.addComment({name: data["author_name"], content: commentContent});
     $('#comment-'+data["splash_id"]).append(compiled_html);
+
   };
 
   var addScore = function(score){
     if ($(".score").length === 0)
     {
-      console.log(template.addScore({score: score}))
       $(".wild_card").html(template.addScore({score: score}))
     }
     else
@@ -140,6 +148,25 @@ var view = (function(){
   var addDashboard = function(data){
     $('body').append(template.addDashboard())
   }
+
+  var addLoading = function(){
+    $('body').append(template.addLoading())
+  }
+
+  var removeLoading = function(){
+    $('.loading').fadeOut("slow",function(){
+      $('.loading').remove()
+    });
+  }
+
+  var enterSite = function(){
+    $("#spinner").fadeOut()
+    $("#entersite").addClass("fadeIn")
+    $("#entersite").show()
+    $("#spinner").hide()
+
+  }
+
   return{
     showComments: showComments,
     addSplash: addSplash,
@@ -154,6 +181,9 @@ var view = (function(){
     switchFavorite: switchFavorite,
     addScore: addScore,
     addFooter: addFooter,
-    addDashboard: addDashboard
+    addDashboard: addDashboard,
+    addLoading: addLoading,
+    removeLoading: removeLoading,
+    enterSite: enterSite
   };
 })();

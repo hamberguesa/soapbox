@@ -20,7 +20,10 @@ var model = (function(){
         splashesArray.push(splashes_in_database[i]);
         indexArray.push(splashes_in_database[i].id);
         if (initial === true)
+        {
            view.addSplash(splashes_in_database[i],favorited, count);
+           view.enterSite();
+         }
         else
         {
           if (!(splashes_in_database[i].author_name === $("#login_name").text()))
@@ -28,7 +31,7 @@ var model = (function(){
         }
       }
     }
-
+    controller.getComments();
     total_favs = user_splashes.total_favs
     view.addScore(total_favs)
   }
