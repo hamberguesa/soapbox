@@ -76,8 +76,7 @@
       }
 
        function add_popup_box(){
-         var pop_up = $(template.addModal());
-         controller.wordCount();
+         var pop_up = template.addModal();
          $(pop_up).appendTo('.paulund_block_page');
          $('#modal_content').focus();
          controller.wordCount();
