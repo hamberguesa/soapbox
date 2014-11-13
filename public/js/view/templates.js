@@ -17,7 +17,6 @@ var template = (function(){
     return compiled();
   }
   function addComment(params){
-
     var compiled = _.template('<li role="presentation" class="divider"></li><li role="presentation"><%= name %></li><li role="presentation"><%= content %></li>');
       return compiled(params);
   }

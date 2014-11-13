@@ -74,15 +74,17 @@ var view = (function(){
   };
 
   var addComment = function(data){
+    console.log(data)
+    console.log("here")
     var commentContent = data["content"];
     var compiled_html = template.addComment({name: data["author_name"], content: commentContent});
     $('#comment-'+data["splash_id"]).append(compiled_html);
+
   };
 
   var addScore = function(score){
     if ($(".score").length === 0)
     {
-      console.log(template.addScore({score: score}))
       $(".wild_card").html(template.addScore({score: score}))
     }
     else

@@ -8,6 +8,11 @@ REDIRECT_URI = 'http://localhost:9393'
 
 #Show all of your splashes, or show login page
 #if you are not logged in
+
+before do 
+  current_user
+end
+
 get '/' do
   if current_user
     @splashes = @current_user.splashes.order('created_at').reverse
