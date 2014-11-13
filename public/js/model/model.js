@@ -16,6 +16,7 @@ var model = (function(){
     for (var i = 0; i < splashes_in_database.length; i++){
       favorited = meta_data[i].favorited
       count = countArr[i]
+
       if ($.inArray(splashes_in_database[i].id,indexArray) === -1)
       {
         splashesArray.push(splashes_in_database[i]);
@@ -31,11 +32,12 @@ var model = (function(){
            view.addSplash(splashes_in_database[i],favorited, count);
           }
         }
-        for(var j=0; j < commentsArr[i].length; j++)
-            {
-              view.addComment(commentsArr[i][j])
-            }
-        }
+
+      }
+      for(var j=0; j < commentsArr[i].length; j++)
+      {
+        view.addComment(commentsArr[i][j])
+       }
     }
     view.enterSite();
     total_favs = user_splashes.total_favs
