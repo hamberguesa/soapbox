@@ -72,7 +72,7 @@
        function add_block_page(){
         var block_page = $('<div class="paulund_block_page"></div>');
 
-        $(block_page).appendTo('.container');
+        $(block_page).appendTo('body');
       }
 
        function add_popup_box(){
