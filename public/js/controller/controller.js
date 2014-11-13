@@ -3,7 +3,7 @@ var controller = (function(){
   var longitude;
   // var base_url = "http://localhost:9393"
   var currUser;
-  var base_url = "http://soap-box-api.herokuapp.com";
+  var base_url = "http://soap-box.herokuapp.com";
 
   function getSplashes(){
     $.ajax({
