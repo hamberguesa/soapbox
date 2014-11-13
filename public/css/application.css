@@ -14,9 +14,10 @@
   margin: 1% auto;
   margin-top: 1em;
   width: 100%;
+  /*overflow-y: scroll;*/
   /*padding: 0px 20px 0px 20px;*/
   text-align: center;
-  z-index: -1111;
+  /*z-index: -1111;*/
   /*background-color: pink;*/
 }
 
@@ -33,6 +34,7 @@ body {
   background-size: 100%;
   margin: 0 auto;
   padding: 0 auto;
+  overflow: hidden;
 }
 
 .splash-inline-list{
@@ -67,10 +69,11 @@ body {
 }
 
 .new-splash-link {
-  margin: 0 auto;
+  margin-left: 15em;
 }
-.row{
-  overflow-y:visible;
+.scrolly{
+  overflow-y: scroll;
+  height:39em;
 }
 
 ul{
@@ -80,8 +83,9 @@ ul{
 
 #splash_list{
   white-space:nowrap;
-  overflow-y:visible;
-  display:inline-block;
+  /*overflow-y: scroll;*/
+  padding-right: 0px;
+  /*display:inline-block;*/
 }
 .x-hidden{
   margin:0px;
@@ -112,13 +116,14 @@ ul{
 }
 .splash{
   display:inline-block;
-  width: 18em;
-  height: 18em;
+  /*width: 18em;*/
+  height: 20em;
   font-size: 1.2em;
   color:white;
   white-space: normal;
   vertical-align: middle;
   word-wrap: break-word;
+  /*overflow-y: scroll;*/
   /*border-radius:10px;*/
   /*box-shadow:0px 0px 5px #3F3F3F;*/
   padding:.5em;
@@ -178,7 +183,7 @@ label {
 .comment-list{
 
   color:#3F3F3F;
-  text-shadow: 0px 0px 3px white;
+  /*text-shadow: 0px 0px 3px white;*/
   padding: 0;
   max-height: 100px;
   overflow-y: auto;
@@ -196,28 +201,35 @@ label {
   /*background-color: #00ADFF;*/
   background-color: #393B40;
   display: block;
-  height: 12em;
+  height: 5em;
 
 }
 
 #main_content{
-  height:25em;
+  height:45em;
+  overflow-y: hidden;
+}
+
+.footer{
+  background-color: black;
+  color: white;
+  height: 5em;
+  padding-top: 1.8em;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .container-fluid {
-  /*width: 100%;*/
-  /*margin: 0 auto;*/
-  /*display: block;*/
-  /*background-color: black;*/
-  height: 12em;
-  /*background-color: #FF8C40; */
-  background-color: #3D4B99;
-  background-color: #71767F;
-
+  text-align: center;
+  padding-left: 20em;
 }
 
-/* ************CREATE SPLASH LINK************ */
-.paulund_modal {
+.center-splash-button {
+  padding-left: 50em;
+}
+
+/* ************CREATE SPLASH IMAGE************ */
+/*.paulund_modal {
   font-family: Fairview;  
   color: black;
   font-size: 3.5em;
@@ -233,7 +245,9 @@ a.paulund_modal p:hover{
 
 #create_new_btn:hover{
   text-decoration: none;
-}
+}*/
+
+
 
 /*=========== ORIGINAL CSS FOR REFERENCE JBH =====================
 /*#create_splash{

@@ -85,6 +85,7 @@ var view = (function(){
   };
 
   var addComment = function(data){
+    console.log(data["splash_id"])
     var commentContent = data["content"];
     var compiled_html = template.addComment({name: data["author_name"], content: commentContent});
     $('#comment-'+data["splash_id"]).append(compiled_html);
