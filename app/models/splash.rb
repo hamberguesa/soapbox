@@ -24,7 +24,7 @@ private
 
 	# Will check to see if coords are within bounding box && then 1 block (100m) radius for every splash, pushing selections to matched users
 	def populate_splashes
-		distance_km = 10 # Normal setting: 0.1. Change this value to change soapbox radius (in kilometers)
+		distance_km = 100 # Normal setting: 0.1. Change this value to change soapbox radius (in kilometers)
 		if self.latitude && self.longitude
 			bounds = find_bounding_coordinates(self.latitude, self.longitude, distance_km)
 		end
