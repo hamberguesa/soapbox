@@ -31,7 +31,7 @@ var model = (function(){
         }
       }
     }
-    controller.getComments();
+    //controller.getComments();
     total_favs = user_splashes.total_favs
     view.addScore(total_favs)
   }

@@ -9,7 +9,7 @@
  * Released under the MIT license
  * http://ian.mit-license.org/
  */
-;(function ($, window, document, undefined) {
+(function ($, window, document, undefined) {
     var pluginName = "Morphext",
         defaults = {
             animation: "bounceIn",
