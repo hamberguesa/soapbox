@@ -50,7 +50,8 @@ var controller = (function(){
   // Might work; need to test after log-in capability returned
   function createComment(evt){
     evt.preventDefault();
-    id = $(this).parent().parent().parent()[0].id;
+    id = $(this).parent().parent()[0].id;
+    console.log(id)
     var data = $(this).serialize();
     // data.user_id = localStorage.getItem("user_id")
     $.ajax({
@@ -103,6 +104,8 @@ var controller = (function(){
     view.addHeader();
     view.addCreateSplashButton();
     view.addSplashContainer();
+    view.addDashboard();
+    view.addFooter();
 
     // loop through the splashes that should be displayed and 'createSplash' for each
     getSplashes();
@@ -145,7 +148,6 @@ var controller = (function(){
      buildLoginPage();
    };
     poll();
-    view.addColors();
     geolocation.getLocation();
     // $('document').ready('wordCount')
     $('body').on('click','.favorite', switchFavorite)
