@@ -1,7 +1,7 @@
 var controller = (function(){
   var latitude;
   var longitude;
-  var base_url = "http://localhost:9393"
+  var base_url = "http://soap-box.herokuapp.com"
   var currUser;
   // var base_url = "http://soap-box-api.herokuapp.com";
 
