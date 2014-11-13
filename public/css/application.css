@@ -3,7 +3,7 @@
 }
 
 @font-face {
-  font-family: "norwester";
+  font-family: "Norwester";
   src: url("../images/norwester.otf") format("opentype");
   font-family: "Track";
   src: url("../images/Track.ttf") format("truetype");
@@ -75,18 +75,7 @@ ul{
   list-style-type:none;
 
 }
-a.paulund_modal{
-  color: #476BB2;
-}
-a.paulund_modal h3{
-  transition: 0.4s all;
-}
-a.paulund_modal h3:hover{
 
-}
-a.paulund_modal:hover{
-  color: #6699FF;
-}
 #splash_list{
   white-space:nowrap;
   overflow-y:visible;
@@ -137,6 +126,7 @@ a.paulund_modal:hover{
   opacity: 0.8;
   cursor:pointer;
 }
+
 .paulund_modal_close{
   transition: all 0.4s;
 }
@@ -217,6 +207,25 @@ label {
   background-color: #71767F;
 
 }
+
+/* ************CREATE SPLASH LINK************ */
+.paulund_modal {
+  font-family: Track;  
+  color: black;
+}
+
+a.paulund_modal h1{
+  transition: 0.4s all;
+}
+
+a.paulund_modal h1:hover{
+    color: #FF8C40;
+}
+
+#create_new_btn:hover{
+  text-decoration: none;
+}
+
 /*=========== ORIGINAL CSS FOR REFERENCE JBH =====================
 /*#create_splash{
   margin-top:15px;
