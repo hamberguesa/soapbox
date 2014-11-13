@@ -150,7 +150,7 @@ var view = (function(){
   }
 
   var addDashboard = function(data){
-    $('body').append(template.addDashboard())
+    //$('body').append(template.addDashboard())
   }
 
   var addLoading = function(){

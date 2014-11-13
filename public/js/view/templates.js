@@ -1,3 +1,5 @@
+var template = (function(){
+
 
 	function addSplash(params){
 		var compiled = _.template('<li id="<%= id %>" class="splash col-sm-12 col-md-12 col-lg-12 inline-list" style="<%= bgcolor %>"><div id="splash-created-on"><%= time %></div><%= name %><br><%= content %><span class="lower_left"><i class="fa fa-bullhorn"></i></span><span class="lower_right"><span class="number"><%= count %></span><i class="fa fa-star-o favorite <%=color%>"></span></i><div class="comment-<%=id%>-container"><form action="/splashes/<%=id%>/comment" method="post" class="submit_comment" id="submit_comment-<%=id%>"><input type="textarea" placeholder="Reply" rows="4" cols="10" name="content"><br><input type="submit" class="btn btn-success" id="create_comment"><br></form><ul id="comment-<%=id%>" class="comment-list"><li></li><li role="presentation" class="divider"></li></ul></div></li>');
@@ -36,7 +38,7 @@
   }
 
   function addCreateSplashButton(){
-    var compiled = _.template('<div class="container"><div class="row"><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-left"></i></div><a href="#" id="create_new_btn" class="paulund_modal col-md-8"><img class="pulse" class="new-splash-link" src="../images/bullhorn_Fotor.png"></img></a><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-right"></i></div></div></div>');
+    var compiled = _.template('<div class="container"><div class="row"><a href="#" id="create_new_btn" class="paulund_modal col-md-8"><img class="col-md-offset-6 pulse" class="new-splash-link" src="../images/bullhorn_Fotor.png"></img></a></div></div>');
     return compiled();
   }
 
@@ -48,8 +50,8 @@
   }
 
   function addDashboard(){
-    // var compiled = _.template('<div class="container-fluid" id="dashboard"><div class="row"><div class="wild_card col-lg-12"></div></div></div>')
-    // return compiled();
+     // var compiled = _.template('<div class="container-fluid" id="dashboard"><div class="row"><div class="wild_card col-lg-12"></div></div></div>')
+     // return compiled();
   }
 
   function addLoading(){
