@@ -174,13 +174,8 @@ var controller = (function(){
     updateCoords: updateCoords,
     wordCount: wordCount,
     switchFavorite: switchFavorite,
-<<<<<<< HEAD
     getComments: getComments,
     addBodyRipples: addBodyRipples
-=======
-    getComments: getComments,
-    animateNewSplash: animateNewSplash
->>>>>>> development
   };
 })();
 
