@@ -100,8 +100,8 @@ var controller = (function(){
   }
 
   function animateNewSplash(){
-    $('#js-rotating').Morphext({
-      animation: "tada"    
+    $("#js-rotating").Morphext({
+      animation: "tada"
     });
   }
   

@@ -184,7 +184,7 @@ ul{
 
 }
 
-/* ************CREATE SPLASH BUTTON************ */
+/* ************CREATE SPLASH LINK************ */
 .paulund_modal {
   font-family: Track;  
   color: black;
@@ -196,9 +196,11 @@ a.paulund_modal h1{
 
 a.paulund_modal h1:hover{
     color: #FF8C40;
-    text-decoration: none;
 }
 
+#create_new_btn:hover{
+  text-decoration: none;
+}
 
 /*=========== ORIGINAL CSS FOR REFERENCE JBH =====================
 /*#create_splash{
