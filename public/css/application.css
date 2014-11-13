@@ -26,9 +26,11 @@
 
 body {
   /*background-color: #F3F4FA;*/
-  background-color: #3D7999;
+  /*background-color: #3D7999;
   background-color: black;
-  background-color: #CCD4E5 !important;
+  background-color: #CCD4E5 !important;*/
+  background-image: url(/images/modalbg.png);
+  background-size: 100%;
   margin: 0 auto;
   padding: 0 auto;
 }

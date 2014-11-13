@@ -99,6 +99,14 @@ var controller = (function(){
 
   }
 
+  function addBodyRipples(){
+    $('body').ripples({
+      resolution: 512,
+      dropRadius: 20,
+      perturbance: 0.04,
+    }); 
+  }
+
   
   function buildLoginPage() {
     view.addLogin();
@@ -118,6 +126,7 @@ var controller = (function(){
     getComments();
     $('.paulund_modal').paulund_modal_box();
     getUser();
+    addBodyRipples();
   }
 
   function wordCount(){
@@ -168,6 +177,7 @@ var controller = (function(){
     wordCount: wordCount,
     switchFavorite: switchFavorite,
     getComments: getComments, 
+    addBodyRipples: addBodyRipples
   };
 })();
 
