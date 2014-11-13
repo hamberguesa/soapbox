@@ -2,10 +2,12 @@ var model = (function(){
 
   var splashesArray = [];
   var indexArray = [];
+  var commentIndexArray = [];
   function addSplashes(user_splashes){
     splashes_in_database = user_splashes.splashes
     meta_data = user_splashes.meta
     countArr = user_splashes.count
+    commentsArr = user_splashes.comments
     // Compare existing splashesArray to the splashes list given
     // If any new spashes, then add new splashes to splashesArray and return them
     var initial = false;
@@ -22,16 +24,37 @@ var model = (function(){
         if (initial === true)
         {
            view.addSplash(splashes_in_database[i],favorited, count);
-           view.enterSite();
          }
         else
         {
           if (!(splashes_in_database[i].author_name === $("#login_name").text()))
+          {
            view.addSplash(splashes_in_database[i],favorited, count);
+          }
         }
       }
+      for(var j=0; j < commentsArr[i].length; j++)
+      {
+        if ($.inArray(commentsArr[i][j].id,commentIndexArray) === -1)
+        {
+
+          if(initial === true)
+          {
+            view.addComment(commentsArr[i][j]);
+            commentIndexArray.push(commentsArr[i][j].id)
+          }
+          else
+          {
+            if (!(commentsArr[i][j].author_name === $("#login_name").text()))
+            {
+             view.addSplash(splashes_in_database[i],favorited, count);
+            }
+          }
+        }
+      }
+
     }
-    //controller.getComments();
+    view.enterSite();
     total_favs = user_splashes.total_favs
     view.addScore(total_favs)
   }

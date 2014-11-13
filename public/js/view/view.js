@@ -3,7 +3,7 @@ var view = (function(){
   var counter = 0;
 
 
-  var addSplash = function(data, favorited){
+  var addSplash = function(data, favorited, count){
     time = model.splashTime(data);
     if(favorited)
       color = "gold"
@@ -13,7 +13,7 @@ var view = (function(){
           greyscale: true, //for the brits
           grayscale: true  //for the yanks}));
       });
-    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time, color: color, count: data.count, bgcolor: bgcolor });
+    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time, color: color, count: count, bgcolor: bgcolor });
 
     var $hopeThisWorks = $(compiled_html)
 
@@ -76,12 +76,11 @@ var view = (function(){
   };
 
   var showComments = function(id){
-    // $('#comment-'+ id+'container').slideToggle();
+    $('#comment-'+ id+'container').slideToggle();
   };
 
   var addComment = function(data){
-    console.log(data)
-    console.log("here")
+    console.log(data["splash_id"])
     var commentContent = data["content"];
     var compiled_html = template.addComment({name: data["author_name"], content: commentContent});
     $('#comment-'+data["splash_id"]).append(compiled_html);
@@ -94,7 +93,7 @@ var view = (function(){
       $(".wild_card").html(template.addScore({score: score}))
     }
     else
-      $(".score").html("<h4>Total favorites: "+ score +"</h4>")
+      $(".score").html("<h4>Total Favorites: "+ score +"</h4>")
   }
 
   var addHeader = function(){

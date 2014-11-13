@@ -1,9 +1,9 @@
 var controller = (function(){
   var latitude;
   var longitude;
-  var base_url = "http://localhost:9393"
+  // var base_url = "http://localhost:9393"
   var currUser;
-  // var base_url = "http://soap-box-api.herokuapp.com";
+  var base_url = "http://soap-box.herokuapp.com";
 
   function getSplashes(){
     $.ajax({
@@ -14,7 +14,6 @@ var controller = (function(){
 
   function getComments(){
     splashesArr = model.getSplashes();
-    console.log("HERE")
     for(i = 0; i < splashesArr.length; i++)
     {
       id = splashesArr[i]
@@ -28,8 +27,6 @@ var controller = (function(){
   function createSplash(evt){
     evt.preventDefault();
     var data = $('#create-splash-form').serialize();
-    console.log($('#create-splash-form'))
-    console.log(data)
     $.ajax({
       url: base_url+'/splashes',
       type: 'POST',
@@ -54,7 +51,6 @@ var controller = (function(){
   function createComment(evt){
     evt.preventDefault();
     id = $(this).parent().parent()[0].id;
-    console.log(id)
     var data = $(this).serialize();
     // data.user_id = localStorage.getItem("user_id")
     $.ajax({
@@ -99,12 +95,14 @@ var controller = (function(){
 
   }
 
-  function animateNewSplash(){
-    $("#js-rotating").Morphext({
-      animation: "tada"
+  function addBodyRipples(){
+    $('body').ripples({
+      resolution: 512,
+      dropRadius: 20,
+      perturbance: 0.04,
     });
   }
-  
+
   function buildLoginPage() {
     view.addLogin();
   }
@@ -116,14 +114,14 @@ var controller = (function(){
     view.addDashboard();
     view.addFooter();
     view.addLoading();
-    
+
     // loop through the splashes that should be displayed and 'createSplash' for each
     getSplashes();
     // same for comments ('createComment')
     getComments();
     $('.paulund_modal').paulund_modal_box();
     getUser();
-    animateNewSplash();
+    addBodyRipples();
   }
 
   function wordCount(){
@@ -131,7 +129,6 @@ var controller = (function(){
     $('#textarea_feedback').text(text_max + ' characters remaining');
 
     $('body').keyup('#modal_content',function() {
-      console.log($('#modal_content').val())
       if ($('#modal_content').val())
       {
         var text_length = $('#modal_content').val().length;
@@ -143,8 +140,6 @@ var controller = (function(){
 
   function switchFavorite(data){
     id = $(this).parent().parent().attr("id")
-    //id = this.parent().parent().id
-    //console.log(id)
     $.ajax({
       url: '/splashes/'+id+'/favorite'
     }).done(view.switchFavorite)
@@ -159,15 +154,12 @@ var controller = (function(){
    };
     poll();
     geolocation.getLocation();
-    // $('document').ready('wordCount')
-    $('body').on('click','.favorite', switchFavorite)
+    $('body').on('click','.favorite', switchFavorite);
     $('body').on('submit', '.submit_comment', createComment);
     $('body').on('click','.splash', showComments);
     $('body').on('submit','#create-splash-form', createSplash);
     $('.fa-chevron-right').mouseenter(view.moveRight);
     $('.fa-chevron-left').mouseenter(view.moveLeft);
-   // oauth.getLoginStatus();
-
   }
 
   return{
@@ -178,8 +170,8 @@ var controller = (function(){
     updateCoords: updateCoords,
     wordCount: wordCount,
     switchFavorite: switchFavorite,
-    getComments: getComments, 
-    animateNewSplash: animateNewSplash
+    getComments: getComments,
+    addBodyRipples: addBodyRipples
   };
 })();
 
