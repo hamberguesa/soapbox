@@ -40,7 +40,6 @@ var controller = (function(){
 
   function addSplash(data)
   {
-    console.log(data)
     view.addSplash(data.splashes)
   }
 
@@ -49,6 +48,7 @@ var controller = (function(){
       return;
     view.showComments(this.id);
   }
+
 
   // Might work; need to test after log-in capability returned
   function createComment(evt){

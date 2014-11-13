@@ -28,7 +28,7 @@ var template = (function(){
 
   // current user not feeding through
   function addHeader(){
-    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><div class="col-md-6"><img class="logo" src="../images/SoapSimple.svg" alt=""><h3 class="logo_type">SoapBox</h3></div><div class="col-md-3 col-md-offset-3"><ul><li class="logged-in-as">Logged in as: <span id="login_name"></span></li><li><a class="logout" href="/logout">Logout</a></li></ul></div></nav>');
+    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><div class="col-lg-6"><img class="logo" src="../images/SoapSimple.svg" alt=""><h3 class="logo_type">SoapBox</h3></div><div class="col-lg-4 col-lg-offset-2"><ul><li class="logged-in-as">Logged in as: <span id="login_name"></span></li><li><a class="logout" href="/logout">Logout</a></li></ul></div></nav>');
     return compiled();
   }
 
