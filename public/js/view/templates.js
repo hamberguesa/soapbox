@@ -8,7 +8,7 @@ var template = (function(){
 	}
 
   function addModal(){
-    var compiled = _.template('<div class="paulund_modal_box"><a href="#" class="paulund_modal_close"></a><div class="paulund_inner_modal_box"><form id="create-splash-form" action="/splashes" method="post"><label for="Create-Splash">Splash!</label><br><textarea id="modal_content" rows="4" cols="30" name="content" maxlength="255"></textarea><div id="textarea_feedback"></div><br><input type="submit" class="btn btn-success" id="create_splash"><br></form></div></div>');
+    var compiled = _.template('<div class="paulund_modal_box"><a href="#" class="paulund_modal_close"></a><div class="paulund_inner_modal_box"><form id="create-splash-form" action="/splashes" method="post"><label for="Create-Splash"><p>Splash!</p></label><br><textarea id="modal_content" rows="3" cols="53" name="content" maxlength="255"></textarea><div id="textarea_feedback"></div><br><input type="submit" class="btn" id="create_splash"><br></form></div></div>');
     return compiled();
   }
 

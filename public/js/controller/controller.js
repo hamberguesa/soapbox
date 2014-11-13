@@ -143,7 +143,6 @@ var controller = (function(){
     }).done(view.switchFavorite)
   }
 
-
   function bindEvents(){
    if($('#indexpage').length === 1){
       buildIndexPage();
