@@ -1,0 +1,22 @@
+.favorite{
+
+}
+
+.favorite:hover{
+  color:gold;
+}
+
+.gold{
+  color: gold;
+}
+
+.lower_right{
+  position:relative;
+}
+.lower_left{
+  position:relative;
+ }
+.score{
+  color:white;
+  text-align:center;
+}

@@ -6,32 +6,27 @@ gem 'pg'
 
 # Sinatra driver
 gem 'sinatra'
-gem 'sinatra-contrib'
-
-# Use Thin for our web server
-gem 'thin'
-
-# activerecord ORM
-gem 'activesupport'
-gem 'activerecord'
-
-#face recognition
-
-
+#gem 'sinatra-contrib'
+gem 'activesupport', '~>4.1.7'
+gem 'activerecord', '~>4.1.7'
+gem 'sinatra-reloader'
 gem 'rake'
+gem 'pry'
+gem 'rspec'
+gem 'faker'
 
-gem 'shotgun'		
+gem 'shotgun'
 
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
   gem 'capybara'
-  gem 'selenium-webdriver'
 end
 
 group :test, :development do
-  gem 'rspec'
   gem 'factory_girl'
-  gem 'faker'
 end
 
+gem 'omniauth-facebook'
+gem 'dotenv'
+gem 'httparty'

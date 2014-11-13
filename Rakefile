@@ -1,5 +1,4 @@
 require 'rake'
-require 'rspec/core/rake_task'
 
 
 require ::File.expand_path('../config/environment', __FILE__)
@@ -121,6 +120,7 @@ namespace :db do
   end
 
   namespace :test do
+  require 'rspec/core/rake_task'
     desc "Migrate test database"
     task :prepare do
       system "rake db:migrate RACK_ENV=test"
