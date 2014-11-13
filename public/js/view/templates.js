@@ -36,11 +36,9 @@
   }
 
   function addCreateSplashButton(){
-    var compiled = _.template('<div class="container"><div class="row"><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-left"></i></div><a href="#" id="create_new_btn" class="paulund_modal col-md-8"><img class="pulse" class="new-splash-link" src="../images/bullhorn_Fotor.png"></img></a><div class="arrow_container col-md-1"><i class="fa fa-5x fa-chevron-right"></i></div></div></div>');
+    var compiled = _.template('<div class="container"><div class="row"><a href="#" id="create_new_btn" class="paulund_modal col-md-8"><img class="pulse" class="new-splash-link" src="../images/bullhorn_Fotor.png"></img></a></div></div>');
     return compiled();
   }
-
-
 
   function addScore(params){
     var compiled = _.template('<div class="score">Total Favorites: <%=score%></div>');
@@ -53,7 +51,7 @@
   }
 
   function addLoading(){
-    var compiled = _.template('<div class="loading"><div class="container"><h1> SoapBox</h1><i id="spinner" class="fa fa-4x fa-spinner fa-spin"></i><button id="entersite" onclick="view.removeLoading();" class="btn btn-lg btn-success">Enter Site</button><br><h3 class="col-md-6 col-md-offset-3">It\'s simple. <br><br>1. Send messages to those within 1 km of you<br> 2. Receive messages from those same people. <br><br><br> SoapBox breaks the bounds of requiring prior contact information before interacting with those around you on the internet.</div>')
+    var compiled = _.template('<div class="loading"><div class="container"><h1> SoapBox</h1><i id="spinner" class="fa fa-4x fa-spinner fa-spin"></i><button id="entersite" onclick="view.removeLoading();" class="btn btn-lg btn-success">Enter Site</button><br><h3 class="col-md-6 col-md-offset-3">It\'s simple. <br><br>1. Send messages to those within 1 km of you<br> 2. Receive messages from those same people. <br><br><br> SoapBox breaks the bounds of requiring prior contact information before interacting with those around you on the internet.</h3></div></div>')
     return compiled();
   }
 
