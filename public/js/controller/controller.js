@@ -14,7 +14,6 @@ var controller = (function(){
 
   function getComments(){
     splashesArr = model.getSplashes();
-    // console.log("HERE")
     for(i = 0; i < splashesArr.length; i++)
     {
       id = splashesArr[i]
@@ -104,10 +103,9 @@ var controller = (function(){
       resolution: 512,
       dropRadius: 20,
       perturbance: 0.04,
-    }); 
+    });
   }
 
-  
   function buildLoginPage() {
     view.addLogin();
   }
@@ -119,7 +117,7 @@ var controller = (function(){
     view.addDashboard();
     view.addFooter();
     view.addLoading();
-    
+
     // loop through the splashes that should be displayed and 'createSplash' for each
     getSplashes();
     // same for comments ('createComment')
@@ -176,8 +174,13 @@ var controller = (function(){
     updateCoords: updateCoords,
     wordCount: wordCount,
     switchFavorite: switchFavorite,
-    getComments: getComments, 
+<<<<<<< HEAD
+    getComments: getComments,
     addBodyRipples: addBodyRipples
+=======
+    getComments: getComments,
+    animateNewSplash: animateNewSplash
+>>>>>>> development
   };
 })();
 
