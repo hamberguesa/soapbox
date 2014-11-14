@@ -46,16 +46,16 @@ var view = (function(){
       $("#"+data.splash_id+" .favorite").addClass("gold")
       curr = parseInt($('#'+data.splash_id +" .number").text())
       $('#'+data.splash_id +" .number").text(curr+1)
-      val = parseInt($(".score h4").text().match(/\d/g)[0])
-      $(".score h4").text("Total Favorites: "+ (parseInt(val+1)))
+      val = parseInt($(".score").text().match(/\d/g)[0])
+      $(".score").text("Score: "+ (parseInt(val+1)))
     }
     else
     {
       $("#"+data.splash_id+" .favorite").removeClass("gold")
       curr = parseInt($('#'+data.splash_id +" .number").text())
       $('#'+data.splash_id +" .number").text(curr-1)
-      val = parseInt($(".score h4").text().match(/\d/g)[0])
-      $(".score h4").text("Total Favorites: "+ (parseInt(val-1)))
+      val = parseInt($(".score").text().match(/\d/g)[0])
+      $(".score").text("Score: "+ (parseInt(val-1)))
     }
   }
 
@@ -77,7 +77,7 @@ var view = (function(){
   };
 
   var showComments = function(id){
-    $('#comment-'+ id+'container').slideToggle();
+    $('.comment-'+ id+'-container').slideToggle();
   };
 
   var addComment = function(data){
@@ -91,7 +91,7 @@ var view = (function(){
   var addScore = function(score){
     if ($(".score").length === 0)
     {
-      $(".wild_card").html(template.addScore({score: score}))
+      $("#score").text(template.addScore({score: score}))
     }
     else
       $(".score").html("<li>Score: "+ score +"</li>")
@@ -156,6 +156,7 @@ var view = (function(){
   var removeLoading = function(){
     $('.loading').fadeOut("slow",function(){
       $('.loading').remove()
+      $('#main_content').addClass("slideRight")
     });
   }
 

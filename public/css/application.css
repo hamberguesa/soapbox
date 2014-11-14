@@ -58,7 +58,13 @@ body {
 .score {
   font-family: Fairview;
   font-size: 2em;
-  margin-left: 7%;
+  padding-right:1em;
+  text-align: right;
+  margin-bottom:10px;
+  color:white;
+}
+.logged-in-as{
+  color:#3F3F3F;
 }
 
 .logo {
@@ -90,6 +96,11 @@ body {
   overflow-y: scroll;
   height:35em;
 }
+
+.navbar ul{
+  line-height:25px;
+}
+
 
 ul{
   list-style-type:none;
@@ -132,7 +143,7 @@ ul{
 .splash{
   display:inline-block;
   /*width: 18em;*/
-  height: 20em;
+  min-height: 100px;
   font-size: 1.2em;
   color:white;
   white-space: normal;
@@ -221,19 +232,52 @@ label {
 
 /* ************END INTRO BUTTON************ */
 
+.fa-bullhorn{
+  transition:0.5s all ;
+}
+.fa-bullhorn:hover{
+  color:orange;
+  transform:scale(1.2,1.2);
+}
+.fa-star-o{
+  transition:0.5s all ;
+
+}
+
+
+.fa-star-o:hover{
+  transition:0.5s all;
+  transform:scale(1.2,1.2);
+
+
+
+}
+
+
+.author_name{
+  font-weight:bold;
+}
+.meta_splash{
+  text-align: left;
+}
+
+.splash_content{
+  font-size:25px;
+}
 
 .submit_comment{
   color:black;
 }
 .comment-list{
-
   color:#3F3F3F;
   /*text-shadow: 0px 0px 3px white;*/
   padding: 0;
-  max-height: 100px;
-  overflow-y: auto;
+  max-height: 200px;
+  overflow-y: scroll;
 }
-
+.comment_container{
+  display:none;
+}
 .comment-list li{
   float:none;
   position:relative;

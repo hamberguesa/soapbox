@@ -40,9 +40,8 @@ var controller = (function(){
   }
 
   function showComments(evt){
-    if(evt.target !== this)
-      return;
-    view.showComments(this.id);
+    console.log($(this).closest('.splash')[0])
+    view.showComments($(this).closest('.splash')[0].id);
   }
 
 
@@ -77,7 +76,7 @@ var controller = (function(){
         model.addSplashes(data);
         poll();
       });
-    }, 10000);
+    }, 2000);
   }
 
   function updateCoords(lat, lon){
@@ -155,7 +154,7 @@ var controller = (function(){
     geolocation.getLocation();
     $('body').on('click','.favorite', switchFavorite);
     $('body').on('submit', '.submit_comment', createComment);
-    $('body').on('click','.splash', showComments);
+    $('body').on('click','.fa-bullhorn', showComments);
     $('body').on('submit','#create-splash-form', createSplash);
     $('.fa-chevron-right').mouseenter(view.moveRight);
     $('.fa-chevron-left').mouseenter(view.moveLeft);
