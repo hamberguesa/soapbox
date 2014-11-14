@@ -2,7 +2,7 @@ var template = (function(){
 
 
 	function addSplash(params){
-		var compiled = _.template('<li id="<%= id %>" class="splash col-sm-12 col-md-12 col-lg-12 inline-list" style="<%= bgcolor %>"><div class="meta_splash"><span class="author_name"><%= name %></span><div id="splash-created-on"><%= time %></div></div><div class="splash_content"><%= content %></div><div class="icons clearfix"><span class="lower_left"><i class="fa fa-2x fa-bullhorn"></i></span><span class="lower_right"><span class="number"><%= count %></span><i class="fa fa-2x fa-star-o favorite <%=color%>"></span></i><div class="comment_container comment-<%=id%>-container"><form action="/splashes/<%=id%>/comment" method="post" class="submit_comment" id="submit_comment-<%=id%>"><input type="textarea" placeholder="Reply" rows="4" cols="10" name="content"><br><input type="submit" id="create_comment"><br></form><ul id="comment-<%=id%>" class="comment-list"><li></li><li role="presentation" class="divider"></li></ul></div></li>');
+		var compiled = _.template('<li id="<%= id %>" class="splash col-sm-12 col-md-12 col-lg-12 inline-list" style="<%= bgcolor %>"><div class="meta_splash"><span class="author_name"><%= name %></span><div id="splash-created-on"><%= time %></div></div><div class="splash_content"><%= content %></div><div class="icons clearfix"><span class="lower_left"><i class="fa fa-2x fa-bullhorn"></i></span><span class="lower_right"><span class="number"><%= count %></span><i class="fa fa-2x fa-star-o favorite <%=color%>"></span></i><div class="comment_container comment-<%=id%>-container"><form action="/splashes/<%=id%>/comment" method="post" class="submit_comment" id="submit_comment-<%=id%>"><br><hr class="white-line"><br><input type="textarea" placeholder="Reply" rows="4" cols="10" name="content"><br><input type="submit" id="create_comment"></form><br><ul id="comment-<%=id%>" class="comment-list"><li></li><li role="presentation" class="divider"></li></ul></div></li>');
     string = compiled(params);
 		return compiled(params);
 	}
@@ -22,7 +22,7 @@ var template = (function(){
   }
 
   function addLogin(){
-    var compiled = _.template('<div class="login"><img class="splash_img" src="../images/SoapSimple.svg" alt=""><h1>SoapBox</h1><p>Bridging the Gap in Communication</p><a href="/auth/facebook"><button type="button" class="regFnt btn btn-primary btn-lg">Login With Facebook</button></a><br></div>');
+    var compiled = _.template('<div class="login"><img class="splash_img" src="../images/SoapSimple.svg" alt=""><h1>SoapBox</h1><p>Shout Above the Crowd</p><a href="/auth/facebook"><button type="button" class="regFnt btn btn-primary btn-lg">Login With Facebook</button></a><br></div>');
     return compiled();
   }
 
