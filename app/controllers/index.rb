@@ -29,8 +29,8 @@ get '/splashes' do
     @current_user.longitude = params[:lon]
     @current_user.save!
   end
-  #old_splashes = UserSplash.where("created_at <= ?", Time.now - 2.hours)
-  #old_splashes.each {|old| old.destroy}
+  old_splashes = UserSplash.where("created_at <= ?", Time.now - 2.hours)
+  old_splashes.each {|old| old.destroy}
   @splashes = Splash.all
   countArr = []
   commentsArr = []
