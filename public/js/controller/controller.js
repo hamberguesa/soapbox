@@ -4,7 +4,7 @@ var controller = (function(){
   // var base_url = "http://localhost:9393"
   var base_url = ""
   var currUser;
-  var base_url = "http://soap-box.herokuapp.com";
+  // var base_url = "http://soap-box.herokuapp.com";
 
   function getSplashes(){
     $.ajax({
