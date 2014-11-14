@@ -185,6 +185,34 @@ label {
 
 /* ************END MODAL************ */
 
+/* ************CREATE COMMENT BUTTON************ */
+
+
+#create_comment{
+  background-color: black;
+  border: 1px solid black;
+}
+#create_comment:hover{
+  background-color: gray;
+  border: 1px solid gray;
+}
+
+/* ************END CREATE COMMENT BUTTON************ */
+
+/* ************INTRO BUTTON************ */
+
+
+#create_comment{
+  background-color: black;
+  border: 1px solid black;
+}
+#create_comment:hover{
+  background-color: gray;
+  border: 1px solid gray;
+}
+
+/* ************END INTRO BUTTON************ */
+
 
 .submit_comment{
   color:black;
