@@ -1,7 +1,7 @@
 var controller = (function(){
   var latitude;
   var longitude;
-   var base_url = "http://localhost:9393"
+  var base_url = "http://localhost:9393"
   var currUser;
   // var base_url = "http://soap-box.herokuapp.com";
 
@@ -37,7 +37,6 @@ var controller = (function(){
 
   function addSplash(data){
     view.addSplash(data.splashes, false, data.count)
-    console.log(data)
   }
 
   function showComments(evt){

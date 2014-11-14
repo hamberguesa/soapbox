@@ -4,6 +4,7 @@ var view = (function(){
 
 
   var addSplash = function(data, favorited, count){
+
     time = model.splashTime(data);
     if(favorited)
       color = "gold"
@@ -40,16 +41,12 @@ var view = (function(){
   //   }
   // }
   var switchFavorite = function(data){
-    console.log(data)
-    console.log(data.favorited)
     if(data.favorited === true)
     {
       $("#"+data.splash_id+" .favorite").addClass("gold")
       curr = parseInt($('#'+data.splash_id +" .number").text())
-      console.log(curr)
       $('#'+data.splash_id +" .number").text(curr+1)
       val = parseInt($(".score h4").text().match(/\d/g)[0])
-      console.log(val)
       $(".score h4").text("Total Favorites: "+ (parseInt(val+1)))
     }
     else
@@ -86,6 +83,7 @@ var view = (function(){
   };
 
   var addComment = function(data){
+
     var commentContent = data["content"];
     var compiled_html = template.addComment({name: data["author_name"], content: commentContent});
     $('#comment-'+data["splash_id"]).append(compiled_html);
@@ -98,7 +96,7 @@ var view = (function(){
       $(".wild_card").html(template.addScore({score: score}))
     }
     else
-      $(".score").html("<h4>Total Favorites: "+ score +"</h4>")
+      $(".score").html("<li>Score: "+ score +"</li>")
   }
 
   var addHeader = function(){

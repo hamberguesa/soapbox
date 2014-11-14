@@ -2,13 +2,13 @@ var template = (function(){
 
 
 	function addSplash(params){
-		var compiled = _.template('<li id="<%= id %>" class="splash col-sm-12 col-md-12 col-lg-12 inline-list" style="<%= bgcolor %>"><div id="splash-created-on"><%= time %></div><%= name %><br><%= content %><span class="lower_left"><i class="fa fa-bullhorn"></i></span><span class="lower_right"><span class="number"><%= count %></span><i class="fa fa-star-o favorite <%=color%>"></span></i><div class="comment-<%=id%>-container"><form action="/splashes/<%=id%>/comment" method="post" class="submit_comment" id="submit_comment-<%=id%>"><input type="textarea" placeholder="Reply" rows="4" cols="10" name="content"><br><input type="submit" class="btn btn-success" id="create_comment"><br></form><ul id="comment-<%=id%>" class="comment-list"><li></li><li role="presentation" class="divider"></li></ul></div></li>');
+		var compiled = _.template('<li id="<%= id %>" class="splash col-sm-12 col-md-12 col-lg-12 inline-list" style="<%= bgcolor %>"><div id="splash-created-on"><%= time %></div><%= name %><br><%= content %><span class="lower_left"><i class="fa fa-bullhorn"></i></span><span class="lower_right"><span class="number"><%= count %></span><i class="fa fa-star-o favorite <%=color%>"></span></i><div class="comment-<%=id%>-container"><form action="/splashes/<%=id%>/comment" method="post" class="submit_comment" id="submit_comment-<%=id%>"><input type="textarea" placeholder="Reply" rows="4" cols="10" name="content"><br><input type="submit" id="create_comment"><br></form><ul id="comment-<%=id%>" class="comment-list"><li></li><li role="presentation" class="divider"></li></ul></div></li>');
     string = compiled(params);
 		return compiled(params);
 	}
 
   function addModal(){
-    var compiled = _.template('<div class="paulund_modal_box"><a href="#" class="paulund_modal_close"></a><div class="paulund_inner_modal_box"><form id="create-splash-form" action="/splashes" method="post"><label for="Create-Splash"><p>Splash!</p></label><br><textarea id="modal_content" rows="3" cols="53" name="content" maxlength="255"></textarea><div id="textarea_feedback"></div><br><input type="submit" class="btn" id="create_splash"><br></form></div></div>');
+    var compiled = _.template('<div class="paulund_modal_box"><a href="#" class="paulund_modal_close"></a><div class="paulund_inner_modal_box"><form id="create-splash-form" action="/splashes" method="post"><label for="Create-Splash"><p>Splash!</p></label><br><textarea id="modal_content" rows="3" cols="53" name="content" maxlength="255"></textarea><div id="textarea_feedback"></div><br><input type="submit" id="create_splash"><br></form></div></div>');
     return compiled();
   }
 
@@ -26,9 +26,8 @@ var template = (function(){
     return compiled();
   }
 
-  // current user not feeding through
   function addHeader(){
-    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><div class="row"><div class="col-md-4"><img class="logo" src="../images/SoapSimple.svg" alt=""><h3 class="logo_type">SoapBox</h3></div><div class="col-md-4"><a href="#" id="create_new_btn" class="paulund_modal"><img class="pulse new-splash-link" src="../images/bullhorn_Fotor.png"></img></a></div><div class="col-md-4"><ul><li class="logged-in-as">Logged in as: <span id="login_name"></span></li><li><a class="logout" href="/logout">Logout</a></li></ul></div></div></nav>');
+    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><div class="row"><div class="col-md-4"><img class="logo" src="../images/SoapSimple.svg" alt=""><h3 class="logo_type">SoapBox</h3></div><div class="col-md-4"><a href="#" id="create_new_btn" class="paulund_modal"><img class="pulse new-splash-link" src="../images/bullhorn_Fotor.png"></img></a></div><div class="col-md-4"><ul><li class="logged-in-as">Logged in as: <span id="login_name"></span></li><li class="score" id="score"></li><li><a class="logout" href="/logout">Logout</a></li></ul></div></div></nav>');
     return compiled();
   }
 
@@ -45,7 +44,7 @@ var template = (function(){
 
 
   function addScore(params){
-    var compiled = _.template('<div class="score">Total Favorites: <%=score%></div>');
+    var compiled = _.template('<li class="score"></li>');
     return compiled(params);
   }
 
@@ -55,7 +54,7 @@ var template = (function(){
   }
 
   function addLoading(){
-    var compiled = _.template('<div class="loading"><div class="container"><h1> SoapBox</h1><i id="spinner" class="fa fa-4x fa-spinner fa-spin"></i><button id="entersite" onclick="view.removeLoading();" class="btn btn-lg btn-success">Enter Site</button><br><h3 class="col-md-6 col-md-offset-3">It\'s simple. <br><br>1. Send messages to those within 1 km of you<br> 2. Receive messages from those same people. <br><br><br> SoapBox breaks the bounds of requiring prior contact information before interacting with those around you on the internet.</div>')
+    var compiled = _.template('<div class="loading"><div class="container"><h1> SoapBox</h1><i id="spinner" class="fa fa-4x fa-spinner fa-spin"></i><button id="entersite" onclick="view.removeLoading();" class="btn" id="intro">Enter Site</button><br><h3 class="col-md-6 col-md-offset-3">It\'s simple. <br><br>1. Send messages to those within 1 km of you<br> 2. Receive messages from those same people. <br><br><br> SoapBox breaks the bounds of requiring prior contact information before interacting with those around you on the internet.</div>')
     return compiled();
   }
 

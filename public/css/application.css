@@ -55,6 +55,12 @@ body {
   color: white;
 }
 
+.score {
+  font-family: Fairview;
+  font-size: 2em;
+  margin-left: 7%;
+}
+
 .logo {
   /*clear: both;*/
   display: block;
@@ -188,6 +194,36 @@ label {
 }
 
 /* ************END MODAL************ */
+
+/* ************CREATE COMMENT BUTTON************ */
+
+
+#create_comment{
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+}
+#create_comment:hover{
+  background-color: gray;
+  border: 1px solid gray;
+  color: white;
+}
+
+/* ************END CREATE COMMENT BUTTON************ */
+
+/* ************INTRO BUTTON************ */
+
+
+#intro{
+  background-color: white;
+  border: 1px solid white;
+}
+#intro:hover{
+  background-color: gray;
+  border: 1px solid gray;
+}
+
+/* ************END INTRO BUTTON************ */
 
 
 .submit_comment{
