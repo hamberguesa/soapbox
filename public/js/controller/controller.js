@@ -37,7 +37,6 @@ var controller = (function(){
 
   function addSplash(data){
     view.addSplash(data.splashes, false, data.count)
-    console.log(data)
   }
 
   function showComments(evt){
