@@ -191,10 +191,12 @@ label {
 #create_comment{
   background-color: black;
   border: 1px solid black;
+  color: white;
 }
 #create_comment:hover{
   background-color: gray;
   border: 1px solid gray;
+  color: white;
 }
 
 /* ************END CREATE COMMENT BUTTON************ */
@@ -202,11 +204,11 @@ label {
 /* ************INTRO BUTTON************ */
 
 
-#create_comment{
-  background-color: black;
-  border: 1px solid black;
+#intro{
+  background-color: white;
+  border: 1px solid white;
 }
-#create_comment:hover{
+#intro:hover{
   background-color: gray;
   border: 1px solid gray;
 }
