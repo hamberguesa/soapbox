@@ -1,7 +1,7 @@
 var controller = (function(){
   var latitude;
   var longitude;
-  //var base_url = "http://localhost:9393"
+  // var base_url = "http://localhost:9393"
   var currUser;
   var base_url = "http://soap-box.herokuapp.com";
 
@@ -47,7 +47,7 @@ var controller = (function(){
   // Might work; need to test after log-in capability returned
   function createComment(evt){
     evt.preventDefault();
-    id = $(this).parent().parent()[0].id;
+    id = $(this).closest('.splash')[0].id;
     var data = $(this).serialize();
     // data.user_id = localStorage.getItem("user_id")
     $.ajax({
@@ -136,7 +136,7 @@ var controller = (function(){
   }
 
   function switchFavorite(data){
-    id = $(this).parent().parent().attr("id")
+    id = $(this).closest('.splash')[0].id
     $.ajax({
       url: '/splashes/'+id+'/favorite'
     }).done(view.switchFavorite)
