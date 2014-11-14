@@ -28,7 +28,7 @@ var template = (function(){
 
   // current user not feeding through
   function addHeader(){
-    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><div class="col-lg-6"><img class="logo" src="../images/SoapSimple.svg" alt=""><h3 class="logo_type">SoapBox</h3></div><div class="col-lg-4 col-lg-offset-2"><ul><li class="logged-in-as">Logged in as: <span id="login_name"></span></li><li><a class="logout" href="/logout">Logout</a></li></ul></div></nav>');
+    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><div class="row"><div class="col-md-4"><img class="logo" src="../images/SoapSimple.svg" alt=""><h3 class="logo_type">SoapBox</h3></div><div class="col-md-4"><a href="#" id="create_new_btn" class="paulund_modal"><img class="pulse new-splash-link" src="../images/bullhorn_Fotor.png"></img></a></div><div class="col-md-4"><ul><li class="logged-in-as">Logged in as: <span id="login_name"></span></li><li><a class="logout" href="/logout">Logout</a></li></ul></div></div></nav>');
     return compiled();
   }
 
@@ -38,8 +38,8 @@ var template = (function(){
   }
 
   function addCreateSplashButton(){
-    var compiled = _.template('<div class="container"><div class="row"><a href="#" id="create_new_btn" class="paulund_modal col-md-8"><img class="col-md-offset-6 pulse" class="new-splash-link" src="../images/bullhorn_Fotor.png"></img></a></div></div>');
-    return compiled();
+    // var compiled = _.template('<div class="container"><div class="row"><a href="#" id="create_new_btn" class="paulund_modal col-md-8"><img class="col-md-offset-6 pulse" class="new-splash-link" src="../images/bullhorn_Fotor.png"></img></a></div></div>');
+    // return compiled();
   }
 
 
