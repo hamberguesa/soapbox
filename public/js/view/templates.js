@@ -12,7 +12,7 @@ var template = (function(){
   }
 
   function addFooter(){
-    var compiled = _.template('<footer ><div class="row"><div class="container-fluid"><div class="col-lg-12"><div class="row footer">// ©2014 Soapbox Limited // Jobs // Privacy // Press // Terms</div></div></div></div></footer>')
+    var compiled = _.template('<footer ><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="row footer">// ©2014 Soapbox Limited // Jobs // Privacy // Press // Terms</div></div></div></div></footer>')
     return compiled();
   }
   function addComment(params){

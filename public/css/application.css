@@ -94,7 +94,7 @@ body {
 }
 .scrolly{
   overflow-y: scroll;
-  height:43em;
+  height:35em;
 }
 
 .navbar ul{
@@ -326,7 +326,7 @@ label {
 }
 
 #main_content{
-  height: 50em;
+  height: 40em;
   /*overflow-y: hidden;*/
 }
 
@@ -338,13 +338,11 @@ label {
   background-color: black;
   color: white;
   height: 8em;
-  width: 100%;
   padding-top: 1.8em;
   overflow: hidden;
   margin: 0 auto;
   text-align: center;
-  position: fixed;
-  bottom: 1em;
+  position: relative;
 }
 
 .container-fluid {
@@ -353,7 +351,7 @@ label {
 }
 
 .center-splash-button {
-  padding-left: 50em;
+  //padding-left: 50em;
 }
 
 /* ************CREATE SPLASH IMAGE************ */
