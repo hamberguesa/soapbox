@@ -40,8 +40,9 @@ var controller = (function(){
   }
 
   function showComments(evt){
-    if(evt.target !== this)
-      return;
+    console.log(this)
+    // if(evt.target !== this)
+    //   return;
     view.showComments(this.id);
   }
 
