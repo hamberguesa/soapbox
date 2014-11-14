@@ -89,11 +89,15 @@ ul{
   list-style-type:none;
 
 }
+.comment-list li{
+  border: 1px solid black;
 
+}
 #splash_list{
   white-space:nowrap;
   /*overflow-y: scroll;*/
   padding-right: 0px;
+  left: 0px;
   /*display:inline-block;*/
 }
 .x-hidden{
