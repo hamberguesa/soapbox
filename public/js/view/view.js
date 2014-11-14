@@ -98,7 +98,7 @@ var view = (function(){
       $(".wild_card").html(template.addScore({score: score}))
     }
     else
-      $(".score").html("<h4>Total Favorites: "+ score +"</h4>")
+      $(".score").html("<li>Score: "+ score +"</li>")
   }
 
   var addHeader = function(){

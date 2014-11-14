@@ -55,6 +55,12 @@ body {
   color: white;
 }
 
+.score {
+  font-family: Fairview;
+  font-size: 2em;
+  margin-left: 7%;
+}
+
 .logo {
   /*clear: both;*/
   display: block;

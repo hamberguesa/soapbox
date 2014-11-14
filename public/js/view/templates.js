@@ -27,7 +27,7 @@ var template = (function(){
   }
 
   function addHeader(){
-    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><div class="row"><div class="col-md-4"><img class="logo" src="../images/SoapSimple.svg" alt=""><h3 class="logo_type">SoapBox</h3></div><div class="col-md-4"><a href="#" id="create_new_btn" class="paulund_modal"><img class="pulse new-splash-link" src="../images/bullhorn_Fotor.png"></img></a></div><div class="col-md-4"><ul><li class="logged-in-as">Logged in as: <span id="login_name"></span></li><li><a class="logout" href="/logout">Logout</a></li></ul></div></div></nav>');
+    var compiled = _.template('<nav class="navbar navbar-inverse" role="navigation"><div class="row"><div class="col-md-4"><img class="logo" src="../images/SoapSimple.svg" alt=""><h3 class="logo_type">SoapBox</h3></div><div class="col-md-4"><a href="#" id="create_new_btn" class="paulund_modal"><img class="pulse new-splash-link" src="../images/bullhorn_Fotor.png"></img></a></div><div class="col-md-4"><ul><li class="logged-in-as">Logged in as: <span id="login_name"></span></li><li class="score" id="score"></li><li><a class="logout" href="/logout">Logout</a></li></ul></div></div></nav>');
     return compiled();
   }
 
@@ -44,7 +44,7 @@ var template = (function(){
 
 
   function addScore(params){
-    var compiled = _.template('<div class="score">Total Favorites: <%=score%></div>');
+    var compiled = _.template('<li class="score"></li>');
     return compiled(params);
   }
 
