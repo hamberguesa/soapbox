@@ -19,6 +19,7 @@ private
 	 		self.latitude = self.author.latitude
 	 		self.longitude = self.author.longitude
 	 		self.author_name = "#{self.author.first_name} #{self.author.last_name}"
+	 		self.fb_url = self.author.fb_url
 	 	end
 	end
 

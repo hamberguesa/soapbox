@@ -14,7 +14,7 @@ var view = (function(){
           greyscale: true, //for the brits
           grayscale: true  //for the yanks}));
       });
-    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time, color: color, count: count, bgcolor: bgcolor });
+    var compiled_html = template.addSplash({id: data.id, name: data.author_name, content: data.content, time_ago: time, color: color, count: count, bgcolor: bgcolor, fb_url: data.fb_url });
 
     var $hopeThisWorks = $(compiled_html)
 

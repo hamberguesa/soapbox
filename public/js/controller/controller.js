@@ -2,8 +2,9 @@ var controller = (function(){
   var latitude;
   var longitude;
   // var base_url = "http://localhost:9393"
+  var base_url = ""
   var currUser;
-  var base_url = "http://soap-box.herokuapp.com";
+  // var base_url = "http://soap-box.herokuapp.com";
 
   function getSplashes(){
     $.ajax({
@@ -75,7 +76,7 @@ var controller = (function(){
         model.addSplashes(data);
         poll();
       });
-    }, 2000);
+    }, 20000);
   }
 
   function updateCoords(lat, lon){

@@ -83,7 +83,7 @@ body{
 
 .logout {
   display: block;
-  /*float: right;*/
+  float: right;
   font-family: Fairview;
   font-size: 2em;
   text-align: right;

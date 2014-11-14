@@ -163,6 +163,30 @@ ul{
   cursor:pointer;
 }
 
+#fb_picture{
+  margin-left:40px;
+  display:inline-block;
+  float:right;
+  padding-right:1em;
+}
+
+.meta_info{
+
+  display:inline-block;
+  position: relative;
+  top:10px;
+}
+
+
+.fb_url{
+  margin:10px;
+  border-radius: 50%;
+  border: 1px solid #3F3F3F;
+  transition: 0.5s all;
+}
+.fb_url:hover{
+  transform:scale(1.5,1.5);
+}
 /* ************MODAL************ */
 
 

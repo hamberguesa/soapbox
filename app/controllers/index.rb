@@ -101,7 +101,7 @@ get '/auth/facebook/callback' do
     user.token = auth['credentials'].token
     user.save
   else
-    User.create(:fb_user_id => facebook_id, :token =>  auth['credentials'].token, :first_name => auth['extra']['raw_info'].first_name, :last_name => auth['extra']['raw_info'].last_name)
+    User.create(:fb_user_id => facebook_id, :token =>  auth['credentials'].token, :first_name => auth['extra']['raw_info'].first_name, :last_name => auth['extra']['raw_info'].last_name, :fb_url => auth['info']['image'])
   end
   redirect to '/'
 end

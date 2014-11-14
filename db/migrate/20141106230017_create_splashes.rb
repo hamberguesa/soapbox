@@ -4,6 +4,7 @@ class CreateSplashes < ActiveRecord::Migration
   	create_table :splashes do |t|
   		t.string :content
   		t.float :latitude,:longitude
+      t.string :fb_url
   		t.references :author
 
   		t.timestamps
