@@ -40,14 +40,16 @@ var model = (function(){
 
           if(initial === true)
           {
+            commentIndexArray[i] = []
             view.addComment(commentsArr[i][j]);
-            commentIndexArray.push(commentsArr[i][j].id)
+            commentIndexArray[i].push(commentsArr[i][j].id)
           }
           else
           {
             if (!(commentsArr[i][j].author_name === $("#login_name").text()))
             {
-             view.addSplash(splashes_in_database[i],favorited, count);
+            view.addComment(commentsArr[i][j]);
+            commentIndexArray[i].push(commentsArr[i][j].id)
             }
           }
         }
