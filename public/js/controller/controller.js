@@ -4,7 +4,7 @@ var controller = (function(){
   // var base_url = "http://localhost:9393"
   var base_url = ""
   var currUser;
-  // var base_url = "http://soap-box.herokuapp.com";
+  var base_url = "http://soap-box.herokuapp.com";
 
   function getSplashes(){
     $.ajax({
@@ -32,7 +32,8 @@ var controller = (function(){
       url: base_url+'/splashes',
       type: 'POST',
       data: data
-    }).done(addSplash);
+    })
+    // .done(addSplash);
     $('.paulund_block_page').fadeOut().remove();
   }
 
@@ -76,7 +77,7 @@ var controller = (function(){
         model.addSplashes(data);
         poll();
       });
-    }, 20000);
+    }, 500);
   }
 
   function updateCoords(lat, lon){

@@ -27,10 +27,10 @@ var model = (function(){
          }
         else
         {
-          if (!(splashes_in_database[i].author_name === $("#login_name").text()))
-          {
+          // if (!(splashes_in_database[i].author_name === $("#login_name").text()))
+          // {
            view.addSplash(splashes_in_database[i],favorited, count);
-          }
+          // }
         }
       }
       for(var j=0; j < commentsArr[i].length; j++)
