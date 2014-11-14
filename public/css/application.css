@@ -21,6 +21,11 @@
   /*background-color: pink;*/
 }
 
+body .navbar{
+  background-color:black;
+  background-image:none;
+}
+
 .bgrnd {
   height: 19em;
 }
@@ -67,13 +72,17 @@ body {
   /*margin: 0 auto;*/
   /*height: 5%;*/
 }
-
+.center{
+}
 .new-splash-link {
-  margin-left: 15em;
+  height:100px;
+  margin:0px auto;
+  display:block;
+
 }
 .scrolly{
   overflow-y: scroll;
-  height:39em;
+  height:35em;
 }
 
 ul{
@@ -206,8 +215,12 @@ label {
 }
 
 #main_content{
-  height:45em;
+  height:35em;
   overflow-y: hidden;
+}
+
+#create_new_btn{
+  text-align: center;
 }
 
 .footer{
