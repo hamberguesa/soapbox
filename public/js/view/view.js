@@ -4,7 +4,7 @@ var view = (function(){
 
 
   var addSplash = function(data, favorited, count){
-    // console.log(count)
+
     time = model.splashTime(data);
     if(favorited)
       color = "gold"
@@ -81,7 +81,7 @@ var view = (function(){
   };
 
   var addComment = function(data){
-    // console.log(data["splash_id"])
+
     var commentContent = data["content"];
     var compiled_html = template.addComment({name: data["author_name"], content: commentContent});
     $('#comment-'+data["splash_id"]).append(compiled_html);
@@ -154,10 +154,14 @@ var view = (function(){
   }
 
   var removeLoading = function(){
+
     $('.loading').fadeOut("slow",function(){
+    $("#main_content").addClass("slideRight");
+      
       $('.loading').remove()
       $('#main_content').addClass("slideRight")
     });
+
   }
 
   var enterSite = function(){

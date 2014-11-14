@@ -40,7 +40,6 @@ var controller = (function(){
   }
 
   function showComments(evt){
-    console.log($(this).closest('.splash')[0])
     view.showComments($(this).closest('.splash')[0].id);
   }
 
