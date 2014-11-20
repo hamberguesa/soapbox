@@ -8,7 +8,7 @@
 * Nate Beers
 * Jess Heron
 * John Lee 
-* 
+
 #### Technologies:
 * Sinatra (API)
 * JavaScript
